@@ -1,0 +1,35 @@
+{
+	"events": [
+		{
+			"animation": "back_in_up.gd",
+			"animation_length": 0,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1667570583.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Default",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "[color=#A5EFAC]BBCe[/color] t [wave amp=10 freq=5]You[/wave] a a a\ndsf sdf asdasd hjkj kj dlks [shake rate=10 level=2]shake[/shake] q w eh ioe qu whd\nasdkl asdlk dkl [fade start=1 length=7]sumidao[/fade] d as dsa \ndsf erf tr sfdx [rainbow freq=1 sat=0.8 val=2]gay[/rainbow] dasd dwed lusio\nsda  fojkokj kl [tornado radius=0.5 freq=3]tornado[/tornado] d3ee as eft rtg rt"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.5",
+		"file": "timeline-1667614671.json",
+		"name": "testes"
+	}
+}

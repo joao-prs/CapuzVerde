@@ -1,0 +1,211 @@
+{
+	"events": [
+		{
+			"animation": "slide_in_left.gd",
+			"animation_length": 1,
+			"animation_wait": false,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1667764278.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Default",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
+			"character": "character-1667764278.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "oh oh...\nVocê me encontrou!\n... e então."
+		},
+		{
+			"character": "character-1667764278.json",
+			"event_id": "dialogic_010",
+			"options": [
+
+			],
+			"portrait": "",
+			"question": "O que procuras?"
+		},
+		{
+			"choice": "Quem é você?",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"character": "character-1667764278.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Ho ho, Sou um simples homem que procura um pouco de paz no que me resta de vida.\nEsse buraco é minha morada agora.\nSe é isso que quer saber."
+		},
+		{
+			"character": "character-1667764278.json",
+			"event_id": "dialogic_010",
+			"options": [
+
+			],
+			"portrait": "",
+			"question": "mesmo com essa sujeira toda."
+		},
+		{
+			"choice": "Por que você mora num buraco?",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"character": "character-1667764278.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Ah... faz tanto tempo...\nEu estava me escondendo das confusões das grandes cidades e achei esse pequeno vilarejo que longe cheira bem,\nparece ter boa gente e comida muito boa,\nprincipalmente o bolo de cenoura da Dona Aira.\nEntão decidi me esconder aos arredores...\nquando de repente..."
+		},
+		{
+			"event_id": "dialogic_023",
+			"hide_dialogbox": false,
+			"wait_seconds": 1.5
+		},
+		{
+			"character": "character-1667764278.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "PUMMM!!!\neu caí neste buraco.\nGostei tanto que me acolhi aqui, nessa terra fria."
+		},
+		{
+			"anchor_id": "anchor-1634488067",
+			"event_id": "dialogic_016"
+		},
+		{
+			"choice": "está bem...",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"anchor_id": "anchor-1634488067",
+			"event_id": "dialogic_016"
+		},
+		{
+			"event_id": "dialogic_013"
+		},
+		{
+			"choice": "quero saber...",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"character": "character-1667764278.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Ora ora.\nVocê é alguem de objetivos,"
+		},
+		{
+			"event_id": "dialogic_015",
+			"id": "anchor-1634488067",
+			"index": 0,
+			"name": "questionario2"
+		},
+		{
+			"character": "character-1667764278.json",
+			"event_id": "dialogic_010",
+			"options": [
+
+			],
+			"portrait": "",
+			"question": "O que quer saber?..."
+		},
+		{
+			"choice": "Me fale sobre essa região.",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"character": "character-1667764278.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "É uma região bela, Com muitas árvores grandes e uma colheita até que boa para ser sincero.\nEmbora...\n... esquecida pelo tempo...\nAs pessoas vem e vão. As vezes eu pergunto para viajantes e eles nem sabem que habitam aqui.\nAs grandes cidades se quer sabem que aqui tem algum vilarejo.\nPara muitos isso pode ser ruim, mas para outros que acreditam que assim é melhor,\ntodas as pessoas estão felizes e seguras."
+		},
+		{
+			"anchor_id": "anchor-1634488067",
+			"event_id": "dialogic_016"
+		},
+		{
+			"choice": "Me fale sobre essa vila.",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"character": "character-1667764278.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "É uma vila simples.\nSão pessoas tranquilas de se lidar.\nJá lhe disse que a comida é boa? É um ponto importante de se mencionar."
+		},
+		{
+			"anchor_id": "anchor-1634488067",
+			"event_id": "dialogic_016"
+		},
+		{
+			"choice": "É só isso mesmo. Obrigado.",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"character": "character-1667764278.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Volte sempre. *sorriso*"
+		},
+		{
+			"event_id": "dialogic_022",
+			"transition_duration": 1
+		},
+		{
+			"event_id": "dialogic_013"
+		},
+		{
+			"choice": "Deixa pra lá.",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"character": "character-1667764278.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Tudo bem.\nAté logo."
+		},
+		{
+			"event_id": "dialogic_022",
+			"transition_duration": 1
+		},
+		{
+			"event_id": "dialogic_013"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.5",
+		"file": "timeline-1667764249.json",
+		"name": "knight1"
+	}
+}

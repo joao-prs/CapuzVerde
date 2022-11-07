@@ -1,0 +1,71 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://assets_map/level1.tres" type="TileSet" id=1]
+[ext_resource path="res://Scenes/transition_out.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Camera2DPrincipal.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/transition_in.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets_frases/frase_manual1.png" type="Texture" id=6]
+[ext_resource path="res://assets_map/parallax3.png" type="Texture" id=7]
+[ext_resource path="res://assets_map/parallax2.png" type="Texture" id=8]
+[ext_resource path="res://Scenes/ChangeMap.tscn" type="PackedScene" id=9]
+
+[node name="tutorial" type="Node2D"]
+
+[node name="player" parent="." instance=ExtResource( 4 )]
+position = Vector2( 256, 64 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Camera2D" parent="player" instance=ExtResource( 3 )]
+limit_right = 600
+limit_bottom = 112
+smoothing_enabled = false
+
+[node name="front" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 16, 16 )
+collision_layer = 32
+format = 1
+tile_data = PoolIntArray( -458752, 5, 0, -458719, 3, 0, -458718, 30, 0, -458717, 4, 0, -458716, 29, 0, -458715, 4, 0, -458714, 4, 0, -458713, 29, 0, -458712, 29, 0, -393216, 5, 0, -393183, 3, 0, -393182, 4, 0, -393181, 29, 0, -393180, 29, 0, -393179, 30, 0, -393178, 4, 0, -393177, 30, 0, -393176, 29, 0, -327680, 5, 0, -327647, 3, 0, -327646, 4, 0, -327645, 30, 0, -327644, 4, 0, -327643, 4, 0, -327642, 30, 0, -327641, 4, 0, -327640, 30, 0, -262144, 5, 0, -262111, 26, 0, -262110, 30, 0, -262109, 4, 0, -262108, 29, 0, -262107, 29, 0, -262106, 4, 0, -262105, 30, 0, -262104, 4, 0, -196608, 5, 0, -196574, 26, 0, -196573, 4, 0, -196572, 30, 0, -196571, 29, 0, -196570, 30, 0, -196569, 4, 0, -196568, 4, 0, -131072, 5, 0, -131037, 26, 0, -131036, 24, 0, -131035, 24, 0, -131034, 24, 0, -131033, 24, 0, -131032, 3, 0, -65536, 5, 0, -65496, 3, 0, 0, 5, 0, 40, 3, 0, 65536, 27, 0, 65537, 1, 0, 65538, 2, 0, 65564, 0, 0, 65565, 1, 0, 65566, 1, 0, 65567, 1, 0, 65568, 1, 0, 65569, 1, 0, 65570, 1, 0, 65571, 1, 0, 65572, 1, 0, 65573, 1, 0, 65574, 1, 0, 65575, 1, 0, 65576, 1, 0, 131072, 30, 0, 131073, 4, 0, 131074, 27, 0, 131075, 1, 0, 131076, 2, 0, 131098, 0, 0, 131099, 1, 0, 131100, 28, 0, 131101, 4, 0, 131102, 30, 0, 131103, 4, 0, 131104, 30, 0, 131105, 4, 0, 131106, 29, 0, 131107, 4, 0, 131108, 30, 0, 131109, 30, 0, 131110, 29, 0, 131111, 4, 0, 131112, 4, 0, 196608, 4, 0, 196609, 29, 0, 196610, 29, 0, 196611, 4, 0, 196612, 27, 0, 196613, 1, 0, 196614, 1, 0, 196615, 2, 0, 196631, 0, 0, 196632, 1, 0, 196633, 1, 0, 196634, 28, 0, 196635, 4, 0, 196636, 4, 0, 196637, 4, 0, 196638, 4, 0, 196639, 30, 0, 196640, 4, 0, 196641, 4, 0, 196642, 4, 0, 196643, 4, 0, 196644, 4, 0, 196645, 30, 0, 196646, 4, 0, 196647, 4, 0, 196648, 4, 0, 262144, 4, 0, 262145, 4, 0, 262146, 4, 0, 262147, 30, 0, 262148, 30, 0, 262149, 4, 0, 262150, 30, 0, 262151, 27, 0, 262152, 1, 0, 262153, 1, 0, 262154, 1, 0, 262155, 1, 0, 262156, 1, 0, 262157, 1, 0, 262158, 1, 0, 262159, 1, 0, 262160, 1, 0, 262161, 1, 0, 262162, 1, 0, 262163, 1, 0, 262164, 1, 0, 262165, 1, 0, 262166, 1, 0, 262167, 28, 0, 262168, 4, 0, 262169, 30, 0, 262170, 30, 0, 262171, 4, 0, 262172, 4, 0, 262173, 29, 0, 262174, 4, 0, 262175, 4, 0, 262176, 4, 0, 262177, 29, 0, 262178, 4, 0, 262179, 29, 0, 262180, 4, 0, 262181, 4, 0, 262182, 4, 0, 262183, 4, 0, 262184, 4, 0, 327680, 4, 0, 327681, 30, 0, 327682, 4, 0, 327683, 4, 0, 327684, 30, 0, 327685, 4, 0, 327686, 4, 0, 327687, 30, 0, 327688, 4, 0, 327689, 29, 0, 327690, 30, 0, 327691, 4, 0, 327692, 4, 0, 327693, 29, 0, 327694, 29, 0, 327695, 4, 0, 327696, 30, 0, 327697, 4, 0, 327698, 29, 0, 327699, 30, 0, 327700, 30, 0, 327701, 30, 0, 327702, 29, 0, 327703, 29, 0, 327704, 30, 0, 327705, 30, 0, 327706, 30, 0, 327707, 30, 0, 327708, 30, 0, 327709, 30, 0, 327710, 4, 0, 327711, 4, 0, 327712, 29, 0, 327713, 4, 0, 327714, 4, 0, 327715, 30, 0, 327716, 30, 0, 327717, 4, 0, 327718, 29, 0, 327719, 4, 0, 327720, 4, 0, 393216, 4, 0, 393217, 4, 0, 393218, 4, 0, 393219, 30, 0, 393220, 4, 0, 393221, 29, 0, 393222, 29, 0, 393223, 29, 0, 393224, 4, 0, 393225, 4, 0, 393226, 4, 0, 393227, 4, 0, 393228, 4, 0, 393229, 30, 0, 393230, 4, 0, 393231, 4, 0, 393232, 4, 0, 393233, 4, 0, 393234, 4, 0, 393235, 4, 0, 393236, 4, 0, 393237, 4, 0, 393238, 4, 0, 393239, 4, 0, 393240, 30, 0, 393241, 30, 0, 393242, 4, 0, 393243, 4, 0, 393244, 4, 0, 393245, 4, 0, 393246, 4, 0, 393247, 4, 0, 393248, 4, 0, 393249, 4, 0, 393250, 4, 0, 393251, 4, 0, 393252, 4, 0, 393253, 4, 0, 393254, 4, 0, 393255, 4, 0, 393256, 4, 0 )
+
+[node name="Parallax fundo" type="ParallaxBackground" parent="."]
+
+[node name="1" type="ParallaxLayer" parent="Parallax fundo"]
+motion_scale = Vector2( 0.4, 1 )
+motion_mirroring = Vector2( 256, 0 )
+
+[node name="Sprite" type="Sprite" parent="Parallax fundo/1"]
+position = Vector2( 0, -100 )
+texture = ExtResource( 7 )
+centered = false
+
+[node name="2" type="ParallaxLayer" parent="Parallax fundo"]
+motion_scale = Vector2( 0.6, 1 )
+motion_mirroring = Vector2( 256, 0 )
+
+[node name="Sprite" type="Sprite" parent="Parallax fundo/2"]
+position = Vector2( 0, -100 )
+texture = ExtResource( 8 )
+centered = false
+
+[node name="Parallax frente" type="ParallaxBackground" parent="."]
+layer = 50
+
+[node name="textos" type="ParallaxLayer" parent="Parallax frente"]
+motion_scale = Vector2( 1.05, 1 )
+
+[node name="frase1" type="Sprite" parent="Parallax frente/textos"]
+position = Vector2( 256, 10 )
+texture = ExtResource( 6 )
+
+[node name="transition_in" parent="." instance=ExtResource( 5 )]
+visible = false
+
+[node name="transition_out" parent="." instance=ExtResource( 2 )]
+visible = false
+
+[node name="ChangeMap" parent="." instance=ExtResource( 9 )]
+position = Vector2( 640, 16 )
+path = "res://StartScreen.tscn"

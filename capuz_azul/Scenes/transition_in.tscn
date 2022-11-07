@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scripts/transition_in.gd" type="Script" id=1]
+[ext_resource path="res://scripts/overlay.gd" type="Script" id=2]
+
+[sub_resource type="Shader" id=1]
+code = "//Script do Shader --- copiem da parte de baixo em diante
+shader_type canvas_item;
+// Parâmetro para controlar o tempo shader
+uniform float progress : hint_range(0, 1);
+// Tamanho de cada Diamante em Pixel
+uniform float diamondPixelSize = 10;
+// corrigir o multiplicador
+uniform float vezes = 4;
+//Função que faz a animação do shader
+void fragment() {
+
+    float xFraction = fract(FRAGCOORD.x / diamondPixelSize);
+    float yFraction = fract(FRAGCOORD.y / diamondPixelSize);
+
+    float xDistance = abs(xFraction - 0.5);
+    float yDistance = abs(yFraction - 0.5);
+	
+    if ((xDistance + yDistance + UV.x + UV.y) >(progress * vezes)) {
+        discard;
+    }
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/progress = 0.185
+shader_param/diamondPixelSize = 30.0
+shader_param/vezes = 4.0
+
+[node name="transition_in" type="CanvasLayer"]
+script = ExtResource( 1 )
+
+[node name="overlay" type="ColorRect" parent="."]
+material = SubResource( 2 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.121569, 0.141176, 0.294118, 1 )
+script = ExtResource( 2 )
+
+[node name="transition_FX" type="Tween" parent="."]
