@@ -120,13 +120,13 @@ position = Vector2( 2128, 64 )
 map_local = "res://level1.tscn"
 
 [node name="skeleton" parent="." instance=ExtResource( 15 )]
-position = Vector2( 1800, 144 )
+position = Vector2( 1824, 144 )
 
 [node name="skeleton2" parent="." instance=ExtResource( 15 )]
 position = Vector2( 768, 144 )
 
 [node name="npc_chill" parent="." instance=ExtResource( 6 )]
-position = Vector2( 2048, 184 )
+position = Vector2( 824, 80 )
 
 [node name="TextEdit2" type="TextEdit" parent="."]
 margin_left = 2024.0
