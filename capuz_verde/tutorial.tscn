@@ -13,7 +13,7 @@
 [node name="tutorial" type="Node2D"]
 
 [node name="player" parent="." instance=ExtResource( 4 )]
-position = Vector2( 256, 64 )
+position = Vector2( 256, 56 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -37,7 +37,7 @@ motion_scale = Vector2( 0.4, 1 )
 motion_mirroring = Vector2( 256, 0 )
 
 [node name="Sprite" type="Sprite" parent="Parallax fundo/1"]
-position = Vector2( 0, -100 )
+position = Vector2( 0, -104 )
 texture = ExtResource( 7 )
 centered = false
 
@@ -61,11 +61,10 @@ position = Vector2( 256, 10 )
 texture = ExtResource( 6 )
 
 [node name="transition_in" parent="." instance=ExtResource( 5 )]
-visible = false
+follow_viewport_scale = 0.0
 
 [node name="transition_out" parent="." instance=ExtResource( 2 )]
-visible = false
 
 [node name="ChangeMap" parent="." instance=ExtResource( 9 )]
-position = Vector2( 640, 16 )
+position = Vector2( 616, 16 )
 path = "res://StartScreen.tscn"
