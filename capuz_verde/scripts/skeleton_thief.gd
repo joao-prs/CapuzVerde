@@ -61,10 +61,7 @@ func _physics_process(delta: float)-> void:
 			if can_attack == false:
 				$anim.play("attack")
 				set_physics_process(false)
-				
-				
-				
-			
+
 	#se nao...
 	else:
 		speed = 0
