@@ -11,18 +11,19 @@ func _on_btn_start_pressed():
 #-------------------------+
 #     TROCANDO O MAPA     |
 #-------------------------+
+	#Global.carregar_jogo()
 	# variaveis iniciais temporarias
 	if not Global.player_position_x:
 		Global.player_position_x = 42
 	if not Global.player_position_y:
 		Global.player_position_y = 95
 	if not Global.health:
-		Global.health = 3
+		Global.health = 1
 	if not Global.map_save:
 		Global.map_save = "res://level1.tscn"
 	#Global.carregar_jogo()
-	get_tree().change_scene(Global.map_save)
-	print(Global.map_save)
+	var change = get_tree().change_scene(Global.map_save)
+	print(change)
 	
 
 func _on_btn_tutorial_pressed():

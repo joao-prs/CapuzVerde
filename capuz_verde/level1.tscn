@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets_map/level1.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/player.tscn" type="PackedScene" id=2]
@@ -16,7 +16,6 @@
 [ext_resource path="res://Scenes/saveArea.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Scenes/skeleton.tscn" type="PackedScene" id=15]
 [ext_resource path="res://addons/dialogic/Example Assets/Fonts/NameFont.tres" type="DynamicFont" id=16]
-[ext_resource path="res://Scenes/skeleton_thief.tscn" type="PackedScene" id=17]
 
 [node name="level1" type="Node2D"]
 
@@ -35,6 +34,7 @@ __meta__ = {
 }
 
 [node name="Camera2DPrincipal" parent="player" instance=ExtResource( 3 )]
+pause_mode = 2
 smoothing_enabled = false
 
 [node name="Parallax frente" type="ParallaxBackground" parent="."]
@@ -117,17 +117,17 @@ tile_data = PoolIntArray( -393178, 33, 0, -393168, 34, 0, -393161, 33, 0, -39315
 [node name="transition_out" parent="." instance=ExtResource( 5 )]
 
 [node name="saveArea" parent="." instance=ExtResource( 14 )]
-position = Vector2( 1936, 112 )
+position = Vector2( 2128, 64 )
 map_local = "res://level1.tscn"
 
 [node name="skeleton" parent="." instance=ExtResource( 15 )]
-position = Vector2( 1864, 144 )
+position = Vector2( 1824, 144 )
 
 [node name="skeleton2" parent="." instance=ExtResource( 15 )]
 position = Vector2( 768, 144 )
 
 [node name="npc_chill" parent="." instance=ExtResource( 6 )]
-position = Vector2( 2048, 184 )
+position = Vector2( 261, 81 )
 
 [node name="TextEdit2" type="TextEdit" parent="."]
 margin_left = 2024.0
@@ -151,6 +151,3 @@ text = "'E' para atacar
 (ataque eles por tras, o
 jogo ainda ta bugado
 kkkkkkkkkkkkkkkkkkkkkk)"
-
-[node name="skeleton3" parent="." instance=ExtResource( 17 )]
-position = Vector2( 1768, 144 )

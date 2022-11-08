@@ -4,37 +4,25 @@ var interacao = false
 func _ready():
 	pass
 
-var novo_dialogo
-var wr
-
-func _process(delta):
-	if interacao == true and Input.is_action_pressed("ui_up"):
-		Global.can_move = false
-		print("seta apertada pra cima")
-		#busca valor no global
-		##Dialogic.set_variable("respeito", Global.respeito)
-		Dialogic.load("chill1")
-		novo_dialogo = Dialogic.start("chill1")
-		#Global.respeito = Dialogic.get_variable("respeito")
-		#Global.respeito = Dialogic.get_current_slot()
-		#Dialogic.get_variable("respeito",Global.respeito  )
-		Dialogic.save("chill1")
-		add_child(novo_dialogo)
-
-		interacao = false
+func _input(event):
+	if get_node_or_null('DialogNode') == null:
+		if event.is_action_pressed("ui_up") and interacao:
+			get_tree().paused = true
+			Dialogic.load("chill1")
+			var novo_dialogo = Dialogic.start("chill1")
+			novo_dialogo.pause_mode = Node.PAUSE_MODE_PROCESS
+			Dialogic.save("chill1")
+			novo_dialogo.connect("timeline_end", self, 'fim_dialogo')
+			add_child(novo_dialogo)
 		
-func _physics_process(delta: float) -> void:
-	#var1 = typeof(novo_dialogo)
-	#print(wr)
-	wr = weakref(novo_dialogo)
-	if not wr.get_ref():
-		Global.can_move = true
+func fim_dialogo(_timeline_name):
+	get_tree().paused = false
 	
 #corpo entrou na area
-func _on_npc_body_entered(body):
+func _on_npc_body_entered(_body):
 	#print(body.name)
 	interacao = true
 #corpo saiu na area
-func _on_npc_body_exited(body):
+func _on_npc_body_exited(_body):
 	#print(body.name)
 	interacao = false

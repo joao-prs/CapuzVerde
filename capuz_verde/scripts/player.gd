@@ -8,18 +8,16 @@ var gravity = 750
 var jump_force = -475
 var is_grounded
 onready var raycasts = $raycasts
-var move_direction : int
-var direction:int = 1
+
 var can_move = true
 #estados do personagem
 var anim
 var dead
-var health : int
+var health
 # referenciando o collision de atack
 var can_attack
-var levou_dano = false
 onready var collision: CollisionShape2D = get_node("AreaDeAtack/Collision")
-onready var timer := $Timer as Timer
+
 
 func _ready():
 	dead = false
@@ -28,15 +26,9 @@ func _ready():
 	position.y = Global.player_position_y
 
 func _physics_process(delta: float) -> void:
-	
+
 	velocity.y += gravity * delta
-
-	if health > Global.health:
-		timer.start()
-		print("levou dano ----------------------->")
-		velocity.y = jump_force / 4
-		$Sprite.modulate = "ff7a7a"
-
+	#can_attack = Global.can_attack
 	health = Global.health
 	can_move = Global.can_move
 	can_attack = true
@@ -45,11 +37,11 @@ func _physics_process(delta: float) -> void:
 	is_grounded = _check_is_ground()
 	attack()
 	_set_animation()
-	
+	#print("health:",health,",animation:",anim,",dead:",dead,",mapa:",Global.map_save,",respeito:", Global.respeito)
 func _get_input():
 	velocity.x = 0
 	#if can_move==true:
-	move_direction = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
+	var move_direction = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
 	#
 	# arrumar essa poha de baixo
 	#
@@ -67,6 +59,7 @@ func _get_input():
 func attack() -> void:
 	if Input.is_action_just_pressed("Ataque") and can_attack == true && is_grounded:
 		can_attack = false
+		print("1° anim:",anim,"  can_attack:",can_attack) # TESTANDO ATTTACKK
 	
 
 func _input(event: InputEvent) -> void:
@@ -96,36 +89,30 @@ func _set_animation():
 		if can_attack == false:
 			anim = "attack"
 			set_physics_process(false)
+			print("2° anim:",anim,"  can_attack:",can_attack) # TESTANDO ATTTACKK
 
 		elif health < 1:
 			anim = "dead"
 			dead = true
-			$Collision.disabled = true
 			set_physics_process(false)
-			
 
 		if $anim.assigned_animation != anim:
 			$anim.play(anim)
 
 # verifica se a animacao acabou
-func _on_anim_animation_finished(anim):
-	if anim == "attack":
+func _on_anim_animation_finished(animation):
+	if animation == "attack":
 		can_attack = true
 		set_physics_process(true)
+		#can_move = true
+		print("3° anim:",animation,"  can_attack:",can_attack,"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa") # TESTANDO ATTTACKK
 		
-	if anim == "dead":
+	if animation == "dead":
+		#get_tree().reload_current_scene()
+		#get_tree().change_scene("res://StartScreen.tscn")
+		#get_tree().change_scene(Global.map_save)
 		changer.change_scene(Global.map_save)
+		Global.health = 1
 		Global.carregar_jogo()
-		print("[YOU DIED][ HP: ",Global.health," ]")
-
-func _on_Collision_tree_entered():
-	if $Collision.is_in_group("ataque_inimigo"):
-		dead = true
-
-func _on_Timer_ready():
-	velocity.x = (move_speed) * (direction)
-	print("deslocado, tempo contado")
 
 
-func _on_Timer_timeout():
-	$Sprite.modulate = "ffffff"

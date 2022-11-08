@@ -3,7 +3,7 @@ extends Node
 var player_position_x
 var player_position_y
 var respeito
-var health : int
+var health
 var dead
 var can_attack
 var map_save
@@ -31,6 +31,7 @@ func salvar_jogo():
 	#armazenar linha
 	jogo_salvo.store_line(to_json(salvar()))
 	jogo_salvo.close()
+	print("Jogo salvando + + + + +")
 
 func carregar_jogo():
 	var jogo_salvo = File.new()
@@ -48,3 +49,4 @@ func carregar_jogo():
 	health = linha_atual["health"]
 	map_save = linha_atual["map_save"]
 	jogo_salvo.close()
+	print("Jogo carregando - - - - - - - - -")

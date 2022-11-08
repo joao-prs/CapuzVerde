@@ -51,6 +51,7 @@ __meta__ = {
 }
 
 [node name="Camera2DPrincipal" parent="player" instance=ExtResource( 4 )]
+pause_mode = 2
 limit_right = 3200
 limit_bottom = 287
 smoothing_enabled = false
