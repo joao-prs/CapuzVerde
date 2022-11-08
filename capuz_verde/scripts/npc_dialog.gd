@@ -25,7 +25,7 @@ func _process(delta):
 		
 func _physics_process(delta: float) -> void:
 	#var1 = typeof(novo_dialogo)
-	print(wr)
+	#print(wr)
 	wr = weakref(novo_dialogo)
 	if not wr.get_ref():
 		Global.can_move = true

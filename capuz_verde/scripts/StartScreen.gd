@@ -11,14 +11,13 @@ func _on_btn_start_pressed():
 #-------------------------+
 #     TROCANDO O MAPA     |
 #-------------------------+
-	#Global.carregar_jogo()
 	# variaveis iniciais temporarias
 	if not Global.player_position_x:
 		Global.player_position_x = 42
 	if not Global.player_position_y:
 		Global.player_position_y = 95
 	if not Global.health:
-		Global.health = 1
+		Global.health = 3
 	if not Global.map_save:
 		Global.map_save = "res://level1.tscn"
 	#Global.carregar_jogo()

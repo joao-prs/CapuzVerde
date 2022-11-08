@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets_mobs/skeleton_thief.png" type="Texture" id=1]
 [ext_resource path="res://scripts/skeleton_thief.gd" type="Script" id=2]
@@ -17,6 +17,30 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Vector2( 0, 0 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("dano/CollisionDano:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "attack"
@@ -33,6 +57,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Vector2( 0, 1 ), Vector2( 1, 1 ), Vector2( 2, 1 ), Vector2( 3, 1 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("dano/CollisionDano:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [sub_resource type="Animation" id=4]
 resource_name = "dead"
@@ -47,6 +83,18 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 2 ), Vector2( 1, 2 ), Vector2( 2, 2 ), Vector2( 3, 2 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.3, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -89,18 +137,15 @@ extents = Vector2( 4, 5 )
 extents = Vector2( 18.75, 7.5 )
 
 [sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 4, 4 )
+extents = Vector2( 3.00001, 2.5 )
 
-[node name="skeletonThief" type="KinematicBody2D"]
+[sub_resource type="CircleShape2D" id=9]
+radius = 64.0
+
+[node name="skeleton_thief" type="KinematicBody2D"]
 collision_layer = 16
 collision_mask = 32
 script = ExtResource( 2 )
-
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0, -8 )
-texture = ExtResource( 1 )
-hframes = 4
-vframes = 3
 
 [node name="anim" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 2 )
@@ -135,10 +180,25 @@ rotation = 1.5708
 collision_layer = 0
 collision_mask = 4
 
-[node name="CollisionDano" type="CollisionShape2D" parent="dano"]
-position = Vector2( 3.8147e-06, -4 )
+[node name="CollisionDano" type="CollisionShape2D" parent="dano" groups=["ataque_inimigo"]]
+position = Vector2( 0, -6.5 )
 shape = SubResource( 7 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -8 )
+texture = ExtResource( 1 )
+hframes = 4
+vframes = 3
+
+[node name="detecta" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionDetector" type="CollisionShape2D" parent="detecta"]
+shape = SubResource( 9 )
 
 [connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]
 [connection signal="area_entered" from="corpo" to="." method="_on_corpo_area_entered"]
 [connection signal="body_entered" from="dano" to="." method="_on_dano_body_entered"]
+[connection signal="body_entered" from="detecta" to="." method="_on_detecta_body_entered"]
+[connection signal="body_exited" from="detecta" to="." method="_on_detecta_body_exited"]
