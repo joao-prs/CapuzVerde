@@ -127,30 +127,27 @@ position = Vector2( 1864, 144 )
 position = Vector2( 768, 144 )
 
 [node name="npc_chill" parent="." instance=ExtResource( 6 )]
-position = Vector2( 2048, 184 )
-
-[node name="TextEdit2" type="TextEdit" parent="."]
-margin_left = 2024.0
-margin_top = 80.0
-margin_right = 2168.0
-margin_bottom = 152.0
-rect_pivot_offset = Vector2( 16, 48 )
-custom_fonts/font = ExtResource( 16 )
-text = "aperte para cima quando
-estiver no galho, ele salva
-o game"
+position = Vector2( 416, 144 )
 
 [node name="TextEdit3" type="TextEdit" parent="."]
-margin_left = 536.0
-margin_top = 88.0
-margin_right = 664.0
-margin_bottom = 160.0
+margin_left = 1696.0
+margin_top = 48.0
+margin_right = 1848.0
+margin_bottom = 88.0
 rect_pivot_offset = Vector2( 16, 48 )
 custom_fonts/font = ExtResource( 16 )
-text = "'E' para atacar
-(ataque eles por tras, o
-jogo ainda ta bugado
-kkkkkkkkkkkkkkkkkkkkkk)"
+text = "'E' para atacar,
+combate dos bot melhorado"
+
+[node name="TextEdit4" type="TextEdit" parent="."]
+margin_left = 312.0
+margin_top = 56.0
+margin_right = 408.0
+margin_bottom = 112.0
+rect_pivot_offset = Vector2( 16, 48 )
+custom_fonts/font = ExtResource( 16 )
+text = "'seta para cima'
+para conversar"
 
 [node name="skeleton3" parent="." instance=ExtResource( 17 )]
 position = Vector2( 1768, 144 )
