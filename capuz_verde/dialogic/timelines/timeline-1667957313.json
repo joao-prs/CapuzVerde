@@ -25,6 +25,10 @@
 			"event_id": "dialogic_001",
 			"portrait": "",
 			"text": "Oiiii!!\nSou o Bubbles!\nE só existo para testes mesmo. Espero que aprecie o game.\n*sorriso*\n[wave amp=10 freq=5]*sorriso*[/wave]"
+		},
+		{
+			"event_id": "dialogic_022",
+			"transition_duration": 1
 		}
 	],
 	"metadata": {
