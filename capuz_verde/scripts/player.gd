@@ -110,6 +110,7 @@ func _on_anim_animation_finished(anim):
 		print("[player.gd][YOU DIED]")
 		changer.change_scene(Global.map_save)
 		Global.carregar_jogo()
+		Global.health += 1
 
 func _on_Collision_tree_entered():
 	if $Collision.is_in_group("ataque_inimigo"):
