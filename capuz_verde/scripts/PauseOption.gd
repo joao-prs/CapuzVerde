@@ -6,7 +6,7 @@ extends Control
 var is_paused = false setget set_is_paused
 
 func _unhandled_input(event):
-	if event.is_action_pressed("Esc"):
+	if event.is_action_pressed("ui_end"):
 		$VBoxContainer/returnMenu.grab_focus()
 		print("pause")
 		self.is_paused = !is_paused 
@@ -21,4 +21,5 @@ func _on_resume_pressed():
 	print("no pause")
 
 func _on_returnMenu_pressed():
+	get_tree().paused = false
 	get_tree().change_scene("res://StartScreen.tscn")
