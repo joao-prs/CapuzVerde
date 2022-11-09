@@ -35,6 +35,7 @@ __meta__ = {
 }
 
 [node name="Camera2DPrincipal" parent="player" instance=ExtResource( 3 )]
+pause_mode = 2
 smoothing_enabled = false
 
 [node name="Parallax frente" type="ParallaxBackground" parent="."]

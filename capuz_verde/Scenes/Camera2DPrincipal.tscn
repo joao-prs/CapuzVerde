@@ -4,6 +4,7 @@
 [ext_resource path="res://Scenes/PauseOption.tscn" type="PackedScene" id=2]
 
 [node name="Camera2D" type="Camera2D"]
+pause_mode = 2
 current = true
 limit_left = 0
 limit_top = -96
