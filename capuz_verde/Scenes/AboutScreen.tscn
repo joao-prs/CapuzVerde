@@ -2,7 +2,7 @@
 
 [ext_resource path="res://assets_menu/PixeloidMono-1G8ae.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets_menu/about.png" type="Texture" id=2]
-[ext_resource path="res://assets_frases/frase_credit_text.png" type="Texture" id=3]
+[ext_resource path="res://addons/dialogic/Example Assets/Fonts/NameFont.tres" type="DynamicFont" id=3]
 [ext_resource path="res://scripts/AboutScreen.gd" type="Script" id=4]
 
 [sub_resource type="StyleBoxFlat" id=2]
@@ -40,11 +40,6 @@ script = ExtResource( 4 )
 texture = ExtResource( 2 )
 centered = false
 
-[node name="text" type="Sprite" parent="."]
-position = Vector2( 64, 64 )
-texture = ExtResource( 3 )
-centered = false
-
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
@@ -70,5 +65,23 @@ flat = true
 __meta__ = {
 "_editor_description_": ""
 }
+
+[node name="version" type="Label" parent="."]
+margin_left = 72.0
+margin_top = 40.0
+margin_right = 142.0
+margin_bottom = 54.0
+custom_colors/font_color = Color( 0.376471, 0.682353, 0.482353, 1 )
+custom_fonts/font = ExtResource( 3 )
+text = "Versão: 0.0.1.3"
+
+[node name="version2" type="Label" parent="."]
+margin_left = 72.0
+margin_top = 16.0
+margin_right = 205.0
+margin_bottom = 30.0
+custom_colors/font_color = Color( 0.376471, 0.682353, 0.482353, 1 )
+custom_fonts/font = ExtResource( 3 )
+text = "by: João Pedro Ribeiro Silva"
 
 [connection signal="pressed" from="HBoxContainer/btn_back" to="." method="_on_btn_back_pressed"]

@@ -4,6 +4,8 @@ var interacao = false
 func _ready():
 	pass
 
+
+
 func _input(event):
 	if get_node_or_null('DialogNode') == null:
 		if event.is_action_pressed("ui_up") and interacao:
