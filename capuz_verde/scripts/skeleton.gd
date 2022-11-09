@@ -7,7 +7,7 @@ var move_direction = -1
 var can_die = false
 var can_attack = true
 
-func _physics_process(delta: float)-> void:
+func _physics_process(_delta: float)-> void:
 	velocity.x = speed * move_direction
 	velocity = move_and_slide(velocity)
 	
@@ -24,7 +24,7 @@ func _physics_process(delta: float)-> void:
 		else:
 			$Sprite.flip_h = true
 			$Ray_wall.cast_to.y = 5
-			$dano/CollisionDano.position.y = -6.5
+			$dano/CollisionDano.position.y = 6.5
 		if velocity.x != 0:
 			$anim.play("run")
 			if $Ray_wall.is_colliding():
@@ -41,7 +41,7 @@ func _physics_process(delta: float)-> void:
 func _on_anim_animation_finished(anim_name: String)-> void:
 	# muda direcao do sprite e raio
 	if anim_name == "idle":
-		$Sprite.flip_h != $Sprite.flip_h
+		#$Sprite.flip_h = true
 		$Ray_wall.scale.x *= -1
 		move_direction *= -1
 		$anim.play("run")
@@ -55,7 +55,7 @@ func _on_anim_animation_finished(anim_name: String)-> void:
 	if anim_name == "dead":
 		queue_free()
 
-func _on_dano_body_entered(body):
+func _on_dano_body_entered(_body):
 	can_attack = false
 	Global.health -= 1
 	Global.can_attack = true

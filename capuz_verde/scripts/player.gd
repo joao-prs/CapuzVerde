@@ -6,8 +6,6 @@ var velocity = Vector2.ZERO
 var move_speed = 60
 var gravity =450
 var jump_force = -400
-var is_grounded
-onready var raycasts = $raycasts
 var move_direction : int
 var direction:int = 1
 var can_move = true
@@ -27,7 +25,7 @@ func _ready():
 	position.x = Global.player_position_x
 	position.y = Global.player_position_y
 
-func _physics_process(delta: float) -> void:
+func _physics_process(delta):
 	
 	velocity.y += gravity * delta
 
@@ -43,9 +41,8 @@ func _physics_process(delta: float) -> void:
 	
 	############ funcoes sempre rodando
 	_get_input()
-	velocity = move_and_slide(velocity)
-	is_grounded = _check_is_ground()
 	attack()
+	velocity = move_and_slide(velocity, Vector2(0, -1))
 	_set_animation()
 	
 func _get_input():
@@ -62,19 +59,13 @@ func _get_input():
 
 
 func attack() -> void:
-	if Input.is_action_just_pressed("Ataque") and can_attack == true && is_grounded:
+	if Input.is_action_just_pressed("Ataque") and can_attack == true && is_on_floor():
 		can_attack = false
 
-func _input(event: InputEvent) -> void:
+func _input(event: InputEvent):
 	#"ui_select = tecla espaço"
-	if event.is_action_pressed("ui_select") && is_grounded:
+	if event.is_action_pressed("ui_select") && is_on_floor():
 		velocity.y = jump_force / 2
-
-func _check_is_ground():
-	for raycast in raycasts.get_children():
-		if raycast.is_colliding():
-			return true
-	return false
 
 func _set_animation():
 	#pode se mexer?
@@ -101,12 +92,12 @@ func _set_animation():
 		if $anim.assigned_animation != anim:
 			$anim.play(anim)
 
-func _on_anim_animation_finished(anim):
-	if anim == "attack":
+func _on_anim_animation_finished(animation):
+	if animation == "attack":
 		can_attack = true
 		set_physics_process(true)
 		
-	if anim == "dead":
+	if animation == "dead":
 		print("[player.gd][YOU DIED]")
 		changer.change_scene(Global.map_save)
 		Global.carregar_jogo()
