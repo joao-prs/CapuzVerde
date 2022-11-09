@@ -4,6 +4,7 @@ var player_position_x
 var player_position_y
 var respeito
 var health : int
+var food : int
 var dead
 var can_attack
 var map_save
