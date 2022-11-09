@@ -2,14 +2,14 @@
 
 # CapuzVerde
 
-## versao 0.0.1.3
+## versao 0.0.1.4
 
 ### Um jogo desenvolvido para o aprendizado meu e de uma equipe que estou montando.Utilizaremos nesse projeto o motor Godot 3.5.1 standart version com plugin.
 
 ## atualizações
 
 ### recente↑ antigo↓
-
+- agora tem hub e contador de vida
 - corrigido o dialogo do npn do tutorial
 - corrigido o comportamento da câmera durante a pausa
 - corrigido o retorno do menu de pausa para o menu principal

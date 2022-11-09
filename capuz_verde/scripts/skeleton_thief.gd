@@ -47,7 +47,7 @@ func _physics_process(delta: float)-> void:
 			var distance: Vector2 = position - player_ref.position
 			var direction: Vector2 = distance.normalized()
 
-			velocity.x = direction.x * (speed-40)
+			velocity.x = direction.x * (speed-50)
 			velocity = move_and_slide(velocity)
 			
 			if direction.x < 0:
