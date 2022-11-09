@@ -39,14 +39,14 @@ func _physics_process(delta: float)-> void:
 			if can_attack == false:
 				$anim.play("attack")
 				set_physics_process(false)
-
+		#----------------------#
+		#  PERSEGUE O JOGADOR  #
+		#----------------------#
 		elif detectou == true:
 			#print(player_ref.name," DDDD")#########
 			var distance: Vector2 = position - player_ref.position
 			var direction: Vector2 = distance.normalized()
-			#var direction =-1
-			#print(distance)
-			#speed *= 4
+
 			velocity.x = direction.x * (speed-40)
 			velocity = move_and_slide(velocity)
 			
@@ -88,10 +88,8 @@ func _on_anim_animation_finished(anim_name: String)-> void:
 func _on_dano_body_entered(body):
 	can_attack = false
 	Global.health -= 1
-	#Global.can_attack = true
 
 func _on_corpo_area_entered(area):
-	print("area detectada")
 	if area.is_in_group("player_ataque"):
 		can_die = true
 

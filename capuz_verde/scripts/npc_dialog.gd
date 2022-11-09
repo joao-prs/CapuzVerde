@@ -14,7 +14,7 @@ func _input(event):
 			Dialogic.save("chill1")
 			novo_dialogo.connect("timeline_end", self, 'fim_dialogo')
 			add_child(novo_dialogo)
-		
+
 func fim_dialogo(_timeline_name):
 	get_tree().paused = false
 	

@@ -14,6 +14,9 @@ func _physics_process(delta: float)-> void:
 	#checa se ta vivo
 	if can_die != true:
 		#se sim...
+		#-------------------#
+		#  AGE NORMALMENTE  #
+		#-------------------#
 		if move_direction == 1:
 			$Sprite.flip_h = false
 			$Ray_wall.cast_to.y = -5
