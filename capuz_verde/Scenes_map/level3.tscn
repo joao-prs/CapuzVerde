@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/Camera2DPrincipal.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/saveArea.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/ChangeMap.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets_map/level1.tres" type="TileSet" id=5]
+[ext_resource path="res://Scenes/Escada.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/transition_in.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/transition_out.tscn" type="PackedScene" id=8]
 
 [node name="level3" type="Node2D"]
 
@@ -31,9 +34,17 @@ tile_data = PoolIntArray( -196612, 5, 0, -131076, 5, 0, -65540, 5, 0, -4, 5, 0, 
 
 [node name="saveArea" parent="." instance=ExtResource( 2 )]
 position = Vector2( 296, 240 )
-map_local = "res://level3.tscn"
+map_local = "res://Scenes_map/level3.tscn"
 
 [node name="ChangeMap" parent="." instance=ExtResource( 3 )]
 position = Vector2( -24, 0 )
-path = "res://level2.tscn"
+path = "res://Scenes_map/level2.tscn"
 player_loc_x = 3200.0
+
+[node name="EscadaArea" parent="." instance=ExtResource( 6 )]
+position = Vector2( 248, 240 )
+scale = Vector2( 1, 12 )
+
+[node name="transition_in" parent="." instance=ExtResource( 7 )]
+
+[node name="transition_out" parent="." instance=ExtResource( 8 )]

@@ -4,7 +4,7 @@ onready var changer = get_parent().get_node("transition_in")
 # variaveis fisica e movimentos
 var velocity = Vector2.ZERO
 var move_speed = 60
-var gravity =450
+var gravity = 450
 var jump_force = -400
 var is_grounded
 onready var raycasts = $raycasts
@@ -33,7 +33,6 @@ func _physics_process(delta: float) -> void:
 
 	if health > Global.health:
 		timer.start()
-		print("[player.gd] levou dano --->") #####
 		velocity.y = jump_force / 4
 		$Sprite.modulate = "ff7a7a"
 	
@@ -42,14 +41,15 @@ func _physics_process(delta: float) -> void:
 	can_attack = true
 	
 	############ funcoes sempre rodando
-	_get_input()
 	velocity = move_and_slide(velocity)
 	is_grounded = _check_is_ground()
-	attack()
+	_attack()
+	_escada()
+	_get_input()
 	_set_animation()
-	
-	if Input.is_action_just_pressed("dash"):
-		Dash()
+	#if Input.is_action_just_pressed("dash"):
+	#if Input.is_action_just_pressed("ui_left"):
+	#	Dash()
 	
 func _get_input():
 	velocity.x = 0
@@ -63,25 +63,39 @@ func _get_input():
 		$Sprite.flip_h = true
 		collision.position = Vector2(-6, -8)
 		
+	## GUSTAVO ##
+	if Input.is_action_just_pressed("shift_esq"):
+		Dash()	
 
-
-func attack() -> void:
+#------------------+
+#  ATAQUE GRRRRRR  |
+#------------------+
+func _attack() -> void:
 	if Input.is_action_just_pressed("Ataque") and can_attack == true && is_grounded:
 		can_attack = false
 
+#---------------+
+#  PULO / TECLA |
+#---------------+
 func _input(event: InputEvent) -> void:
 	#"ui_select = tecla espaço"
 	if event.is_action_pressed("ui_select") && is_grounded:
 		velocity.y = jump_force / 2
-
+#------------------+
+#  PULO / CONDIÇÃO |
+#------------------+
 func _check_is_ground():
 	for raycast in raycasts.get_children():
 		if raycast.is_colliding():
 			return true
 	return false
 
+
+
 func _set_animation():
-	#pode se mexer?
+	#------------------+
+	#  PODE SE MOVER?  |
+	#------------------+
 	if can_move == false:
 		set_physics_process(false)
 	else:
@@ -91,7 +105,6 @@ func _set_animation():
 				anim = "idle"
 			elif velocity.x != 0:
 				anim = "run"
-
 		if can_attack == false:
 			anim = "attack"
 			set_physics_process(false)
@@ -109,12 +122,11 @@ func _on_anim_animation_finished(anim):
 	if anim == "attack":
 		can_attack = true
 		set_physics_process(true)
-		
 	if anim == "dead":
-		print("[player.gd][YOU DIED]")
 		changer.change_scene(Global.map_save)
 		Global.carregar_jogo()
-		Global.health += 1
+		if Global.health == 0:
+			Global.health += 1
 
 func _on_Collision_tree_entered():
 	if $Collision.is_in_group("ataque_inimigo"):
@@ -127,7 +139,9 @@ func _on_Timer_ready():
 
 func _on_Timer_timeout():
 	$Sprite.modulate = "ffffff"
-	
+#--------------------+
+#  TESTE DO GUSTAVO  |
+#--------------------+
 func Dash():
 	move_speed = 266
 	print("Dash?")
@@ -138,3 +152,20 @@ func _on_Dash_timer_timeout():
 	$Dash_particle.emitting = false
 	print("CABO")
 	move_speed = 60
+
+#-----------------------------------------+
+#  MECANICA DE SUBIR E DESCER EM ESCADAS  |
+#-----------------------------------------+
+func _escada():
+	if Global.escada == true:
+		print("escada")
+		velocity.y = 0
+		if int(Input.is_action_pressed("ui_up")):
+			print("subindo escada")
+			velocity.y = move_speed * -1
+		if int(Input.is_action_pressed("ui_down")):
+			print("descendo escada")
+			velocity.y = move_speed * 1
+		gravity = 0
+	else:
+		gravity = 450

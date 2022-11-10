@@ -84,7 +84,7 @@ centered = false
 
 [node name="ChangeMap" parent="." instance=ExtResource( 7 )]
 position = Vector2( 2224, 64 )
-path = "res://level2.tscn"
+path = "res://Scenes_map/level2.tscn"
 player_loc_y = 176.0
 
 [node name="Tile_layer1" type="TileMap" parent="."]
@@ -98,7 +98,7 @@ tile_data = PoolIntArray( -393178, 33, 0, -393168, 34, 0, -393161, 33, 0, -39315
 
 [node name="saveArea" parent="." instance=ExtResource( 14 )]
 position = Vector2( 1936, 112 )
-map_local = "res://level1.tscn"
+map_local = "res://Scenes_map/level1.tscn"
 
 [node name="skeleton" parent="." instance=ExtResource( 15 )]
 position = Vector2( 1864, 144 )

@@ -1,10 +1,10 @@
 [gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://scripts/StartScreen.gd" type="Script" id=1]
-[ext_resource path="res://assets_menu/PixeloidMono-1G8ae.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://assets_menu/capa.png" type="Texture" id=3]
-[ext_resource path="res://Scenes/transition_in.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scenes/transition_out.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets_menu/PixeloidMono-1G8ae.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Scenes/transition_out.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/transition_in.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets_menu/capa.png" type="Texture" id=4]
+[ext_resource path="res://scripts/StartScreen.gd" type="Script" id=5]
 
 [sub_resource type="StyleBoxFlat" id=8]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
@@ -30,21 +30,21 @@ Button/styles/pressed = SubResource( 12 )
 
 [sub_resource type="DynamicFont" id=1]
 size = 9
-font_data = ExtResource( 2 )
+font_data = ExtResource( 1 )
 
 [node name="StartScreen" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 1 )
+script = ExtResource( 5 )
 
 [node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 centered = false
 
-[node name="transition_in" parent="." instance=ExtResource( 4 )]
+[node name="transition_in" parent="." instance=ExtResource( 3 )]
 visible = false
 
-[node name="transition_out" parent="." instance=ExtResource( 5 )]
+[node name="transition_out" parent="." instance=ExtResource( 2 )]
 visible = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]

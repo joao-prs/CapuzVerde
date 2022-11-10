@@ -17,3 +17,9 @@ func _on_Return_map_body_entered(body):
 		changer.change_scene(path)
 		Global.player_position_x = player_loc_x
 		Global.player_position_y = player_loc_y
+
+#------------------------------------------------------------------------+
+# AVISO DE BUG FRQUENTE!!! SE O JOGO CRASHOU E APONTOU PARA ESSE CODIGO, |
+# VERIFIQUE SE OS NODES "TRANSITION_IN" E O NODE "TRANSITION_OUT" ESTAO  |
+# NESSE MAPA/SCENES, ELES SAO NECESSARIOS PARA QUE ESTE CODIGO FUNCIONE. |
+#------------------------------------------------------------------------+

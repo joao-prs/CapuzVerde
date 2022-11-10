@@ -4,10 +4,7 @@ var interacao = false
 export var map_local : String
 
 func _process(delta):
-	if interacao == true and Input.is_action_pressed("ui_up"):
-		#printa no console informaçoes pertinentes que foram gravadas
-		print("[saveArea.gd][ HP: ",Global.health," ]")
-		
+	if interacao == true and Input.is_action_pressed("ui_up"):		
 		#pega a posicao atual da planta e passa pro jogador
 		Global.player_position_x = position.x
 		Global.player_position_y = position.y - 1

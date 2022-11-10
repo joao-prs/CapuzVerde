@@ -2,13 +2,15 @@
 
 # CapuzVerde
 
-## versao 0.0.1.4
+## versao 0.0.1.5
 
 ### Um jogo desenvolvido para o aprendizado meu e de uma equipe que estou montando.Utilizaremos nesse projeto o motor Godot 3.5.1 standart version com plugin.
 
 ## atualizações
 
 ### recente↑ antigo↓
+
+- arquivos de mapas estão em pastas agora, para melhor organização, além de outras correções e organização dos códigos.
 - painel de Pause corrigido, pode dali Esc que agora funciona normal fml.
 - hub mais elegante e ordenado, agora ele tem contador de comida, que futuramente será utilizado.
 - agora tem hub e contador de vida.

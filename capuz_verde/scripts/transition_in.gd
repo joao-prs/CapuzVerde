@@ -5,3 +5,9 @@ func change_scene(path, delay = 0.5):
 	$transition_FX.start()
 	yield($transition_FX, "tween_completed")
 	assert(get_tree().change_scene(path) == OK)
+
+#------------------------------------------------------------------------+
+# AVISO DE BUG FRQUENTE!!! SE O JOGO CRASHOU E APONTOU PARA ESSE CODIGO, |
+# VERIFIQUE SE A VARIAVEL "PATH" EXPORTADA NO CODIGO "CHANGE_MAP" NESTE  |
+# MAPA/SCENE ESTA PREENCHIDA CORRETAMENTE PARA QUE ESTE CODIGO FUNCIONE. |
+#------------------------------------------------------------------------+

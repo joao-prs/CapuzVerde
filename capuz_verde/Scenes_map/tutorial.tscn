@@ -100,7 +100,7 @@ follow_viewport_scale = 0.0
 
 [node name="ChangeMap" parent="." instance=ExtResource( 9 )]
 position = Vector2( 616, 16 )
-path = "res://StartScreen.tscn"
+path = "res://Scenes_map/StartScreen.tscn"
 
 [node name="npc_chill" parent="." instance=ExtResource( 11 )]
 position = Vector2( 336, 64 )
