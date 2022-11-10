@@ -40,6 +40,8 @@
 | Não se sabe | Adicionar sons ao jogo, áudio de movimentos, bots, conversas, sons de dialogo, sons de passos, sons de funto(vento e arvores, talvez passaros, fundo de vila). |
 | Não se sabe | Criar trilha sonora, requer analise do genero do jogo e se é cabível criar trilhas elaboradas ou não. |
 | Não se sabe | Sistema de idioma, para o jogo ter alcance maior, é preferivel que ele seja em inglês. |
+| Não se sabe | Integrar o jogo para ser jogado no joystick. |
+| Não se sabe | Fazer uma versão mobile? (já tenho conta de Dev lá ps.: benicio) . |
 
 ## explicando a versão
 ### 0.0.0.1
