@@ -19,6 +19,19 @@
 - alguns códigos tem descrições e notas, isso é util para conduzir os demais colaboradores.
 - adicionado modificador de vida(quantidade de vida em 3 e quando efetuado dano sobre o jogador, o mesmo faz animação de salto e pisca vermelho).
 
+## Lista de tarefas
+| nivel | Descrição |
+| --- | --- |
+| médio | Criar mecanica de comidas,[ja existe o contator no hub] que a cada 10 comidas(ou outro valor), o valor é resetado a zero e o coração acrescenta 1. |
+| difícil | Captura de variaveis no dialogo: Para que isso? para que as decisões do jogador nos dialogso dos personagens influenciem nas proximas conversas e no jogo. Podemos criar uma variavel "respeito" e ela ir aumentando ou diminuindo com o progresso do jogador nos NPCs.. |
+| difícil | Criar um inventário, o jogo pode ter sprite de outras armas no futuro, mas não da pra escolher armas e outros equipamentos se não tiver inventário, não é mesmo? |
+
+## Tarefas para o futuro
+| nivel | Descrição |
+| --- | --- |
+| Não se sabe | Adicionar sons ao jogo, áudio de movimentos, bots, conversas, sons de dialogo, sons de passos, sons de funto(vento e arvores, talvez passaros, fundo de vila). |
+| Não se sabe | Criar trilha sonora, requer analise do genero do jogo e se é cabível criar trilhas elaboradas ou não. |
+| Não se sabe | Sistema de idioma, para o jogo ter alcance maior, é preferivel que ele seja em inglês. |
 
 ## explicando a versão
 ### 0.0.0.1
