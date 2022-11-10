@@ -19,6 +19,23 @@
 - alguns códigos tem descrições e notas, isso é util para conduzir os demais colaboradores.
 - adicionado modificador de vida(quantidade de vida em 3 e quando efetuado dano sobre o jogador, o mesmo faz animação de salto e pisca vermelho).
 
+## Lista de tarefas
+| nivel | Descrição |
+| --- | --- |
+| fácil | Quando o jogador levar um golpe, ele recuar para trás(como se tivesse sido empurrado). |
+| médio | Criar spawn de monstros, para o jogo não ficar com quantidade amarrada. Ou deixa assim mesmo, não sei. |
+| médio | Criar mecanica de comidas,[ja existe o contator no hub] que a cada 10 comidas(ou outro valor), o valor é resetado a zero e o coração acrescenta 1. |
+| médio | Quando o monstro morrer, dropar itens.(se a tarefa de comida de cima tiver feita, o mob poderia dropar elas, para alimentar o player) |
+| difícil | Captura de variaveis no dialogo: Para que isso? para que as decisões do jogador nos dialogso dos personagens influenciem nas proximas conversas e no jogo. Podemos criar uma variavel "respeito" e ela ir aumentando ou diminuindo com o progresso do jogador nos NPCs.. |
+| difícil | algum NPC ter o dialogo de levar o jogador a mapa X, o jogador escolhe por viagem rapida, então ele escolhe a opção de dialogo que teleporta ele para aquela região.(pode ter uma animação de viagem, seja por magia ou o jogador viajando de carroça kkkk) |
+| difícil | Criar um inventário, o jogo pode ter sprite de outras armas no futuro, mas não da pra escolher armas e outros equipamentos se não tiver inventário, não é mesmo? |
+
+## Tarefas para o futuro
+| nivel | Descrição |
+| --- | --- |
+| Não se sabe | Adicionar sons ao jogo, áudio de movimentos, bots, conversas, sons de dialogo, sons de passos, sons de funto(vento e arvores, talvez passaros, fundo de vila). |
+| Não se sabe | Criar trilha sonora, requer analise do genero do jogo e se é cabível criar trilhas elaboradas ou não. |
+| Não se sabe | Sistema de idioma, para o jogo ter alcance maior, é preferivel que ele seja em inglês. |
 
 ## explicando a versão
 ### 0.0.0.1
