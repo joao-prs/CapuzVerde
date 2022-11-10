@@ -48,6 +48,9 @@ func _physics_process(delta: float) -> void:
 	attack()
 	_set_animation()
 	
+	if Input.is_action_just_pressed("dash"):
+		Dash()
+	
 func _get_input():
 	velocity.x = 0
 	move_direction = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
@@ -59,6 +62,7 @@ func _get_input():
 	elif velocity.x < 0:
 		$Sprite.flip_h = true
 		collision.position = Vector2(-6, -8)
+		
 
 
 func attack() -> void:
@@ -123,3 +127,14 @@ func _on_Timer_ready():
 
 func _on_Timer_timeout():
 	$Sprite.modulate = "ffffff"
+	
+func Dash():
+	move_speed = 266
+	print("Dash?")
+	$Dash_timer.start()
+	$Dash_particle.emitting = true
+	
+func _on_Dash_timer_timeout():
+	$Dash_particle.emitting = false
+	print("CABO")
+	move_speed = 60
