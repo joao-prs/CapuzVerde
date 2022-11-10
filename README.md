@@ -9,11 +9,12 @@
 ## atualizações
 
 ### recente↑ antigo↓
-- hub mais elegante e ordenado, agora ele tem contador de comida, que futuramente será utilizado
-- agora tem hub e contador de vida
-- corrigido o dialogo do npn do tutorial
-- corrigido o comportamento da câmera durante a pausa
-- corrigido o retorno do menu de pausa para o menu principal
+- painel de Pause corrigido, pode dali Esc que agora funciona normal fml.
+- hub mais elegante e ordenado, agora ele tem contador de comida, que futuramente será utilizado.
+- agora tem hub e contador de vida.
+- corrigido o dialogo do npn do tutorial.
+- corrigido o comportamento da câmera durante a pausa.
+- corrigido o retorno do menu de pausa para o menu principal.
 - cena de tutorial mais apresentavel, porém apresenta bug no dialogo do personagem do tutorial.
 - atualizado o menu "about" na tela inicial.
 - alguns códigos tem descrições e notas, isso é util para conduzir os demais colaboradores.
