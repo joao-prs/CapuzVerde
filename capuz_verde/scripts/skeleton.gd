@@ -24,7 +24,7 @@ func _physics_process(delta: float)-> void:
 		else:
 			$Sprite.flip_h = true
 			$Ray_wall.cast_to.y = 5
-			$dano/CollisionDano.position.y = -6.5
+			$dano/CollisionDano.position.y = 6.5
 		if velocity.x != 0:
 			$anim.play("run")
 			if $Ray_wall.is_colliding():

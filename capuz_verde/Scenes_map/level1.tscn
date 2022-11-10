@@ -123,7 +123,7 @@ combate dos bot melhorado"
 margin_left = 312.0
 margin_top = 56.0
 margin_right = 408.0
-margin_bottom = 112.0
+margin_bottom = 88.0
 rect_pivot_offset = Vector2( 16, 48 )
 custom_fonts/font = ExtResource( 16 )
 text = "'seta para cima'
