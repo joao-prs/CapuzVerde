@@ -1,5 +1,6 @@
 extends Node
 
+var gravity
 var player_position_x
 var player_position_y
 var respeito
@@ -9,6 +10,7 @@ var dead
 var can_attack
 var map_save
 var can_move
+var escada = false
 
 func _ready():
 	pass

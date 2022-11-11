@@ -22,4 +22,4 @@ func _on_resume_pressed():
 
 func _on_quit_pressed():
 	get_tree().paused = false
-	get_tree().change_scene("res://StartScreen.tscn")
+	get_tree().change_scene("res://Scenes_map/StartScreen.tscn")

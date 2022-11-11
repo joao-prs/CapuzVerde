@@ -81,8 +81,27 @@ func _physics_process(delta):
 	
 	############ funcoes sempre rodando
 	velocity = move_and_slide(velocity, Vector2(0, -1))
+	_escada()
 	_set_animation()
+	#if Input.is_action_just_pressed("dash"):
+	#if Input.is_action_just_pressed("ui_left"):
+	#	Dash()
 	
+	if Input.is_action_just_pressed("dash"):
+		Dash()
+	
+func _get_input():
+	velocity.x = 0
+	move_direction = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
+	velocity.x = move_speed * move_direction
+	
+	if velocity.x > 0:
+		$Sprite.flip_h = false
+		collision.position = Vector2(6, -8)
+	elif velocity.x < 0:
+		$Sprite.flip_h = true
+		collision.position = Vector2(-6, -8)
+		
 
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_select") && is_on_floor():
@@ -92,6 +111,17 @@ func _unhandled_input(event):
 		can_attack = false
 		_set_animation()
 		return
+
+func _input(event: InputEvent) -> void:
+	#"ui_select = tecla espaço"
+	if event.is_action_pressed("ui_select") && is_grounded:
+		velocity.y = jump_force / 2
+
+func _check_is_ground():
+	for raycast in raycasts.get_children():
+		if raycast.is_colliding():
+			return true
+	return false
 
 func _set_animation():
 	#pode se mexer?
@@ -124,6 +154,8 @@ func _on_anim_animation_finished(animation):
 		print("[player.gd][YOU DIED]")
 		Global.death_respaw()
 		changer.change_scene(Global.map_save)
+		Global.carregar_jogo()
+		Global.health += 1
 
 func _on_Collision_tree_entered():
 	if $Collision.is_in_group("ataque_inimigo"):
@@ -148,6 +180,14 @@ func _change_state(state_name):
 	else:
 		var new_state = states_map[state_name]
 		states_stack[0] = new_state
+#--------------------+
+#  TESTE DO GUSTAVO  |
+#--------------------+
+func Dash():
+	move_speed = 266
+	print("Dash?")
+	$Dash_timer.start()
+	$Dash_particle.emitting = true
 	
 	if state_name == "jump":
 		$States/Jump.initialize(current_state.speed, current_state.velocity)
@@ -156,3 +196,20 @@ func _change_state(state_name):
 	if state_name != "previous":
 		current_state.enter(self)
 	emit_signal("state_change", states_stack)
+
+#-----------------------------------------+
+#  MECANICA DE SUBIR E DESCER EM ESCADAS  |
+#-----------------------------------------+
+func _escada():
+	if Global.escada == true:
+		print("escada")
+		velocity.y = 0
+		if int(Input.is_action_pressed("ui_up")):
+			print("subindo escada")
+			velocity.y = move_speed * -1
+		if int(Input.is_action_pressed("ui_down")):
+			print("descendo escada")
+			velocity.y = move_speed * 1
+		gravity = 0
+	else:
+		gravity = 450

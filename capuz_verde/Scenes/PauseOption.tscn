@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets_menu/PixeloidMono-1G8ae.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scripts/PauseOption.gd" type="Script" id=2]
+[ext_resource path="res://assets_menu/wallpaper_girl.png" type="Texture" id=3]
 
 [sub_resource type="StyleBoxFlat" id=8]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
@@ -35,15 +36,25 @@ script = ExtResource( 2 )
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.172549, 0.0784314, 0.0784314, 0.717647 )
+color = Color( 0.121569, 0.141176, 0.294118, 0.298039 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+centered = false
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.121569, 0.141176, 0.294118, 0.533333 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 104.0
 margin_top = 56.0
 margin_right = 256.0
 margin_bottom = 88.0
 
 [node name="resume" type="Button" parent="VBoxContainer"]
-margin_right = 256.0
+margin_right = 152.0
 margin_bottom = 11.0
 focus_neighbour_top = NodePath("../quit")
 theme = SubResource( 13 )
@@ -59,7 +70,7 @@ __meta__ = {
 
 [node name="quit" type="Button" parent="VBoxContainer"]
 margin_top = 15.0
-margin_right = 256.0
+margin_right = 152.0
 margin_bottom = 26.0
 focus_neighbour_bottom = NodePath("../resume")
 theme = SubResource( 13 )

@@ -21,7 +21,7 @@ func _on_btn_start_pressed():
 	if not Global.food:
 		Global.food = 0
 	if not Global.map_save:
-		Global.map_save = "res://level1.tscn"
+		Global.map_save = "res://Scenes_map/level1.tscn"
 	
 	get_tree().change_scene(Global.map_save)
 	print(Global.map_save)
@@ -30,7 +30,7 @@ func _on_btn_start_pressed():
 func _on_btn_tutorial_pressed():
 	if not Global.health:
 		Global.health = 3
-	get_tree().change_scene("res://tutorial.tscn")
+	get_tree().change_scene("res://Scenes_map/tutorial.tscn")
 	Global.player_position_x = 256
 	Global.player_position_y = 64
 
