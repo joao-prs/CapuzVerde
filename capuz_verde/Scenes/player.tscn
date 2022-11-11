@@ -8,6 +8,12 @@
 [sub_resource type="StreamTexture" id=11]
 load_path = "res://.import/player.png-8b963ff676fdcbd69fd95a46335f9d82.stex"
 
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 6, 7.8395 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 5.5, 4 )
+
 [sub_resource type="Animation" id=1]
 length = 0.001
 tracks/0/type = "value"
@@ -121,12 +127,6 @@ tracks/0/keys = {
 "values": [ 4, 5, 6, 7 ]
 }
 
-[sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 6, 7.8395 )
-
-[sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 5.5, 4 )
-
 [sub_resource type="Curve" id=8]
 _data = [ Vector2( 0, 0.634969 ), 0.0, 0.0, 0, 0, Vector2( 0.929389, 0.168712 ), -3.0686, 0.0, 0, 0 ]
 
@@ -162,14 +162,6 @@ texture = SubResource( 11 )
 hframes = 4
 vframes = 4
 
-[node name="anim" type="AnimationPlayer" parent="."]
-pause_mode = 2
-anims/RESET = SubResource( 1 )
-anims/attack = ExtResource( 3 )
-anims/dead = SubResource( 3 )
-anims/idle = SubResource( 4 )
-anims/run = SubResource( 5 )
-
 [node name="Collision" type="CollisionShape2D" parent="." groups=["colisao_player"]]
 position = Vector2( 0, -7 )
 scale = Vector2( 0.75, 0.9 )
@@ -183,6 +175,14 @@ collision_mask = 16
 position = Vector2( 6, -8 )
 shape = SubResource( 7 )
 disabled = true
+
+[node name="anim" type="AnimationPlayer" parent="."]
+pause_mode = 2
+anims/RESET = SubResource( 1 )
+anims/attack = ExtResource( 3 )
+anims/dead = SubResource( 3 )
+anims/idle = SubResource( 4 )
+anims/run = SubResource( 5 )
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.1

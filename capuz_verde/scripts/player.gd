@@ -6,6 +6,7 @@ var velocity = Vector2.ZERO
 var move_speed = 60
 var gravity = 450
 var jump_force = -400
+var acceleration = 5
 var move_direction : int
 var direction:int = 1
 # variaveis estados do personagem
@@ -38,18 +39,19 @@ func _ready():
 	position.y = Global.player_position_y
 
 func _physics_process(delta):
-	#var state_name = current_state.update(self, delta)
-	#if state_name:
-		#_change_state(state_name)
-	
 	can_attack = true
 	
 	velocity.y += gravity * delta
 	
-		
 	move_direction = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
 	if !animacao_dano:
-		velocity.x = move_speed * move_direction
+		if move_direction == 0:
+			if velocity.x > 0:
+				velocity.x -= acceleration
+			elif velocity.x < 0:
+				velocity.x += acceleration
+		else:
+			velocity.x = move_speed * move_direction
 	
 	if velocity.x > 0 && !animacao_dano:
 		$Sprite.flip_h = false
@@ -74,15 +76,9 @@ func _physics_process(delta):
 	health = Global.health
 	
 	############ funcoes sempre rodando
-	velocity = move_and_slide(velocity, Vector2(0, -1))
+	velocity = move_and_slide(velocity, Vector2.UP)
 	_escada()
 	_set_animation()
-	#if Input.is_action_just_pressed("dash"):
-	#if Input.is_action_just_pressed("ui_left"):
-	#	Dash()
-	
-	if Input.is_action_just_pressed("dash"):
-		Dash()
 	
 func _get_input():
 	velocity.x = 0
@@ -96,10 +92,6 @@ func _get_input():
 		$Sprite.flip_h = true
 		collision.position = Vector2(-6, -8)
 		
-	## GUSTAVO ##
-	if Input.is_action_just_pressed("shift_esq"):
-		ghost_spawn()
-		Dash()	
 
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_select") && is_on_floor():
@@ -110,6 +102,8 @@ func _unhandled_input(event):
 		Global.energia -= 50
 		_set_animation()
 		return
+	elif event.is_action_pressed("dash"):
+		Dash()
 
 #---------------+
 #  PULO / TECLA |
