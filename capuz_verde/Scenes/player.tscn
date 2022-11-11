@@ -1,8 +1,8 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scripts/player.gd" type="Script" id=1]
 [ext_resource path="res://assets_player/Scenesattack.tres" type="Animation" id=3]
-[ext_resource path="res://scripts/JumpState.gd" type="Script" id=4]
+[ext_resource path="res://assets_player/dash_particle.png" type="Texture" id=5]
 
 [sub_resource type="StreamTexture" id=11]
 load_path = "res://.import/player.png-8b963ff676fdcbd69fd95a46335f9d82.stex"
@@ -187,18 +187,19 @@ disabled = true
 wait_time = 0.1
 
 [node name="Dash_timer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.38
 one_shot = true
 
-[node name="Idle" type="Node" parent="States"]
-
-[node name="Move" type="Node" parent="States"]
-
-[node name="Jump" type="Node" parent="States"]
-script = ExtResource( 4 )
-
-[node name="Hit" type="Node" parent="States"]
+[node name="Dash_particle" type="Particles2D" parent="."]
+position = Vector2( -10, 0 )
+scale = Vector2( 1, 0.96 )
+emitting = false
+amount = 90
+local_coords = false
+process_material = SubResource( 10 )
+texture = ExtResource( 5 )
 
 [connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]
 [connection signal="ready" from="Timer" to="." method="_on_Timer_ready"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="Dash_timer" to="." method="_on_Dash_timer_timeout"]

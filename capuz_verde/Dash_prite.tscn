@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Dash_code.gd" type="Script" id=1]
+
+[node name="Dash_prite" type="Sprite"]
+script = ExtResource( 1 )
