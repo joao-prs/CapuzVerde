@@ -105,11 +105,11 @@ func _unhandled_input(event):
 	if event.is_action_pressed("ui_select") && is_on_floor():
 		velocity.y = jump_force /2
 		return
-	elif event.is_action_pressed("Ataque") && is_on_floor():
+	elif event.is_action_pressed("Ataque") && is_on_floor() && Global.energia > 49:
 		can_attack = false
+		Global.energia -= 50
 		_set_animation()
 		return
-		Global.energia -= 50
 
 #---------------+
 #  PULO / TECLA |
@@ -119,11 +119,6 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_select") && is_on_floor():
 		velocity.y = jump_force / 2
 
-func _check_is_ground():
-	for raycast in raycasts.get_children():
-		if raycast.is_colliding():
-			return true
-	return false
 
 func _set_animation():
 	#------------------+
@@ -157,7 +152,7 @@ func _on_anim_animation_finished(animation):
 	if animation == "dead":
 		Global.death_respaw()
 		changer.change_scene(Global.map_save)
-		Global.carregar_jogo()
+		Global.death_respaw()
 
 func _on_Collision_tree_entered():
 	if $Collision.is_in_group("ataque_inimigo"):
