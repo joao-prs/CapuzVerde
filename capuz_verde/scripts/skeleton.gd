@@ -4,7 +4,7 @@ export var speed = 16
 export var health = 2
 var velocity = Vector2.ZERO
 var move_direction = -1
-var can_die = false
+var is_alive = true
 var can_attack = true
 
 func _physics_process(_delta: float)-> void:
@@ -12,7 +12,7 @@ func _physics_process(_delta: float)-> void:
 	velocity = move_and_slide(velocity)
 	
 	#checa se ta vivo
-	if can_die != true:
+	if is_alive:
 		#se sim...
 		#-------------------#
 		#  AGE NORMALMENTE  #
@@ -62,4 +62,4 @@ func _on_dano_body_entered(_body):
 
 func _on_corpo_area_entered(area):
 	if area.is_in_group("player_ataque"):
-		can_die = true
+		is_alive = false

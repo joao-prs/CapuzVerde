@@ -14,7 +14,7 @@ var dead
 var health : int
 # variaveis referenciando o collision de atack
 var can_attack
-var levou_dano = false
+var animacao_dano = false
 onready var collision: CollisionShape2D = get_node("AreaDeAtack/Collision")
 onready var timer := $Timer as Timer
 
@@ -23,10 +23,10 @@ onready var timer := $Timer as Timer
 ################################
 signal state_change
 
-var state_stack = []
+var states_stack = []
 var current_state = null
 
-onready var state_map = {
+onready var states_map = {
 	'idle': $States/Idle,
 	'move': $States/Move,
 	'jump': $States/Jump,
@@ -34,8 +34,8 @@ onready var state_map = {
 }
 
 func _ready():
-	state_stack.push_front($States/Idle)
-	current_state = state_stack[0]
+	#states_stack.push_front($States/Idle)
+	#current_state = states_stack[0]
 	#_change_state('idle')
 	
 	dead = false
@@ -44,32 +44,40 @@ func _ready():
 	position.y = Global.player_position_y
 
 func _physics_process(delta):
-	var state_name = current_state.update(self, delta)
-	if state_name:
+	#var state_name = current_state.update(self, delta)
+	#if state_name:
 		#_change_state(state_name)
 	
-	health = Global.health
 	can_attack = true
 	
 	velocity.y += gravity * delta
-	velocity.x = 0
 	
-	if health > Global.health:
-		timer.start()
-		print("[player.gd] levou dano --->") #####
-		velocity.y = jump_force / 4
-		$Sprite.modulate = "ff7a7a"
 		
 	move_direction = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
-	velocity.x = move_speed * move_direction
+	if !animacao_dano:
+		velocity.x = move_speed * move_direction
 	
-	if velocity.x > 0:
+	if velocity.x > 0 && !animacao_dano:
 		$Sprite.flip_h = false
 		collision.position = Vector2(6, -8)
-	elif velocity.x < 0:
+	elif velocity.x < 0 && !animacao_dano:
 		$Sprite.flip_h = true
 		collision.position = Vector2(-6, -8)
+	
+	if health > Global.health:
+		timer.start(0.5)
+		if $Sprite.flip_h:
+			move_direction = -1
+		else:
+			move_direction = 1
+		print("[player.gd] levou dano --->") #####
+		velocity.y = jump_force / 4
+		velocity.x = jump_force / 8 * move_direction
+		animacao_dano = true
+		print(velocity)
+		$Sprite.modulate = "ff7a7a"
 		
+	health = Global.health
 	
 	############ funcoes sempre rodando
 	velocity = move_and_slide(velocity, Vector2(0, -1))
@@ -114,8 +122,8 @@ func _on_anim_animation_finished(animation):
 		
 	if animation == "dead":
 		print("[player.gd][YOU DIED]")
+		Global.death_respaw()
 		changer.change_scene(Global.map_save)
-		Global.carregar_jogo()
 
 func _on_Collision_tree_entered():
 	if $Collision.is_in_group("ataque_inimigo"):
@@ -128,3 +136,23 @@ func _on_Timer_ready():
 
 func _on_Timer_timeout():
 	$Sprite.modulate = "ffffff"
+	animacao_dano = false
+
+func _change_state(state_name):
+	current_state.exit(self)
+	
+	if state_name == "previous":
+		states_stack.pop_front()
+	elif state_name in ["jump", "hit"]:
+		states_stack.push_front(states_map[state_name])
+	else:
+		var new_state = states_map[state_name]
+		states_stack[0] = new_state
+	
+	if state_name == "jump":
+		$States/Jump.initialize(current_state.speed, current_state.velocity)
+	
+	current_state = states_stack[0]
+	if state_name != "previous":
+		current_state.enter(self)
+	emit_signal("state_change", states_stack)

@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scripts/player.gd" type="Script" id=1]
 [ext_resource path="res://assets_player/player.png" type="Texture" id=2]
 [ext_resource path="res://assets_player/Scenesattack.tres" type="Animation" id=3]
+[ext_resource path="res://scripts/JumpState.gd" type="Script" id=4]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -135,6 +136,7 @@ hframes = 4
 vframes = 4
 
 [node name="anim" type="AnimationPlayer" parent="."]
+pause_mode = 2
 anims/RESET = SubResource( 1 )
 anims/attack = ExtResource( 3 )
 anims/dead = SubResource( 3 )
@@ -165,6 +167,7 @@ wait_time = 0.1
 [node name="Move" type="Node" parent="States"]
 
 [node name="Jump" type="Node" parent="States"]
+script = ExtResource( 4 )
 
 [node name="Hit" type="Node" parent="States"]
 
