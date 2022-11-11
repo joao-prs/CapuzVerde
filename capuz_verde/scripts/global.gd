@@ -53,3 +53,21 @@ func carregar_jogo():
 	health = linha_atual["health"]
 	map_save = linha_atual["map_save"]
 	jogo_salvo.close()
+
+func death_respaw():
+	var jogo_salvo = File.new()
+	if not jogo_salvo.file_exists("user://jogosalvo.save"):
+		print("Erro ao carregar o arquivo")
+		health = 3
+		return
+	
+	jogo_salvo.open("user://jogosalvo.save", File.READ)
+	#vai ler a linha
+	var linha_atual = parse_json((jogo_salvo.get_line()))
+	#buscar variaveis por linha
+	player_position_x = linha_atual["player_position_x"]
+	player_position_y = linha_atual["player_position_y"]
+	respeito = linha_atual["respeito"]
+	health = 3
+	map_save = linha_atual["map_save"]
+	jogo_salvo.close()

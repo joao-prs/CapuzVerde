@@ -4,15 +4,15 @@ export var speed = 16
 export var health = 2
 var velocity = Vector2.ZERO
 var move_direction = -1
-var can_die = false
+var is_alive = true
 var can_attack = true
 
-func _physics_process(delta: float)-> void:
+func _physics_process(_delta: float)-> void:
 	velocity.x = speed * move_direction
 	velocity = move_and_slide(velocity)
 	
 	#checa se ta vivo
-	if can_die != true:
+	if is_alive:
 		#se sim...
 		#-------------------#
 		#  AGE NORMALMENTE  #
@@ -41,7 +41,7 @@ func _physics_process(delta: float)-> void:
 func _on_anim_animation_finished(anim_name: String)-> void:
 	# muda direcao do sprite e raio
 	if anim_name == "idle":
-		$Sprite.flip_h != $Sprite.flip_h
+		#$Sprite.flip_h = true
 		$Ray_wall.scale.x *= -1
 		move_direction *= -1
 		$anim.play("run")
@@ -55,11 +55,11 @@ func _on_anim_animation_finished(anim_name: String)-> void:
 	if anim_name == "dead":
 		queue_free()
 
-func _on_dano_body_entered(body):
+func _on_dano_body_entered(_body):
 	can_attack = false
 	Global.health -= 1
 	Global.can_attack = true
 
 func _on_corpo_area_entered(area):
 	if area.is_in_group("player_ataque"):
-		can_die = true
+		is_alive = false

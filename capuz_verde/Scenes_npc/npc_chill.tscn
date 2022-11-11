@@ -21,6 +21,7 @@ position = Vector2( 0, -9 )
 shape = SubResource( 1 )
 
 [node name="Dialogic" type="Node" parent="."]
+pause_mode = 2
 script = ExtResource( 3 )
 
 [connection signal="body_entered" from="." to="." method="_on_npc_body_entered"]
