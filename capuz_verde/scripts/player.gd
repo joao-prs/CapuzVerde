@@ -17,6 +17,7 @@ var dead
 var health : int
 # variaveis referenciando o collision de atack
 var can_attack
+var energia = Global.energia
 var levou_dano = false
 onready var collision: CollisionShape2D = get_node("AreaDeAtack/Collision")
 onready var timer := $Timer as Timer
@@ -34,6 +35,7 @@ func ghost_spawn():
 	get_parent().get_parent().add_child(ghost)
 	
 func _ready():
+	
 	dead = false
 	anim = "idle"
 	position.x = Global.player_position_x
@@ -84,8 +86,9 @@ func _get_input():
 #  ATAQUE GRRRRRR  |
 #------------------+
 func _attack() -> void:
-	if Input.is_action_just_pressed("Ataque") and can_attack == true && is_grounded:
+	if Input.is_action_just_pressed("Ataque") and can_attack == true && is_grounded && Global.energia > 49:
 		can_attack = false
+		Global.energia -= 50
 
 #---------------+
 #  PULO / TECLA |

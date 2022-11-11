@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scripts/player.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/barraDeEnergia.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets_player/Scenesattack.tres" type="Animation" id=3]
 [ext_resource path="res://assets_player/dash_particle.png" type="Texture" id=5]
 
@@ -133,7 +134,6 @@ orbit_velocity_random = 0.0
 scale_curve = SubResource( 9 )
 
 [node name="player" type="KinematicBody2D" groups=["player"]]
-position = Vector2( 7, 0 )
 collision_layer = 4
 collision_mask = 41
 script = ExtResource( 1 )
@@ -191,6 +191,10 @@ wait_time = 0.1
 [node name="Dash_timer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
+
+[node name="barraDeEnergia" parent="." instance=ExtResource( 2 )]
+margin_left = -8.0
+margin_top = -30.0
 
 [node name="Dash_particle" type="Particles2D" parent="."]
 position = Vector2( -10, 0 )

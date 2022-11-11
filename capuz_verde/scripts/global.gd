@@ -11,6 +11,8 @@ var can_attack
 var map_save
 var can_move
 var escada = false
+var energia : int = 100
+
 
 func _ready():
 	pass
