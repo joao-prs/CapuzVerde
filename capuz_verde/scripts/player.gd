@@ -20,7 +20,19 @@ var can_attack
 var levou_dano = false
 onready var collision: CollisionShape2D = get_node("AreaDeAtack/Collision")
 onready var timer := $Timer as Timer
+# variaveis do dash
+var dash_ghost_scene = preload("res://DashGhost.tscn")
 
+
+func ghost_spawn():
+	var ghost: Sprite = dash_ghost_scene.instance()
+	
+	ghost.position.x = $Sprite.position.x
+	ghost.position.y = $Sprite.position.y
+	
+	print(ghost.position)
+	get_parent().get_parent().add_child(ghost)
+	
 func _ready():
 	dead = false
 	anim = "idle"
@@ -65,6 +77,7 @@ func _get_input():
 		
 	## GUSTAVO ##
 	if Input.is_action_just_pressed("shift_esq"):
+		ghost_spawn()
 		Dash()	
 
 #------------------+
@@ -143,10 +156,18 @@ func _on_Timer_timeout():
 #  TESTE DO GUSTAVO  |
 #--------------------+
 func Dash():
-	move_speed = 266
-	print("Dash?")
-	$Dash_timer.start()
-	$Dash_particle.emitting = true
+	# só aplicar o dash quando tiver andando
+	if velocity.x:
+		move_speed = 180
+		# verificar em qual direcao vai ser o dash
+		if $Sprite.flip_h:
+			$Dash_particle.position.x = 10
+		else:
+			$Dash_particle.position.x = -10
+			
+		print("Dash?")
+		$Dash_timer.start()
+		$Dash_particle.emitting = true
 	
 func _on_Dash_timer_timeout():
 	$Dash_particle.emitting = false
