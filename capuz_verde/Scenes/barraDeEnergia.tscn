@@ -10,13 +10,23 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 4 )
 
-[node name="EnergiaBar" type="TextureProgress" parent="."]
+[node name="EnergiaBarEscura" type="TextureProgress" parent="."]
+visible = false
 margin_right = 16.0
 margin_bottom = 6.0
 texture_under = ExtResource( 3 )
 texture_over = ExtResource( 1 )
 texture_progress = ExtResource( 2 )
+tint_progress = Color( 1, 0.45098, 0.45098, 1 )
+
+[node name="EnergiaBar" type="TextureProgress" parent="."]
+margin_right = 16.0
+margin_bottom = 6.0
+texture_over = ExtResource( 1 )
+texture_progress = ExtResource( 2 )
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="Tween" type="Tween" parent="."]
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
