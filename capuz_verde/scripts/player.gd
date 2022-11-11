@@ -17,22 +17,19 @@ var can_attack
 var animacao_dano = false
 onready var collision: CollisionShape2D = get_node("AreaDeAtack/Collision")
 onready var timer := $Timer as Timer
+# variaveis do dash
+var dash_ghost_scene = preload("res://DashGhost.tscn")
 
-################################
-# MAQUINA DE ESTADOS DO PLAYER #
-################################
-signal state_change
 
-var states_stack = []
-var current_state = null
-
-onready var states_map = {
-	'idle': $States/Idle,
-	'move': $States/Move,
-	'jump': $States/Jump,
-	'hit': $States/Hit
-}
-
+func ghost_spawn():
+	var ghost: Sprite = dash_ghost_scene.instance()
+	
+	ghost.position.x = $Sprite.position.x
+	ghost.position.y = $Sprite.position.y
+	
+	print(ghost.position)
+	get_parent().get_parent().add_child(ghost)
+	
 func _ready():
 	#states_stack.push_front($States/Idle)
 	#current_state = states_stack[0]
@@ -102,6 +99,10 @@ func _get_input():
 		$Sprite.flip_h = true
 		collision.position = Vector2(-6, -8)
 		
+	## GUSTAVO ##
+	if Input.is_action_just_pressed("shift_esq"):
+		ghost_spawn()
+		Dash()	
 
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_select") && is_on_floor():
@@ -184,10 +185,18 @@ func _change_state(state_name):
 #  TESTE DO GUSTAVO  |
 #--------------------+
 func Dash():
-	move_speed = 266
-	print("Dash?")
-	$Dash_timer.start()
-	$Dash_particle.emitting = true
+	# só aplicar o dash quando tiver andando
+	if velocity.x:
+		move_speed = 180
+		# verificar em qual direcao vai ser o dash
+		if $Sprite.flip_h:
+			$Dash_particle.position.x = 10
+		else:
+			$Dash_particle.position.x = -10
+			
+		print("Dash?")
+		$Dash_timer.start()
+		$Dash_particle.emitting = true
 	
 	if state_name == "jump":
 		$States/Jump.initialize(current_state.speed, current_state.velocity)

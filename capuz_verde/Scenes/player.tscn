@@ -1,9 +1,11 @@
 [gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scripts/player.gd" type="Script" id=1]
-[ext_resource path="res://assets_player/player.png" type="Texture" id=2]
 [ext_resource path="res://assets_player/Scenesattack.tres" type="Animation" id=3]
 [ext_resource path="res://scripts/JumpState.gd" type="Script" id=4]
+
+[sub_resource type="StreamTexture" id=11]
+load_path = "res://.import/player.png-8b963ff676fdcbd69fd95a46335f9d82.stex"
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -124,14 +126,38 @@ extents = Vector2( 6, 7.8395 )
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 5.5, 4 )
 
+[sub_resource type="Curve" id=8]
+_data = [ Vector2( 0, 0.634969 ), 0.0, 0.0, 0, 0, Vector2( 0.929389, 0.168712 ), -3.0686, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=9]
+curve = SubResource( 8 )
+
+[sub_resource type="ParticlesMaterial" id=10]
+lifetime_randomness = 0.49
+emission_shape = 1
+emission_sphere_radius = 0.01
+flag_disable_z = true
+direction = Vector3( 0, 0, 0 )
+spread = 180.0
+gravity = Vector3( 0, 40, 0 )
+initial_velocity = 37.67
+angular_velocity = 235.1
+orbit_velocity = 0.08
+orbit_velocity_random = 0.0
+scale_curve = SubResource( 9 )
+
 [node name="player" type="KinematicBody2D" groups=["player"]]
+position = Vector2( 7, 0 )
 collision_layer = 4
 collision_mask = 41
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, -8 )
-texture = ExtResource( 2 )
+texture = SubResource( 11 )
 hframes = 4
 vframes = 4
 
@@ -160,7 +186,9 @@ disabled = true
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.1
 
-[node name="States" type="Node" parent="."]
+[node name="Dash_timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
 
 [node name="Idle" type="Node" parent="States"]
 

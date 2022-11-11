@@ -29,9 +29,6 @@ tile_data = PoolIntArray( -393162, 32, 0, -393156, 66, 0, -393155, 12, 0, -39315
 
 [node name="player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 128, 104 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Camera2DPrincipal" parent="player" instance=ExtResource( 3 )]
 smoothing_enabled = false
