@@ -182,6 +182,11 @@ func Dash():
 		$Dash_timer.start()
 		$Dash_particle.emitting = true
 
+func _on_Dash_timer_timeout():
+	$Dash_particle.emitting = false
+	print("CABO")
+	move_speed = 60
+
 #-----------------------------------------+
 #  MECANICA DE SUBIR E DESCER EM ESCADAS  |
 #-----------------------------------------+

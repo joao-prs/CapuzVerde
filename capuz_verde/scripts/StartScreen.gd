@@ -30,7 +30,7 @@ func _on_btn_start_pressed():
 func _on_btn_tutorial_pressed():
 	if not Global.health:
 		Global.health = 3
-	get_tree().change_scene("res://Scenes_map/level1.tscn")
+	get_tree().change_scene("res://Scenes_map/tutorial.tscn")
 	Global.player_position_x = 256
 	Global.player_position_y = 64
 
