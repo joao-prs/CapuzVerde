@@ -115,14 +115,8 @@ func _unhandled_input(event):
 
 func _input(event: InputEvent) -> void:
 	#"ui_select = tecla espaço"
-	if event.is_action_pressed("ui_select") && is_grounded:
+	if event.is_action_pressed("ui_select") && is_on_floor():
 		velocity.y = jump_force / 2
-
-func _check_is_ground():
-	for raycast in raycasts.get_children():
-		if raycast.is_colliding():
-			return true
-	return false
 
 func _set_animation():
 	#pode se mexer?
@@ -171,16 +165,6 @@ func _on_Timer_timeout():
 	$Sprite.modulate = "ffffff"
 	animacao_dano = false
 
-func _change_state(state_name):
-	current_state.exit(self)
-	
-	if state_name == "previous":
-		states_stack.pop_front()
-	elif state_name in ["jump", "hit"]:
-		states_stack.push_front(states_map[state_name])
-	else:
-		var new_state = states_map[state_name]
-		states_stack[0] = new_state
 #--------------------+
 #  TESTE DO GUSTAVO  |
 #--------------------+
@@ -197,14 +181,6 @@ func Dash():
 		print("Dash?")
 		$Dash_timer.start()
 		$Dash_particle.emitting = true
-	
-	if state_name == "jump":
-		$States/Jump.initialize(current_state.speed, current_state.velocity)
-	
-	current_state = states_stack[0]
-	if state_name != "previous":
-		current_state.enter(self)
-	emit_signal("state_change", states_stack)
 
 #-----------------------------------------+
 #  MECANICA DE SUBIR E DESCER EM ESCADAS  |
