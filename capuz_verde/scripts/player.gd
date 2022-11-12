@@ -48,8 +48,12 @@ func _physics_process(delta):
 		if move_direction == 0:
 			if velocity.x > 0:
 				velocity.x -= acceleration
+				if velocity.x < 5:
+					velocity.x = 0
 			elif velocity.x < 0:
 				velocity.x += acceleration
+				if velocity.x > -5:
+					velocity.x = 0
 		else:
 			velocity.x = move_speed * move_direction
 	
