@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://assets_mobs/skeleton_thief.png" type="Texture" id=1]
+[ext_resource path="res://assets_mobs/skeleton_assassin.png" type="Texture" id=1]
 [ext_resource path="res://scripts/skeleton_thief.gd" type="Script" id=2]
 
 [sub_resource type="Animation" id=2]
@@ -140,14 +140,14 @@ extents = Vector2( 18.75, 7.5 )
 extents = Vector2( 3.00001, 2.5 )
 
 [sub_resource type="CircleShape2D" id=9]
-radius = 64.0
+radius = 88.0
 
-[node name="skeleton_thief" type="KinematicBody2D"]
+[node name="skeleton_assassin" type="KinematicBody2D"]
 collision_layer = 16
 collision_mask = 32
 script = ExtResource( 2 )
-speed = 16
-speed_subtrair = 50
+speed = 30
+speed_subtrair = 85
 
 [node name="anim" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 2 )

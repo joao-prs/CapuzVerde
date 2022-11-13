@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://assets_map/level1.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/player.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://assets_map/parallax1.png" type="Texture" id=10]
 [ext_resource path="res://assets_map/parallax2.png" type="Texture" id=11]
 [ext_resource path="res://Scenes/hub.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Scenes/skeleton_assassin.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Scenes/saveArea.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Scenes/skeleton.tscn" type="PackedScene" id=15]
 [ext_resource path="res://addons/dialogic/Example Assets/Fonts/NameFont.tres" type="DynamicFont" id=16]
@@ -106,6 +107,12 @@ position = Vector2( 768, 144 )
 [node name="npc_chill" parent="." instance=ExtResource( 6 )]
 position = Vector2( 416, 144 )
 
+[node name="skeleton_assassin" parent="." instance=ExtResource( 13 )]
+position = Vector2( 1496, 80 )
+
+[node name="skeleton_thief" parent="." instance=ExtResource( 17 )]
+position = Vector2( 1568, 96 )
+
 [node name="TextEdit3" type="TextEdit" parent="."]
 margin_left = 1696.0
 margin_top = 48.0
@@ -125,9 +132,6 @@ rect_pivot_offset = Vector2( 16, 48 )
 custom_fonts/font = ExtResource( 16 )
 text = "'seta para cima'
 para conversar"
-
-[node name="skeleton3" parent="." instance=ExtResource( 17 )]
-position = Vector2( 1688, 112 )
 
 [node name="hub" parent="." instance=ExtResource( 12 )]
 

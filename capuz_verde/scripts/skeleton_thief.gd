@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
-export var speed = 16
+export var speed : int
+export var speed_subtrair : int
 export var health = 2
 var gravity = 450
 var jump_force = -400
@@ -57,7 +58,7 @@ func _physics_process(delta: float)-> void:
 			var distance: Vector2 = position - player_ref.position
 			var direction: Vector2 = distance.normalized()
 
-			velocity.x = direction.x * (speed-50)
+			velocity.x = direction.x * (speed - speed_subtrair)
 			velocity = move_and_slide(velocity)
 			
 			$anim.play("run")
