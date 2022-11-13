@@ -84,17 +84,17 @@ func _physics_process(delta):
 	_escada()
 	_set_animation()
 	
-func _get_input():
-	velocity.x = 0
-	move_direction = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
-	velocity.x = move_speed * move_direction
-	
-	if velocity.x > 0:
-		$Sprite.flip_h = false
-		collision.position = Vector2(6, -8)
-	elif velocity.x < 0:
-		$Sprite.flip_h = true
-		collision.position = Vector2(-6, -8)
+#func _get_input():
+#	velocity.x = 0
+#	move_direction = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
+#	velocity.x = move_speed * move_direction
+#	
+#	if velocity.x > 0:
+#		$Sprite.flip_h = false
+#		collision.position = Vector2(6, -8)
+#	elif velocity.x < 0:
+#		$Sprite.flip_h = true
+#		collision.position = Vector2(-6, -8)
 		
 
 func _unhandled_input(event):
@@ -199,6 +199,6 @@ func _escada():
 		if int(Input.is_action_pressed("ui_down")):
 			print("descendo escada")
 			velocity.y = move_speed * 1
-		gravity = 0
+		gravity = 200
 	else:
 		gravity = 450
