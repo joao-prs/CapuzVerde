@@ -9,6 +9,7 @@ var jump_force = -400
 var acceleration = 5
 var move_direction : int
 var direction:int = 1
+var can_move = true
 # variaveis estados do personagem
 var anim
 var dead
@@ -43,6 +44,7 @@ func _physics_process(delta):
 	
 	velocity.y += gravity * delta
 	
+
 	move_direction = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
 	if !animacao_dano:
 		if move_direction == 0:
@@ -56,7 +58,8 @@ func _physics_process(delta):
 					velocity.x = 0
 		else:
 			velocity.x = move_speed * move_direction
-	
+
+
 	if velocity.x > 0 && !animacao_dano:
 		$Sprite.flip_h = false
 		collision.position = Vector2(6, -8)
@@ -83,19 +86,7 @@ func _physics_process(delta):
 	velocity = move_and_slide(velocity, Vector2.UP)
 	_escada()
 	_set_animation()
-	
-#func _get_input():
-#	velocity.x = 0
-#	move_direction = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
-#	velocity.x = move_speed * move_direction
-#	
-#	if velocity.x > 0:
-#		$Sprite.flip_h = false
-#		collision.position = Vector2(6, -8)
-#	elif velocity.x < 0:
-#		$Sprite.flip_h = true
-#		collision.position = Vector2(-6, -8)
-		
+
 
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_select") && is_on_floor():
@@ -106,6 +97,7 @@ func _unhandled_input(event):
 		Global.energia -= 50
 		_set_animation()
 		return
+
 	elif event.is_action_pressed("dash"):
 		Dash()
 
@@ -128,11 +120,9 @@ func _set_animation():
 			anim = "idle"
 		elif velocity.x != 0:
 			anim = "run"
-
 	if can_attack == false:
 		anim = "attack"
 		set_physics_process(false)
-
 	elif health < 1:
 		anim = "dead"
 		dead = true

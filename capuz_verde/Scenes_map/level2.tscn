@@ -26,9 +26,6 @@ tile_data = PoolIntArray( -393191, 62, 0, -393190, 62, 0, -327669, 66, 0, -32766
 
 [node name="player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 920, 48 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Camera2DPrincipal" parent="player" instance=ExtResource( 4 )]
 limit_right = 3200
@@ -91,7 +88,7 @@ player_loc_x = 2196.52
 player_loc_y = 63.99
 
 [node name="ChangeMap2" parent="." instance=ExtResource( 12 )]
-position = Vector2( 3216, 0 )
+position = Vector2( 3224, 0 )
 path = "res://Scenes_map/level3.tscn"
 
 [node name="saveArea" parent="." instance=ExtResource( 11 )]

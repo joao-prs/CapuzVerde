@@ -13,8 +13,14 @@ func _process(delta):
 		#grava as variaveis globais em um arquivo em Global.gd.
 		#Nao diz nesse codigo, mas tambem salva a vida do jogador
 		Global.salvar_jogo()
+		$Particles.emitting = true
+		$TimerParticles.start()
 
 func _on_saveArea_body_entered(body):
 	interacao = true
 func _on_saveArea_body_exited(body):
 	interacao = false
+
+
+func _on_TimerParticles_timeout():
+	$Particles.emitting = false

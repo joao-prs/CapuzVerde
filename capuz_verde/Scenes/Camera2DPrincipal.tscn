@@ -14,9 +14,11 @@ limit_smoothed = true
 drag_margin_h_enabled = true
 drag_margin_v_enabled = true
 smoothing_enabled = true
-smoothing_speed = 1.5
+smoothing_speed = 2.0
 drag_margin_left = 0.15
+drag_margin_top = 0.1
 drag_margin_right = 0.15
+drag_margin_bottom = 0.11
 editor_draw_limits = true
 editor_draw_drag_margin = true
 script = ExtResource( 1 )
@@ -27,9 +29,5 @@ one_shot = true
 
 [node name="PauseOption" parent="." instance=ExtResource( 2 )]
 visible = false
-margin_left = -128.0
-margin_top = -96.0
-margin_right = -128.0
-margin_bottom = -96.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
