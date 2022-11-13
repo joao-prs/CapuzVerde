@@ -2,12 +2,17 @@ extends KinematicBody2D
 
 export var speed = 16
 export var health = 2
+var gravity = 450
+var jump_force = -400
 var velocity = Vector2.ZERO
 var move_direction = -1
 var is_alive = true
 var can_attack = true
 
-func _physics_process(_delta: float)-> void:
+func _physics_process(delta: float)-> void:
+	### FISICA DO ESKELETINHO ###
+	velocity.y += gravity * delta
+	###
 	velocity.x = speed * move_direction
 	velocity = move_and_slide(velocity)
 	
@@ -63,3 +68,8 @@ func _on_dano_body_entered(_body):
 func _on_corpo_area_entered(area):
 	if area.is_in_group("player_ataque"):
 		is_alive = false
+		health -= 1
+		#can_die = true
+		velocity.y = jump_force / 4
+		velocity.x = jump_force / 8 * move_direction
+		print("skeleton thief levou dano")

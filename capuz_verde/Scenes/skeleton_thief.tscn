@@ -154,12 +154,25 @@ anims/dead = SubResource( 4 )
 anims/idle = SubResource( 5 )
 anims/run = SubResource( 6 )
 
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -8 )
+texture = ExtResource( 1 )
+hframes = 4
+vframes = 3
+
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -5.5 )
 shape = SubResource( 8 )
 
 [node name="Ray_wall" type="RayCast2D" parent="."]
 position = Vector2( 0, -4 )
+rotation = 1.5708
+enabled = true
+cast_to = Vector2( 0, 5 )
+collision_mask = 32
+
+[node name="Ray_wall2" type="RayCast2D" parent="."]
+position = Vector2( 0, -20 )
 rotation = 1.5708
 enabled = true
 cast_to = Vector2( 0, 5 )
@@ -183,12 +196,6 @@ collision_mask = 4
 [node name="CollisionDano" type="CollisionShape2D" parent="dano" groups=["ataque_inimigo"]]
 position = Vector2( 0, -6.5 )
 shape = SubResource( 7 )
-
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0, -8 )
-texture = ExtResource( 1 )
-hframes = 4
-vframes = 3
 
 [node name="detecta" type="Area2D" parent="."]
 collision_layer = 0

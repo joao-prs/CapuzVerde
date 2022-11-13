@@ -146,11 +146,6 @@ func _on_Collision_tree_entered():
 	if $Collision.is_in_group("ataque_inimigo"):
 		dead = true
 
-func _on_Timer_ready():
-	# Essa funcao deveria deslocar o jogador
-	# para o lado oposto ao dano.
-	velocity.x = (move_speed) * (direction)
-
 func _on_Timer_timeout():
 	$Sprite.modulate = "ffffff"
 	animacao_dano = false

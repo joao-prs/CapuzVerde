@@ -99,20 +99,10 @@ map_local = "res://Scenes_map/level2.tscn"
 position = Vector2( 3096, 240 )
 scale = Vector2( -1, 1 )
 
-[node name="TextEdit2" type="TextEdit" parent="."]
-margin_left = 1128.0
-margin_top = -8.0
-margin_right = 1264.0
-margin_bottom = 40.0
-rect_pivot_offset = Vector2( -2704, -192 )
-custom_fonts/font = ExtResource( 14 )
-text = "eu removi os NPCs, por que
-eles contam spoiler do game.."
-
 [node name="TextEdit" type="TextEdit" parent="."]
-margin_left = 3008.0
+margin_left = 2984.0
 margin_top = -80.0
-margin_right = 3200.0
+margin_right = 3176.0
 margin_bottom = -56.0
 rect_pivot_offset = Vector2( -2704, -192 )
 custom_fonts/font = ExtResource( 14 )
