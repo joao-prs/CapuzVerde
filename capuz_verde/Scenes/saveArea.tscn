@@ -8,7 +8,7 @@
 extents = Vector2( 12, 8 )
 
 [sub_resource type="Curve" id=3]
-_data = [ Vector2( 0.339286, 0 ), 0.0, 3.88447, 0, 0, Vector2( 1, 0.0477272 ), 0.0, 0.0, 0, 0 ]
+_data = [ Vector2( 0.661111, 0 ), 0.0, 15.6989, 0, 0, Vector2( 0.994444, 0.285227 ), -1.78512, 0.0, 0, 0 ]
 
 [sub_resource type="CurveTexture" id=4]
 curve = SubResource( 3 )
@@ -23,7 +23,6 @@ spread = 180.0
 gravity = Vector3( 0, -40, 0 )
 initial_velocity = 13.16
 initial_velocity_random = 0.62
-angular_velocity = 56.84
 orbit_velocity = 0.09
 orbit_velocity_random = 0.0
 scale_curve = SubResource( 4 )
