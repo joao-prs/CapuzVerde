@@ -9,8 +9,6 @@ func enter(msg := {}) -> void:
 func physics_update(delta: float) -> void:
 	#enemy.velocity.x = enemy.speed * enemy.walk_direction
 	# Vertical movement.
-	enemy.velocity.y += enemy.gravity * delta
-	enemy.velocity = enemy.move_and_slide(enemy.velocity, Vector2.UP)
 
 	# Landing.
 	if enemy.is_on_floor():

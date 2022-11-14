@@ -5,11 +5,12 @@ const UP_DIRECTION := Vector2.UP
 
 export var speed = 60
 export var deceleration = 10
-export var aceleration = 5
+export var aceleration = 10
 
 export var jump_strength = 200
 export var gravity = 450
 
+export var can_input = true
 var velocity := Vector2.ZERO
 
 onready var _pivot := $Sprite

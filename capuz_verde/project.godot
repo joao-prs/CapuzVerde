@@ -67,22 +67,12 @@ _global_script_classes=[ {
 "base": "State",
 "class": "EnemyState",
 "language": "GDScript",
-"path": "res://scripts/enemy/EnemyState.gd"
+"path": "res://scripts/enemy/enemy_state.gd"
 }, {
 "base": "PanelContainer",
 "class": "HistoryRow",
 "language": "GDScript",
 "path": "res://addons/dialogic/Example Assets/History/HistoryRow.gd"
-}, {
-"base": "Node",
-"class": "State",
-"language": "GDScript",
-"path": "res://scripts/state_machine/state.gd"
-}, {
-"base": "Node",
-"class": "StateMachine",
-"language": "GDScript",
-"path": "res://scripts/HurtBox.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Player",
@@ -118,8 +108,6 @@ _global_script_class_icons={
 "Enemy": "",
 "EnemyState": "",
 "HistoryRow": "",
-"HitBox": "",
-"HurtBox": "",
 "Player": "",
 "PlayerState": "",
 "State": "",

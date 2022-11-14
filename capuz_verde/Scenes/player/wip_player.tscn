@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://scripts/state/player/Attack.gd" type="Script" id=1]
 [ext_resource path="res://assets_player/espada_inicial.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://scripts/state/player/Walk.gd" type="Script" id=7]
 [ext_resource path="res://scripts/state/state_machine.gd" type="Script" id=8]
 [ext_resource path="res://Scenes/Camera2DPrincipal.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/barraDeEnergia.tscn" type="PackedScene" id=10]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 6.625, 5 )
@@ -16,8 +17,36 @@ extents = Vector2( 6.625, 5 )
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4.5, 7.5 )
 
+[sub_resource type="Animation" id=4]
+resource_name = "Death"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 12, 13, 14, 15 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
 [sub_resource type="Animation" id=3]
-resource_name = "Attack"
+resource_name = "FirstAttack"
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -67,33 +96,17 @@ tracks/3/keys = {
 "update": 1,
 "values": [ true, false ]
 }
-
-[sub_resource type="Animation" id=4]
-resource_name = "Death"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.4, 0.6, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 12, 13, 14, 15 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 1, 2 ),
+tracks/4/type = "value"
+tracks/4/path = NodePath(".:can_input")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+"update": 1,
+"values": [ false, true ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -190,6 +203,82 @@ tracks/4/keys = {
 "update": 0,
 "values": [ false ]
 }
+tracks/5/type = "value"
+tracks/5/path = NodePath(".:can_input")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "SecondAttack"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 8, 9, 10, 11 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite/Weapon:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 5, 6, 7 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite/Weapon:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite/Area2D/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath(".:can_input")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=7]
 resource_name = "Walk"
@@ -212,6 +301,7 @@ tracks/0/keys = {
 collision_layer = 4
 collision_mask = 32
 script = ExtResource( 4 )
+can_input = false
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 3 )
@@ -220,7 +310,7 @@ vframes = 4
 
 [node name="Weapon" type="Sprite" parent="Sprite"]
 visible = false
-position = Vector2( 10, 2 )
+position = Vector2( 10, 0 )
 texture = ExtResource( 2 )
 hframes = 4
 vframes = 4
@@ -252,22 +342,36 @@ _animation_player = NodePath("../../AnimationPlayer")
 script = ExtResource( 5 )
 _animation_player = NodePath("../../AnimationPlayer")
 
-[node name="Attack" type="Node" parent="StateMachine"]
+[node name="FirstAttack" type="Node" parent="StateMachine"]
 script = ExtResource( 1 )
 _animation_player = NodePath("../../AnimationPlayer")
+animation = "FirstAttack"
+next_state = "SecondAttack"
+
+[node name="SecondAttack" type="Node" parent="StateMachine"]
+script = ExtResource( 1 )
+_animation_player = NodePath("../../AnimationPlayer")
+animation = "SecondAttack"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Attack = SubResource( 3 )
 anims/Death = SubResource( 4 )
+anims/FirstAttack = SubResource( 3 )
 anims/Idle = SubResource( 5 )
 anims/Jump = SubResource( 8 )
 anims/RESET = SubResource( 6 )
+anims/SecondAttack = SubResource( 9 )
 anims/Walk = SubResource( 7 )
 
 [node name="Camera2D" parent="." instance=ExtResource( 9 )]
+visible = false
 position = Vector2( 0, 8 )
 limit_right = 600
 limit_bottom = 112
 smoothing_enabled = false
 
-[connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/Attack" method="_on_AnimationPlayer_animation_finished"]
+[node name="barraDeEnergia" parent="." instance=ExtResource( 10 )]
+margin_left = -8.0
+margin_top = -22.0
+margin_bottom = 8.0
+
+[connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/FirstAttack" method="_on_AnimationPlayer_animation_finished"]
