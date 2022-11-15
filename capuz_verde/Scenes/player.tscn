@@ -238,7 +238,10 @@ local_coords = false
 process_material = SubResource( 10 )
 texture = ExtResource( 5 )
 
+[node name="revive_timer" type="Timer" parent="."]
+
 [connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]
 [connection signal="ready" from="Timer" to="." method="_on_Timer_ready"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="Dash_timer" to="." method="_on_Dash_timer_timeout"]
+[connection signal="timeout" from="revive_timer" to="." method="_on_revive_timer_timeout"]

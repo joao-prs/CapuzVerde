@@ -143,17 +143,22 @@ func _on_anim_animation_finished(animation):
 		set_physics_process(true)
 		
 	if animation == "dead":
-		Global.death_respaw()
-		changer.change_scene(Global.map_save)
-		Global.death_respaw()
+		changer.load_transition()
+		$revive_timer.start()
+		#changer.change_scene(Global.map_save)
 
 func _on_Collision_tree_entered():
 	if $Collision.is_in_group("ataque_inimigo"):
 		dead = true
 
-func _on_Timer_timeout():
+func _on_Timer_timeout(): ## QUANDO PLAYER LEVAR DANO
 	$Sprite.modulate = "ffffff"
 	animacao_dano = false
+
+func _on_revive_timer_timeout(): ## QUANDO PLAYER MORRER
+	Global.death_respaw()
+	get_tree().change_scene(Global.map_save)
+
 #--------------------+
 #  TESTE DO GUSTAVO  |
 #--------------------+
@@ -197,3 +202,5 @@ func _escada():
 		gravity = 200
 	else:
 		gravity = 450
+
+

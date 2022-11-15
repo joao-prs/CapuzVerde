@@ -18,6 +18,8 @@ func _on_btn_start_pressed():
 		Global.player_position_y = 95
 	if not Global.health:
 		Global.health = 3
+	if not Global.respeito:
+		Global.respeito = 1
 	if not Global.food:
 		Global.food = 0
 	if not Global.map_save:

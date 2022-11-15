@@ -13,6 +13,7 @@ func _input(event):
 			Dialogic.load(Dialog_timeline)
 			var novo_dialogo = Dialogic.start(Dialog_timeline)
 			novo_dialogo.pause_mode = Node.PAUSE_MODE_PROCESS
+			Global.respeito = Dialogic.get_variable("respeito") ####
 			Dialogic.save(Dialog_timeline)
 			novo_dialogo.connect("timeline_end", self, 'fim_dialogo')
 			add_child(novo_dialogo)
@@ -24,7 +25,9 @@ func fim_dialogo(_timeline_name):
 func _on_npc_body_entered(_body):
 	#print(body.name)
 	interacao = true
+	print("var respeito: ",Global.respeito) ####
 #corpo saiu na area
 func _on_npc_body_exited(_body):
 	#print(body.name)
 	interacao = false
+	print("var respeito: ",Global.respeito) ####
