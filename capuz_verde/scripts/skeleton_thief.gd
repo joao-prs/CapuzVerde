@@ -38,11 +38,13 @@ func _physics_process(delta: float)-> void:
 				$Ray_wall.cast_to.y = -5
 				$Ray_wall2.cast_to.y = -5
 				$dano/CollisionDano.position.y = -6.5
+				$detecta/CollisionDetector.position.x = 24
 			else:
 				$Sprite.flip_h = true
 				$Ray_wall.cast_to.y = 5
 				$Ray_wall2.cast_to.y = 5
 				$dano/CollisionDano.position.y = 6.5
+				$detecta/CollisionDetector.position.x = -24
 			if velocity.x != 0:
 				$anim.play("run")
 				if $Ray_wall.is_colliding():
@@ -67,6 +69,7 @@ func _physics_process(delta: float)-> void:
 				$Ray_wall.cast_to.y = -5
 				$Ray_wall2.cast_to.y = -5
 				$dano/CollisionDano.position.y = -6.5
+				$detecta/CollisionDetector.position.x = 24
 				## se colidir com parede baixa, ele pula
 				if $Ray_wall.is_colliding() && not $Ray_wall2.is_colliding():
 					velocity.y = jump_force / 4
@@ -77,6 +80,7 @@ func _physics_process(delta: float)-> void:
 				$Ray_wall.cast_to.y = 5
 				$Ray_wall2.cast_to.y = 5
 				$dano/CollisionDano.position.y = 6.5
+				$detecta/CollisionDetector.position.x = -24
 				## se colidir com parede baixa, ele pula
 				if $Ray_wall.is_colliding() && not $Ray_wall2.is_colliding():
 					velocity.y = jump_force / 4

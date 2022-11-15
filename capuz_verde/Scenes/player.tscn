@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scripts/player.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/barraDeEnergia.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets_player/Scenesattack.tres" type="Animation" id=3]
-[ext_resource path="res://assets_player/dash_particle.png" type="Texture" id=5]
+[ext_resource path="res://assets_player/player_ghost.png" type="Texture" id=4]
+[ext_resource path="res://assets_player/particula3.png" type="Texture" id=5]
 
 [sub_resource type="StreamTexture" id=11]
 load_path = "res://.import/player.png-8b963ff676fdcbd69fd95a46335f9d82.stex"
@@ -63,6 +64,34 @@ tracks/3/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("dash:frame_coords")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "dash"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("dash:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 1 ), Vector2( 0, 2 ) ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -148,7 +177,6 @@ orbit_velocity_random = 0.0
 scale_curve = SubResource( 9 )
 
 [node name="player" type="KinematicBody2D" groups=["player"]]
-position = Vector2( 7, 0 )
 collision_layer = 4
 collision_mask = 41
 script = ExtResource( 1 )
@@ -161,6 +189,11 @@ position = Vector2( 0, -8 )
 texture = SubResource( 11 )
 hframes = 4
 vframes = 4
+
+[node name="dash" type="Sprite" parent="."]
+position = Vector2( 0, -8 )
+texture = ExtResource( 4 )
+vframes = 3
 
 [node name="Collision" type="CollisionShape2D" parent="." groups=["colisao_player"]]
 position = Vector2( 0, -7 )
@@ -180,6 +213,7 @@ disabled = true
 pause_mode = 2
 anims/RESET = SubResource( 1 )
 anims/attack = ExtResource( 3 )
+anims/dash = SubResource( 12 )
 anims/dead = SubResource( 3 )
 anims/idle = SubResource( 4 )
 anims/run = SubResource( 5 )
@@ -196,10 +230,10 @@ margin_left = -8.0
 margin_top = -30.0
 
 [node name="Dash_particle" type="Particles2D" parent="."]
-position = Vector2( -10, 0 )
+position = Vector2( -2, -6 )
 scale = Vector2( 1, 0.96 )
 emitting = false
-amount = 90
+amount = 130
 local_coords = false
 process_material = SubResource( 10 )
 texture = ExtResource( 5 )

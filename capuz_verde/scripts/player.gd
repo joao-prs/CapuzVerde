@@ -36,6 +36,7 @@ func ghost_spawn():
 func _ready():
 	dead = false
 	anim = "idle"
+	$dash.visible = false
 	position.x = Global.player_position_x
 	position.y = Global.player_position_y
 
@@ -62,9 +63,11 @@ func _physics_process(delta):
 
 	if velocity.x > 0 && !animacao_dano:
 		$Sprite.flip_h = false
+		$dash.flip_h = false
 		collision.position = Vector2(6, -8)
 	elif velocity.x < 0 && !animacao_dano:
 		$Sprite.flip_h = true
+		$dash.flip_h = true
 		collision.position = Vector2(-6, -8)
 	
 	if health > Global.health:
@@ -123,6 +126,8 @@ func _set_animation():
 	if can_attack == false:
 		anim = "attack"
 		set_physics_process(false)
+	if $dash.visible == true:
+		anim = "dash"
 	elif health < 1:
 		anim = "dead"
 		dead = true
@@ -158,18 +163,23 @@ func Dash():
 		move_speed = 180
 		# verificar em qual direcao vai ser o dash
 		if $Sprite.flip_h:
-			$Dash_particle.position.x = 10
+			$Dash_particle.position.x = 2
 		else:
-			$Dash_particle.position.x = -10
-			
+			$Dash_particle.position.x = -2
+
 		print("Dash?")
 		$Dash_timer.start()
+		$dash.visible = true
+		$Sprite.visible = false
 		$Dash_particle.emitting = true
-	
+
 func _on_Dash_timer_timeout():
 	$Dash_particle.emitting = false
+	$dash.visible = false
+	$Sprite.visible = true
 	print("CABO")
 	move_speed = 60
+
 
 #-----------------------------------------+
 #  MECANICA DE SUBIR E DESCER EM ESCADAS  |

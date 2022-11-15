@@ -140,7 +140,7 @@ extents = Vector2( 18.75, 7.5 )
 extents = Vector2( 3.00001, 2.5 )
 
 [sub_resource type="CircleShape2D" id=9]
-radius = 88.0
+radius = 64.0
 
 [node name="skeleton_assassin" type="KinematicBody2D"]
 collision_layer = 16
@@ -204,6 +204,7 @@ collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionDetector" type="CollisionShape2D" parent="detecta"]
+position = Vector2( 48, -8 )
 shape = SubResource( 9 )
 
 [connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]
