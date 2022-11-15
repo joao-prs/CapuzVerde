@@ -1,10 +1,9 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets_map/level1.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/transition_out.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/enemy/wip_enemy.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/transition_in.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets_frases/frase_manual1.png" type="Texture" id=6]
 [ext_resource path="res://assets_map/parallax3.png" type="Texture" id=7]
 [ext_resource path="res://assets_map/parallax2.png" type="Texture" id=8]
 [ext_resource path="res://Scenes/ChangeMap.tscn" type="PackedScene" id=9]
@@ -51,7 +50,7 @@ custom_fonts/font = ExtResource( 10 )
 text = "  \"cima\" para 
     interagir"
 
-[node name="WIPPlayer" parent="." instance=ExtResource( 14 )]
+[node name="WIPPlayer" parent="." groups=["player"] instance=ExtResource( 14 )]
 position = Vector2( 256, 48 )
 
 [node name="Parallax fundo" type="ParallaxBackground" parent="."]
@@ -73,17 +72,6 @@ motion_mirroring = Vector2( 256, 0 )
 position = Vector2( 0, -100 )
 texture = ExtResource( 8 )
 centered = false
-
-[node name="Parallax frente" type="ParallaxBackground" parent="."]
-layer = 50
-visible = false
-
-[node name="textos" type="ParallaxLayer" parent="Parallax frente"]
-motion_scale = Vector2( 1.05, 1 )
-
-[node name="frase1" type="Sprite" parent="Parallax frente/textos"]
-position = Vector2( 256, 10 )
-texture = ExtResource( 6 )
 
 [node name="transition_in" parent="." instance=ExtResource( 5 )]
 follow_viewport_scale = 0.0

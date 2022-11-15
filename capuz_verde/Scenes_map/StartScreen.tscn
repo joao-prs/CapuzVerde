@@ -42,10 +42,8 @@ texture = ExtResource( 4 )
 centered = false
 
 [node name="transition_in" parent="." instance=ExtResource( 3 )]
-visible = false
 
 [node name="transition_out" parent="." instance=ExtResource( 2 )]
-visible = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 margin_left = 7.0

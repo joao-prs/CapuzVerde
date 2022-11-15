@@ -12,9 +12,10 @@ export var player_loc_y : float
 #	pass	
 
 func _on_Return_map_body_entered(body):
-	if body.name == "player":
-		print("[change_map.gd][corpo do jogador colidiu com a troca de mapa]")
-		changer.change_scene(path)
+	if body.name == "player" or "WIPPlayer":
+		print("[change_map.gd] [corpo do jogador colidiu com a troca de mapa]")
+		#changer.change_scene(path)
+		get_tree().change_scene(path)
 		Global.player_position_x = player_loc_x
 		Global.player_position_y = player_loc_y
 
