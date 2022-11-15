@@ -2,16 +2,18 @@
 
 # CapuzVerde
 
-## versao 0.0.1.6
+## versao 0.0.1.9
 
 ### Um jogo desenvolvido para o aprendizado meu e de uma equipe que estou montando.Utilizaremos nesse projeto o motor Godot 3.5.1 standart version com plugin.
 
 ## atualizações
 
 ### recente↑ antigo↓
-- adicionado barra de energia.(que some quando está completa)
-- adicionado animação de idle
-- arquivos de mapas estão em pastas agora, para melhor organização, além de outras correções e organização dos códigos.
+- dash atualizado, zona de ataque dos inimigos atualizada, bots inimigos seguem e pulam plataforma.
+- criação e construção do mapa 3.
+- adicionado barra de energia.(que some quando está completa).
+- adicionado animação de idle.
+- arquivos de mapas estão em pastas agora, para melhor organização, além de .outras correções e organização dos códigos.
 - painel de Pause corrigido, pode dali Esc que agora funciona normal fml.
 - hub mais elegante e ordenado, agora ele tem contador de comida, que futuramente será utilizado.
 - agora tem hub e contador de vida.
