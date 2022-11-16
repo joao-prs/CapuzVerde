@@ -28,7 +28,6 @@ func _on_btn_start_pressed():
 	get_tree().change_scene(Global.map_save)
 	print(Global.map_save)
 
-
 func _on_btn_tutorial_pressed():
 	if not Global.health:
 		Global.health = 3
@@ -36,10 +35,8 @@ func _on_btn_tutorial_pressed():
 	Global.player_position_x = 256
 	Global.player_position_y = 64
 
-
 func _on_btn_about_pressed():
 	get_tree().change_scene("res://Scenes/AboutScreen.tscn")
-
 
 func _on_btn_quit_pressed():
 	get_tree().quit()

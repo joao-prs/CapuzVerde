@@ -24,5 +24,7 @@ func physics_update(delta: float) -> void:
 		state_machine.transition_to("Jump", {do_jump = true})
 	elif Input.is_action_just_pressed("Ataque"):
 		state_machine.transition_to("FirstAttack")
+	elif Input.is_action_just_pressed("dash"):
+		state_machine.transition_to("Dash")
 	elif is_zero_approx(player.get_input_direction()):
 		state_machine.transition_to("Idle")
