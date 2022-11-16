@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://scripts/state/player/Attack.gd" type="Script" id=1]
 [ext_resource path="res://assets_player/espada_inicial.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://scripts/state/state_machine.gd" type="Script" id=8]
 [ext_resource path="res://Scenes/Camera2DPrincipal.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scenes/barraDeEnergia.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scripts/state/player/Hit.gd" type="Script" id=11]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 6.625, 5 )
@@ -109,6 +110,47 @@ tracks/4/keys = {
 "values": [ false, true ]
 }
 
+[sub_resource type="Animation" id=10]
+resource_name = "Hit"
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 12, 12 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0.254902, 0.254902, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite/HurtBoxArea/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
 [sub_resource type="Animation" id=5]
 resource_name = "Idle"
 length = 0.8
@@ -124,6 +166,18 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 1, 2, 3 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite/HurtBoxArea/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
 }
 
 [sub_resource type="Animation" id=8]
@@ -210,6 +264,18 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Sprite/HurtBoxArea/CollisionShape2D:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
@@ -317,18 +383,18 @@ vframes = 4
 
 [node name="AttackArea" type="Area2D" parent="Sprite"]
 collision_layer = 64
-collision_mask = 128
+collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/AttackArea"]
 position = Vector2( 10.375, 3 )
 shape = SubResource( 2 )
 disabled = true
 
-[node name="Area2D" type="Area2D" parent="Sprite"]
+[node name="HurtBoxArea" type="Area2D" parent="Sprite"]
 collision_layer = 128
-collision_mask = 64
+collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/HurtBoxArea"]
 position = Vector2( 0.5, 0.5 )
 shape = SubResource( 1 )
 
@@ -363,9 +429,14 @@ script = ExtResource( 1 )
 _animation_player = NodePath("../../AnimationPlayer")
 animation = "SecondAttack"
 
+[node name="Hit" type="Node" parent="StateMachine"]
+script = ExtResource( 11 )
+_animation_player = NodePath("../../AnimationPlayer")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Death = SubResource( 4 )
 anims/FirstAttack = SubResource( 3 )
+anims/Hit = SubResource( 10 )
 anims/Idle = SubResource( 5 )
 anims/Jump = SubResource( 8 )
 anims/RESET = SubResource( 6 )
@@ -384,4 +455,5 @@ margin_left = -8.0
 margin_top = -22.0
 margin_bottom = 8.0
 
+[connection signal="area_entered" from="Sprite/HurtBoxArea" to="StateMachine/Idle" method="_on_HurtBoxArea_area_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/FirstAttack" method="_on_AnimationPlayer_animation_finished"]
