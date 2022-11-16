@@ -133,8 +133,8 @@ collision_mask = 32
 [node name="AttackArea" type="Area2D" parent="Sprite"]
 position = Vector2( 0, 4 )
 rotation = 1.5708
-collision_layer = 4
-collision_mask = 4
+collision_layer = 128
+collision_mask = 0
 
 [node name="AttackCollision" type="CollisionShape2D" parent="Sprite/AttackArea"]
 position = Vector2( 3.8147e-06, -4 )

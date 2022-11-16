@@ -231,6 +231,7 @@ shift_esq={
 2d_physics/layer_5="enemies"
 2d_physics/layer_6="map1"
 2d_physics/layer_7="HitBox"
+2d_physics/layer_8="HurtBox"
 
 [mono]
 
