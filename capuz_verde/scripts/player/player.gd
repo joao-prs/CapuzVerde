@@ -3,6 +3,8 @@ extends KinematicBody2D
 
 const UP_DIRECTION := Vector2.UP
 
+export var health = 3
+
 export var speed = 60
 export var deceleration = 10
 export var aceleration = 10
@@ -15,6 +17,7 @@ var velocity := Vector2.ZERO
 
 onready var _pivot := $Sprite
 onready var _start_scale: Vector2 = _pivot.scale
+onready var changer = get_parent().get_node("transition_in")
 
 func get_input_direction() -> float:
 	var direction = (

@@ -5,6 +5,10 @@ onready var animation_player: AnimationPlayer = get_node(_animation_player)
 
 func enter(_msg: = {}) -> void:
 	animation_player.play("Idle")
+	
+func update(_delta):
+	if player.health == 0:
+		state_machine.transition_to("Death")
 
 func physics_update(delta: float) -> void:
 	if not player.is_on_floor():

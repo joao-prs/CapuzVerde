@@ -5,6 +5,7 @@ export var speed := 16
 var velocity := Vector2.ZERO
 export var walk_direction = 1
 export var jump_impulse := 150
+var is_dead = false
 
 var gravity = 450
 

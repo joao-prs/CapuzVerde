@@ -19,5 +19,12 @@ func update(_delta: float) -> void:
 		return
 
 func _on_Timer_timeout():
-	enemy.change_direction()
-	state_machine.transition_to("Walk")
+	if not enemy.is_dead:
+		enemy.change_direction()
+		state_machine.transition_to("Walk")
+		return
+	return
+
+
+func _on_CollisionArea_area_entered(area):
+	state_machine.transition_to("Death")

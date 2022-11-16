@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://scripts/state/player/Attack.gd" type="Script" id=1]
 [ext_resource path="res://assets_player/espada_inicial.png" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Scenes/Camera2DPrincipal.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scenes/barraDeEnergia.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scripts/state/player/Hit.gd" type="Script" id=11]
+[ext_resource path="res://scripts/state/player/Death.gd" type="Script" id=12]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 6.625, 5 )
@@ -44,6 +45,18 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite/HurtBoxArea/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -381,7 +394,7 @@ texture = ExtResource( 2 )
 hframes = 4
 vframes = 4
 
-[node name="AttackArea" type="Area2D" parent="Sprite"]
+[node name="AttackArea" type="Area2D" parent="Sprite" groups=["player_attack"]]
 collision_layer = 64
 collision_mask = 16
 
@@ -433,6 +446,11 @@ animation = "SecondAttack"
 script = ExtResource( 11 )
 _animation_player = NodePath("../../AnimationPlayer")
 
+[node name="Death" type="Node" parent="StateMachine"]
+script = ExtResource( 12 )
+_animation_player = NodePath("../../AnimationPlayer")
+_respawn_timer = NodePath("../../RespawnTimer")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Death = SubResource( 4 )
 anims/FirstAttack = SubResource( 3 )
@@ -455,5 +473,8 @@ margin_left = -8.0
 margin_top = -22.0
 margin_bottom = 8.0
 
+[node name="RespawnTimer" type="Timer" parent="."]
+
 [connection signal="area_entered" from="Sprite/HurtBoxArea" to="StateMachine/Idle" method="_on_HurtBoxArea_area_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/FirstAttack" method="_on_AnimationPlayer_animation_finished"]
+[connection signal="timeout" from="RespawnTimer" to="StateMachine/Death" method="_on_RespawnTimer_timeout"]

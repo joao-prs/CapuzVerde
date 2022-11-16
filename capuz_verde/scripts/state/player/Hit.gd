@@ -4,6 +4,7 @@ export (NodePath) var _animation_player
 onready var animation_player: AnimationPlayer = get_node(_animation_player)
 
 func enter(_msg: = {}) -> void:
+	player.health -= 1
 	animation_player.play("Hit")
 	player.velocity.y = -player.jump_strength / 2
 	player.velocity.x = -player.jump_strength / 2
