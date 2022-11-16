@@ -27,4 +27,4 @@ func _on_Timer_timeout():
 
 
 func _on_CollisionArea_area_entered(area):
-	state_machine.transition_to("Death")
+	state_machine.transition_to("Hit")

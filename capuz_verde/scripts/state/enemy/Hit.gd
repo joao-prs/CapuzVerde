@@ -4,10 +4,16 @@ export (NodePath) var _animation_player
 onready var animation_player: AnimationPlayer = get_node(_animation_player)
 
 func enter(_msg: = {}) -> void:
-	enemy.is_dead = true
-	animation_player.play("Death")
-	enemy.velocity.x = enemy.speed * 8
+	enemy.health -= 1
+	animation_player.play("Hit")
+	enemy.velocity.x = enemy.speed * 10
+	if enemy.health == 0:
+		state_machine.transition_to("Death")
+	else:
+		yield(get_tree().create_timer(0.5), "timeout")
+		state_machine.transition_to("Walk")
 
 func physics_update(delta):
 	enemy.velocity.x = lerp(enemy.velocity.x, 0, enemy.speed * delta)
 	enemy.velocity = enemy.move_and_slide(enemy.velocity)
+	
