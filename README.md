@@ -2,9 +2,9 @@
 
 # CapuzVerde
 
-## versao 0.0.1.10
+## versão: 0.0.1.10
 
-### Um jogo desenvolvido para o aprendizado meu e de uma equipe que estou montando.Utilizaremos nesse projeto o motor Godot 3.5.1 standart version com plugin.
+### Um jogo desenvolvido para o aprendizado meu e de uma equipe.Utilizaremos nesse projeto o motor Godot 3.5.1 standart version com plugin. Os plugins ficam anexados aos projetos então talvez não precise instalar ele. O projeto atual tem apenas um jogo, mas os conhecimentos podem ser reciclados para futuros projetos.
 
 ## atualizações
 
