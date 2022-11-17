@@ -2,9 +2,9 @@
 
 # CapuzVerde
 
-## versao 0.0.1.10
+## versão: 0.0.1.10
 
-### Um jogo desenvolvido para o aprendizado meu e de uma equipe que estou montando.Utilizaremos nesse projeto o motor Godot 3.5.1 standart version com plugin.
+### Um jogo desenvolvido para o aprendizado meu e de uma equipe.Utilizaremos nesse projeto o motor Godot 3.5.1 standart version com plugin. Os plugins ficam anexados aos projetos então talvez não precise instalar ele. O projeto atual tem apenas um jogo, mas os conhecimentos podem ser reciclados para futuros projetos.
 
 ## atualizações
 
@@ -51,11 +51,10 @@
 | Não se sabe | Fazer uma versão mobile? (já tenho conta de Dev lá ps.: benicio) . |
 
 ## explicando a versão
-### 0.0.0.1
-Atualização feita nessa ultima faixa da versão, indica correções pequenas de bugs ou implementações a niveis simples, quando algo está em teste e não é oficial mas que ainda sim acrescenta no projeto, e incrementado essa faixa.
-### 0.0.1.0
-Atualização feita nessa penultima faixa da versão, indica que as correções são de maior porte e que podem influenciar em mecanicas gerais, como mapas completos e funções de characters. Quando uma atualização de porte maior for feita, como que pode mudar o funcionamento do jogo, essa faixa da versão é incrementada e o valor da faixa menor é resetado a 0.
-### 0.1.0.0
-Atualização feita nessa segunda faixa da versão, indica que jogo está jogável e que pode ser considerado zerável. já tendo algum inicio, meio e fim. Quando algo envolvendo grandes quantidades de mecânicas, templates, artes e história for alterada, se incrementa essa faixa e o valor das faixas menores é resetado a 0.
-### 1.0.0.0
-Atualização feita nessa primeira faixa da versão, indica que o jogo já está pronto e pode ser publicado, quando o jogo adquiri não só mecanicas, mas mapas inteiros, personagens, histórias e novos assets(como espécie de DLC), aí então essa faixa pode ser incrementada e o valor das faixas menores é resetado a 0.
+0.0.0.1 | Atualização feita nessa ultima faixa da versão, indica correções pequenas de bugs ou implementações a niveis simples, quando algo está em teste e não é oficial mas que ainda sim acrescenta no projeto, e incrementado essa faixa.
+
+0.0.1.0 | Atualização feita nessa penultima faixa da versão, indica que as correções são de maior porte e que podem influenciar em mecanicas gerais, como mapas completos e funções de characters. Quando uma atualização de porte maior for feita, como que pode mudar o funcionamento do jogo, essa faixa da versão é incrementada e o valor da faixa menor é resetado a 0.
+
+0.1.0.0 | Atualização feita nessa segunda faixa da versão, indica que jogo está jogável e que pode ser considerado zerável. já tendo algum inicio, meio e fim. Quando algo envolvendo grandes quantidades de mecânicas, templates, artes e história for alterada, se incrementa essa faixa e o valor das faixas menores é resetado a 0.
+
+1.0.0.0 | Atualização feita nessa primeira faixa da versão, indica que o jogo já está pronto e pode ser publicado, quando o jogo adquiri não só mecanicas, mas mapas inteiros, personagens, histórias e novos assets(como espécie de DLC), aí então essa faixa pode ser incrementada e o valor das faixas menores é resetado a 0.
