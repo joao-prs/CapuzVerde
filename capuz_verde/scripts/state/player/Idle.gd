@@ -26,7 +26,3 @@ func physics_update(delta: float) -> void:
 		state_machine.transition_to("FirstAttack")
 	elif not is_zero_approx(player.get_input_direction()):
 		state_machine.transition_to("Walk")
-
-
-func _on_HurtBoxArea_area_entered(area):
-	state_machine.transition_to("Hit")

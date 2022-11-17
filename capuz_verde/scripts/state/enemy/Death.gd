@@ -6,7 +6,6 @@ onready var animation_player: AnimationPlayer = get_node(_animation_player)
 func enter(_msg: = {}) -> void:
 	enemy.is_dead = true
 	animation_player.play("Death")
-	enemy.velocity.x = enemy.speed * 8
 
 func physics_update(delta):
 	enemy.velocity.x = lerp(enemy.velocity.x, 0, enemy.speed * delta)

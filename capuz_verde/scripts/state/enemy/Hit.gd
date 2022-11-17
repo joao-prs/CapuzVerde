@@ -4,9 +4,11 @@ export (NodePath) var _animation_player
 onready var animation_player: AnimationPlayer = get_node(_animation_player)
 
 func enter(_msg: = {}) -> void:
+	var player_direction = get_parent().get_parent().get_parent().get_node("WIPPlayer").player_direction
 	enemy.health -= 1
 	animation_player.play("Hit")
-	enemy.velocity.x = enemy.speed * 10
+	enemy.walk_direction = -player_direction
+	enemy.velocity.x = enemy.speed * 10 * player_direction
 	if enemy.health == 0:
 		state_machine.transition_to("Death")
 	else:

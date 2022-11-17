@@ -50,9 +50,6 @@ custom_fonts/font = ExtResource( 10 )
 text = "  \"cima\" para 
     interagir"
 
-[node name="WIPPlayer" parent="." groups=["player"] instance=ExtResource( 14 )]
-position = Vector2( 256, 48 )
-
 [node name="Parallax fundo" type="ParallaxBackground" parent="."]
 
 [node name="1" type="ParallaxLayer" parent="Parallax fundo"]
@@ -90,3 +87,6 @@ Dialog_timeline = "TutorialChat"
 
 [node name="WIPSkeleton" parent="." instance=ExtResource( 3 )]
 position = Vector2( 301, 51 )
+
+[node name="WIPPlayer" parent="." groups=["player"] instance=ExtResource( 14 )]
+position = Vector2( 256, 48 )

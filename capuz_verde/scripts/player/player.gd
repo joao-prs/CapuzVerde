@@ -15,6 +15,7 @@ export var gravity = 450
 export var can_input = true
 var velocity := Vector2.ZERO
 var player_direction = 1
+var enemy_direction
 
 onready var _pivot := $Sprite
 onready var _pivot_dash := $Dash

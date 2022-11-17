@@ -27,3 +27,7 @@ func physics_update(delta: float) -> void:
 
 func _on_DetectArea_body_entered(body):
 	state_machine.transition_to("Attack")
+
+
+func _on_DetectArea_area_entered(area):
+	state_machine.transition_to("Attack")

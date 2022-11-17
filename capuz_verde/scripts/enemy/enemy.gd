@@ -17,3 +17,7 @@ func change_direction():
 	if walk_direction != 0:
 		walk_direction *= -1
 		_pivot.scale.x = sign(walk_direction) * _start_scale.x
+
+func _physics_process(_delta):
+	if walk_direction != 0:
+		_pivot.scale.x = sign(walk_direction) * _start_scale.x
