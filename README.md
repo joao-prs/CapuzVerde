@@ -9,6 +9,9 @@
 ## atualizações
 
 ### recente👆​ antigo👇​​
+- dash atualizado, não é mais detectado pelo inimigo
+- knockback do player e inimigos implementado
+- separação de funções do player e dos inimigos em maquinas de estado
 - captura de variaveis nos dialogos feita.
 - corrigido problema de transição de mapas ao exportar o jogo.
 - dash atualizado, zona de ataque dos inimigos atualizada, bots inimigos seguem e pulam plataforma.
