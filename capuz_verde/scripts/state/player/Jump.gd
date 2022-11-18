@@ -9,7 +9,8 @@ func enter(msg: = {}) -> void:
 		animation_player.play("Jump")
 
 func physics_update(delta: float) -> void:
-	if Input.is_action_just_pressed("dash"):
+	if Input.is_action_just_pressed("dash") && Global.energia >= 50:
+		Global.energia -= 50
 		state_machine.transition_to("Dash")
 	if Input.is_action_just_released("ui_accept") and player.velocity.y < 0:
 		player.velocity.y = player.velocity.y / 2

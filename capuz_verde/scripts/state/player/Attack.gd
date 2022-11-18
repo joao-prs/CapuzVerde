@@ -12,7 +12,8 @@ func enter(_msg: = {}) -> void:
 	player.can_input = false
 
 func physics_update(delta: float) -> void:
-	if next_state and player.can_input and Input.is_action_just_pressed("Ataque"):
+	if next_state and player.can_input and Input.is_action_just_pressed("Ataque") && Global.energia > 49:
+		Global.energia -= 50
 		state_machine.transition_to(next_state)
 	
 	if not is_zero_approx(player.get_input_direction()) and not player.is_on_floor():

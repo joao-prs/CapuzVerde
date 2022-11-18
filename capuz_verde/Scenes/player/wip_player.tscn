@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://scripts/state/player/Attack.gd" type="Script" id=1]
 [ext_resource path="res://assets_player/espada_inicial.png" type="Texture" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://scripts/state/player/Death.gd" type="Script" id=12]
 [ext_resource path="res://assets_player/player_ghost.png" type="Texture" id=13]
 [ext_resource path="res://scripts/state/player/Dash.gd" type="Script" id=14]
+[ext_resource path="res://scripts/player/energy_bar.gd" type="Script" id=15]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 6.625, 5 )
@@ -740,6 +741,7 @@ smoothing_enabled = false
 margin_left = -8.0
 margin_top = -22.0
 margin_bottom = 8.0
+script = ExtResource( 15 )
 
 [node name="RespawnTimer" type="Timer" parent="."]
 
