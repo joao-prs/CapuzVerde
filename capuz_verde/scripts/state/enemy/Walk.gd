@@ -10,6 +10,8 @@ func enter(_msg := {}) -> void:
 	animation_enemy.play("Walk")
 
 func physics_update(delta: float) -> void:
+	if enemy.health == 0:
+		state_machine.transition_to("Death")
 	enemy.velocity.x = enemy.speed * enemy.walk_direction
 	enemy.velocity.y += enemy.gravity * delta
 	enemy.velocity = enemy.move_and_slide(enemy.velocity, Vector2.UP)

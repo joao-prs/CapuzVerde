@@ -11,15 +11,14 @@ func enter(_msg := {}) -> void:
 	animation_enemy.play("Idle")
 	timer.start(2)
 
-func update(_delta: float) -> void:
+func update(delta: float) -> void:
 	# If you have platforms that break when standing on them, you need that check for 
 	# the character to fall.
-	if not enemy.is_on_floor():
-		state_machine.transition_to("Air")
-		return
+	enemy.velocity.y += enemy.gravity * delta
+	enemy.velocity = enemy.move_and_slide(enemy.velocity, Vector2.UP)
 
 func _on_Timer_timeout():
-	if not enemy.is_dead:
+	if not enemy.is_dead and not enemy.is_chasing:
 		enemy.change_direction()
 		state_machine.transition_to("Walk")
 		return

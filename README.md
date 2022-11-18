@@ -10,6 +10,7 @@
 
 ### recente👆​ antigo👇​​
 
+- inimigo seguindo e particulas do dash reimplementadas
 - ataque e dash usando a barra de energia
 - dash atualizado, não é mais detectado pelo inimigo
 - knockback do player e inimigos implementado

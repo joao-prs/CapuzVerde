@@ -7,7 +7,7 @@ export var walk_direction = 1
 export var jump_impulse := 150
 var velocity := Vector2.ZERO
 var is_dead = false
-
+var is_chasing = false
 var gravity = 450
 
 onready var _pivot := $Sprite
