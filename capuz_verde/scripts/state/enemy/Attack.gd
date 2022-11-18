@@ -5,16 +5,17 @@ signal enemy_direction(direction)
 export (NodePath) var _animation_enemy
 onready var animation_enemy: AnimationPlayer = get_node(_animation_enemy)
 
-export var is_attacking = false
-
 func enter(msg := {}) -> void:
-	is_attacking = true
+	enemy.is_attacking = true
 	animation_enemy.play("Attack")
 	emit_signal("enemy_direction", enemy.walk_direction)
 
 func physics_update(_delta):
-	if !is_attacking:
-		state_machine.transition_to("Walk")
+	if not enemy.is_attacking:
+		if enemy.is_chasing:
+			state_machine.transition_to("Chase")
+		else:
+			state_machine.transition_to("Walk")
 
 
 func _on_AttackArea_body_entered(body: Player):

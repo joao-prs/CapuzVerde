@@ -25,7 +25,8 @@ func physics_update(delta: float) -> void:
 	player.velocity.y += player.gravity * delta
 	player.velocity = player.move_and_slide(player.velocity, player.UP_DIRECTION)
 	
-	if Input.is_action_just_pressed("Ataque"):
+	if Input.is_action_just_pressed("Ataque") && Global.energia >= 50:
+		Global.energia -= 50
 		state_machine.transition_to("FirstAttack")
 	
 	if player.is_on_floor():

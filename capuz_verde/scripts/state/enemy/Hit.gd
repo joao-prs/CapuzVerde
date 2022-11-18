@@ -13,7 +13,10 @@ func enter(_msg: = {}) -> void:
 		state_machine.transition_to("Death")
 	else:
 		yield(get_tree().create_timer(0.5), "timeout")
-		state_machine.transition_to("Walk")
+		if enemy.is_chasing:
+			state_machine.transition_to("Chase")
+		else:
+			state_machine.transition_to("Walk")
 
 func physics_update(delta):
 	enemy.velocity.x = lerp(enemy.velocity.x, 0, enemy.speed * delta)

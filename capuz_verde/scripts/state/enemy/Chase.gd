@@ -12,6 +12,8 @@ func enter(_msg: = {}) -> void:
 func physics_update(delta):
 	if enemy.health == 0:
 		state_machine.transition_to("Death")
+	elif not enemy.is_chasing:
+		state_machine.transition_to("Walk")
 	var distance: Vector2 = enemy.position - player_body.position
 	enemy.walk_direction = -sign(distance.x)
 	
@@ -31,3 +33,4 @@ func _on_DetectChaseArea_body_exited(body):
 		state_machine.transition_to("Death")
 	else:
 		state_machine.transition_to("Walk")
+	

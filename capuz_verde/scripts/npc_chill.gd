@@ -1,8 +1,11 @@
 extends Area2D
 
+export (NodePath) var _animation_keyboard
+onready var animation_keyboard: AnimationPlayer = get_node(_animation_keyboard)
+
 var interacao = false
 func _ready():
-	pass
+	animation_keyboard.play("Idle")
 
 func _input(event):
 	if get_node_or_null('DialogNode') == null:
@@ -21,11 +24,14 @@ func fim_dialogo(_timeline_name):
 	get_tree().paused = false
 
 func _on_npc_body_entered(_body):
-	#print(body.name)
+	print(animation_keyboard)
+	animation_keyboard.play("Up")
 	interacao = true
 	print("var respeito: ",Global.respeito) ####$$$ testando 
 #corpo saiu na area
+
 func _on_npc_body_exited(_body):
 	#print(body.name)
+	animation_keyboard.play("Idle")
 	interacao = false
 	print("var respeito: ",Global.respeito) ####$$$ testando

@@ -24,10 +24,12 @@ func fim_dialogo(_timeline_name):
 #corpo entrou na area
 func _on_npc_body_entered(_body):
 	#print(body.name)
+	$AnimationPlayer.play("Up")
 	interacao = true
 	print("var respeito: ",Global.respeito) ####
 #corpo saiu na area
 func _on_npc_body_exited(_body):
 	#print(body.name)
+	$AnimationPlayer.play("Idle")
 	interacao = false
 	print("var respeito: ",Global.respeito) ####
