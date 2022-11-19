@@ -6,7 +6,7 @@ func enter(msg := {}) -> void:
 		enemy.velocity.y = -enemy.jump_impulse
 
 
-func physics_update(delta: float) -> void:
+func physics_update(_delta: float) -> void:
 	#enemy.velocity.x = enemy.speed * enemy.walk_direction
 	# Vertical movement.
 

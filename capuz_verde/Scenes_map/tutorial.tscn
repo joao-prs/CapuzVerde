@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets_map/level1.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/transition_out.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/enemy/wip_enemy.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/enemy/thief_skeleton.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/transition_in.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/enemy/assassin_skeleton.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets_map/parallax3.png" type="Texture" id=7]
 [ext_resource path="res://assets_map/parallax2.png" type="Texture" id=8]
 [ext_resource path="res://Scenes/ChangeMap.tscn" type="PackedScene" id=9]
@@ -85,6 +86,9 @@ position = Vector2( 336, 64 )
 scale = Vector2( -1, 1 )
 script = ExtResource( 12 )
 Dialog_timeline = "TutorialChat"
+
+[node name="AssassinSkeleton" parent="." instance=ExtResource( 6 )]
+position = Vector2( 34, 14 )
 
 [node name="WIPSkeleton" parent="." instance=ExtResource( 3 )]
 position = Vector2( 301, 51 )

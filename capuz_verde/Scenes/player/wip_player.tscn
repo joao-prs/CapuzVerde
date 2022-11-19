@@ -778,6 +778,7 @@ anims/Walk = SubResource( 7 )
 [node name="Camera2D" parent="." instance=ExtResource( 9 )]
 visible = false
 position = Vector2( 0, 8 )
+current = false
 limit_right = 600
 limit_bottom = 112
 smoothing_enabled = false

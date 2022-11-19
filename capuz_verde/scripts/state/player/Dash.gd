@@ -10,7 +10,7 @@ func enter(_msg: ={}) -> void:
 	player.dash_particle.emitting = false
 	state_machine.transition_to("Idle")
 
-func physics_update(dash):
+func physics_update(_dash):
 	player.velocity.y = 0
 	player.velocity.x = player.player_direction * player.speed * 2.5
 	player.velocity = player.move_and_slide(player.velocity)

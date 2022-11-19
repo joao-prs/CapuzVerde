@@ -5,12 +5,15 @@ signal enemy_direction(direction)
 export (NodePath) var _animation_enemy
 onready var animation_enemy: AnimationPlayer = get_node(_animation_enemy)
 
-func enter(msg := {}) -> void:
+func enter(_msg := {}) -> void:
 	enemy.is_attacking = true
 	animation_enemy.play("Attack")
 	emit_signal("enemy_direction", enemy.walk_direction)
 
-func physics_update(_delta):
+func physics_update(delta):
+	enemy.velocity.x = lerp(enemy.velocity.x, 0, enemy.speed * delta)
+	enemy.velocity.y += enemy.gravity * delta
+	enemy.velocity = enemy.move_and_slide(enemy.velocity)
 	if not enemy.is_attacking:
 		if enemy.is_chasing:
 			state_machine.transition_to("Chase")

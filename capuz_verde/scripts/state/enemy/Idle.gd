@@ -25,5 +25,5 @@ func _on_Timer_timeout():
 	return
 
 
-func _on_CollisionArea_area_entered(area):
+func _on_CollisionArea_area_entered(_area):
 	state_machine.transition_to("Hit")

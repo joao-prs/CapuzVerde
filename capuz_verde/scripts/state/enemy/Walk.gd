@@ -1,8 +1,10 @@
 extends EnemyState
 
 export (NodePath) var _enemy_raycast
+export (NodePath) var _jump_raycast
 export (NodePath) var _animation_enemy
-onready var enemy_raycast: RayCast2D = get_node(_enemy_raycast)
+onready var enemy_raycast: RayCast2D = get_node_or_null(_enemy_raycast)
+onready var jump_raycast: RayCast2D = get_node_or_null(_jump_raycast)
 onready var animation_enemy: AnimationPlayer = get_node(_animation_enemy)
 
 
@@ -27,9 +29,9 @@ func physics_update(delta: float) -> void:
 		state_machine.transition_to("Idle")
 
 
-func _on_DetectArea_body_entered(body):
+func _on_DetectArea_body_entered(_body):
 	state_machine.transition_to("Attack")
 
 
-func _on_DetectArea_area_entered(area):
+func _on_DetectArea_area_entered(_area):
 	state_machine.transition_to("Attack")

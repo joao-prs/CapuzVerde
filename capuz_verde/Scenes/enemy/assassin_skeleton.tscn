@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=2]
 
-[ext_resource path="res://assets_mobs/skeleton_thief.png" type="Texture" id=1]
+[ext_resource path="res://assets_mobs/skeleton_assassin.png" type="Texture" id=1]
 [ext_resource path="res://scripts/state/state_machine.gd" type="Script" id=2]
 [ext_resource path="res://scripts/state/enemy/Idle.gd" type="Script" id=3]
 [ext_resource path="res://scripts/enemy/enemy.gd" type="Script" id=4]
@@ -15,7 +15,7 @@
 extents = Vector2( 4, 3.625 )
 
 [sub_resource type="CircleShape2D" id=9]
-radius = 40.0
+radius = 64.0
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4, 6.5 )
@@ -318,17 +318,25 @@ tracks/3/keys = {
 "values": [ true ]
 }
 
-[node name="ThiefSkeleton" type="KinematicBody2D"]
+[node name="AssassinSkeleton" type="KinematicBody2D"]
 collision_layer = 16
 collision_mask = 32
 script = ExtResource( 4 )
-health = 2
+health = 4
+speed = 25
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, -8 )
 texture = ExtResource( 1 )
 hframes = 4
 vframes = 3
+
+[node name="JumpRayCast" type="RayCast2D" parent="Sprite"]
+position = Vector2( 0, -12 )
+rotation = -1.5708
+enabled = true
+cast_to = Vector2( 0, 5 )
+collision_mask = 32
 
 [node name="EnemyRayCast" type="RayCast2D" parent="Sprite"]
 position = Vector2( 0, 4 )
@@ -362,7 +370,7 @@ collision_mask = 4
 monitoring = false
 
 [node name="PlayerDetection" type="CollisionShape2D" parent="Sprite/DetectChaseArea"]
-position = Vector2( 24, -1 )
+position = Vector2( 48, 2 )
 shape = SubResource( 9 )
 
 [node name="CollisionArea" type="Area2D" parent="."]
@@ -402,6 +410,7 @@ script = ExtResource( 5 )
 [node name="Walk" type="Node" parent="StateMachine"]
 script = ExtResource( 6 )
 _enemy_raycast = NodePath("../../Sprite/EnemyRayCast")
+_jump_raycast = NodePath("../../Sprite/JumpRayCast")
 _animation_enemy = NodePath("../../AnimationPlayer")
 
 [node name="Attack" type="Node" parent="StateMachine"]
@@ -419,6 +428,7 @@ _animation_player = NodePath("../../AnimationPlayer")
 [node name="Chase" type="Node" parent="StateMachine"]
 script = ExtResource( 10 )
 _enemy_raycast = NodePath("../../Sprite/EnemyRayCast")
+_jump_raycast = NodePath("../../Sprite/JumpRayCast")
 _animation_enemy = NodePath("../../AnimationPlayer")
 
 [connection signal="area_entered" from="Sprite/AttackArea" to="StateMachine/Attack" method="_on_AttackArea_area_entered"]

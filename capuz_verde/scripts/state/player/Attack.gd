@@ -28,7 +28,7 @@ func physics_update(delta: float) -> void:
 		player.velocity, player.UP_DIRECTION
 		)
 
-func _on_AnimationPlayer_animation_finished(anim_name):
+func _on_AnimationPlayer_animation_finished(_anim_name):
 	if not player.is_on_floor():
 		state_machine.transition_to("Jump")
 		return

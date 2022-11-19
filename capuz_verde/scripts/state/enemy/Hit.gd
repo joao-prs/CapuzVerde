@@ -19,6 +19,7 @@ func enter(_msg: = {}) -> void:
 			state_machine.transition_to("Walk")
 
 func physics_update(delta):
+	enemy.velocity.y += enemy.gravity * delta
 	enemy.velocity.x = lerp(enemy.velocity.x, 0, enemy.speed * delta)
 	enemy.velocity = enemy.move_and_slide(enemy.velocity)
 	
