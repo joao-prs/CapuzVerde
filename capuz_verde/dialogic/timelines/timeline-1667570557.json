@@ -249,6 +249,10 @@
 			"text": "Olá de novo.\nbom... a gente vai ser em breve.\nAté algum dia."
 		},
 		{
+			"event_id": "dialogic_022",
+			"transition_duration": 1
+		},
+		{
 			"event_id": "dialogic_013"
 		}
 	],

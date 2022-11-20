@@ -6,7 +6,7 @@ func _ready():
 	$VBoxContainer/btn_start.grab_focus()
 
 func _on_btn_start_pressed():
-	#Global.carregar_jogo()
+	Global.carregar_jogo()
 	#-------------------------+
 	#     TROCANDO O MAPA     |
 	#-------------------------+

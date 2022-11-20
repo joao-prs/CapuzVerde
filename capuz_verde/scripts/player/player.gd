@@ -23,6 +23,12 @@ onready var dash_particle := $DashParticle
 onready var _start_scale: Vector2 = _pivot.scale
 onready var changer = get_parent().get_node("transition_in")
 
+func _ready():
+	# tentativa de conectar ao arquivo de save
+	position.x = Global.player_position_x
+	position.y = Global.player_position_y
+
+
 
 func get_input_direction() -> float:
 	var direction = (
