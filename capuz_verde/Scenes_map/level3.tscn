@@ -1,14 +1,13 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/Camera2DPrincipal.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/saveArea.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/ChangeMap.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/player/wip_player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets_map/level1.tres" type="TileSet" id=5]
 [ext_resource path="res://Scenes/Escada.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/transition_in.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/transition_out.tscn" type="PackedScene" id=8]
-[ext_resource path="res://assets_map/luz.png" type="Texture" id=9]
 
 [node name="level3" type="Node2D"]
 
@@ -18,18 +17,12 @@ cell_size = Vector2( 16, 16 )
 format = 1
 tile_data = PoolIntArray( 196623, 78, 0, 262159, 78, 0, 327695, 78, 0, 393231, 78, 0, 458767, 78, 0, 524303, 78, 0, 589839, 78, 0, 655375, 77, 0, 720911, 77, 0, 786447, 77, 0, 851983, 77, 0, 917519, 77, 0 )
 
-[node name="player" parent="." instance=ExtResource( 4 )]
-position = Vector2( 40, 0 )
+[node name="WIPPlayer" parent="." instance=ExtResource( 4 )]
+position = Vector2( 40, -8 )
 
-[node name="Camera2D" parent="player" instance=ExtResource( 1 )]
+[node name="Camera2D2" parent="WIPPlayer" instance=ExtResource( 1 )]
 limit_bottom = 1300
 smoothing_enabled = false
-
-[node name="Light" type="Light2D" parent="player"]
-visible = false
-texture = ExtResource( 9 )
-texture_scale = 2.09
-energy = 0.58
 
 [node name="TileMap_front" type="TileMap" parent="."]
 tile_set = ExtResource( 5 )
@@ -44,9 +37,10 @@ position = Vector2( 296, 240 )
 map_local = "res://Scenes_map/level3.tscn"
 
 [node name="ChangeMap" parent="." instance=ExtResource( 3 )]
-position = Vector2( -24, 0 )
+position = Vector2( -16, 0 )
 path = "res://Scenes_map/level2.tscn"
 player_loc_x = 3176.0
+player_loc_y = -5.0
 
 [node name="EscadaArea" parent="." instance=ExtResource( 6 )]
 position = Vector2( 248, 240 )
