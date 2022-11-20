@@ -3,6 +3,7 @@ extends Area2D
 export (NodePath) var _animation_keyboard
 onready var animation_keyboard: AnimationPlayer = get_node(_animation_keyboard)
 
+
 var interacao = false
 func _ready():
 	animation_keyboard.play("Idle")

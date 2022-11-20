@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets_mobs/npc_chill.png" type="Texture" id=1]
-[ext_resource path="res://scripts/npc_chill.gd" type="Script" id=2]
+[ext_resource path="res://scripts/npc_dialog.gd" type="Script" id=2]
 [ext_resource path="res://addons/dialogic/Other/DialogicClass.gd" type="Script" id=3]
 [ext_resource path="res://assets_menu/Keyboard Letters and Symbols2.png" type="Texture" id=4]
 

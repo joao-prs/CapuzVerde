@@ -9,7 +9,7 @@ func _ready():
 	animation_keyboard.play("Idle")
 
 func _process(delta):
-	if interacao == true and Input.is_action_pressed("f_button"):		
+	if interacao == true and Input.is_action_pressed("f_button"):
 		#pega a posicao atual da planta e passa pro jogador
 		Global.player_position_x = position.x
 		Global.player_position_y = position.y - 10

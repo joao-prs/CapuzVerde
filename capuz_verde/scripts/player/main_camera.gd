@@ -5,7 +5,6 @@ func _ready():
 	timer.start()
 
 func _on_Timer_timeout():
-	print("acabou o tempo")
 	smoothing_enabled = true
 
 #  TALVEZ NO FUTURO TENHA ANIMACOES DE CAMERA,

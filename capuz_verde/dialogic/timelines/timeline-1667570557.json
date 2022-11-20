@@ -237,7 +237,7 @@
 			"event_id": "dialogic_013"
 		},
 		{
-			"condition": "",
+			"condition": ">=",
 			"definition": "1667643432-648",
 			"event_id": "dialogic_012",
 			"value": "2"
