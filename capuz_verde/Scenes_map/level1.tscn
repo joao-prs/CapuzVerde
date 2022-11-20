@@ -108,15 +108,15 @@ position = Vector2( 1621, 95 )
 [node name="Skeleton2" parent="." instance=ExtResource( 13 )]
 position = Vector2( 769, 143 )
 
+[node name="AssassinSkeleton" parent="." instance=ExtResource( 15 )]
+position = Vector2( 1456, 80 )
+
+[node name="ThiefSkeleton" parent="." instance=ExtResource( 17 )]
+position = Vector2( 1544, 96 )
+
 [node name="npc_chill" parent="." instance=ExtResource( 6 )]
 position = Vector2( 2112, 64 )
 Dialog_timeline = "chill1"
-
-[node name="AssassinSkeleton" parent="." instance=ExtResource( 15 )]
-position = Vector2( 1492, 79 )
-
-[node name="ThiefSkeleton" parent="." instance=ExtResource( 17 )]
-position = Vector2( 1566, 95 )
 
 [node name="TextEdit3" type="TextEdit" parent="."]
 margin_left = 1696.0
@@ -127,16 +127,6 @@ rect_pivot_offset = Vector2( 16, 48 )
 custom_fonts/font = ExtResource( 16 )
 text = "'E' para atacar,
 combate dos bot melhorado"
-
-[node name="TextEdit4" type="TextEdit" parent="."]
-margin_left = 312.0
-margin_top = 56.0
-margin_right = 408.0
-margin_bottom = 88.0
-rect_pivot_offset = Vector2( 16, 48 )
-custom_fonts/font = ExtResource( 16 )
-text = "'seta para cima'
-para conversar"
 
 [node name="hub" parent="." instance=ExtResource( 12 )]
 
