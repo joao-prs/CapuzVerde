@@ -131,7 +131,5 @@ combate dos bot melhorado"
 [node name="hub" parent="." instance=ExtResource( 12 )]
 
 [node name="transition_in" parent="." instance=ExtResource( 4 )]
-visible = false
 
 [node name="transition_out" parent="." instance=ExtResource( 5 )]
-visible = false

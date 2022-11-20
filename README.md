@@ -2,19 +2,20 @@
 
 # CapuzVerde
 
-## versão: 0.0.1.12
+## versão: 0.0.1.13
 
 ### Um jogo desenvolvido para o aprendizado meu e de uma equipe.Utilizaremos nesse projeto o motor Godot 3.5.1 standart version com plugin. Os plugins ficam anexados aos projetos então talvez não precise instalar ele. O projeto atual tem apenas um jogo, mas os conhecimentos podem ser reciclados para futuros projetos.
 
 ## atualizações
 
 ### recente👆​ antigo👇​​
-- adicionado sprite de tecla de interação com npc
-- inimigo seguindo e particulas do dash reimplementadas
-- ataque e dash usando a barra de energia
-- dash atualizado, não é mais detectado pelo inimigo
-- knockback do player e inimigos implementado
-- separação de funções do player e dos inimigos em maquinas de estado
+- adição de portraits para NPCs e smoothing de animação de morte dos skeletons.
+- adicionado sprite de tecla de interação com npc.
+- inimigo seguindo e particulas do dash reimplementadas.
+- ataque e dash usando a barra de energia.
+- dash atualizado, não é mais detectado pelo inimigo.
+- knockback do player e inimigos implementado.
+- separação de funções do player e dos inimigos em maquinas de estado.
 - captura de variaveis nos dialogos feita.
 - corrigido problema de transição de mapas ao exportar o jogo.
 - dash atualizado, zona de ataque dos inimigos atualizada, bots inimigos seguem e pulam plataforma.

@@ -25,9 +25,9 @@ onready var changer = get_parent().get_node("transition_in")
 
 func _ready():
 	# tentativa de conectar ao arquivo de save
+	health = Global.health
 	position.x = Global.player_position_x
 	position.y = Global.player_position_y
-
 
 
 func get_input_direction() -> float:
