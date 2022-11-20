@@ -1,8 +1,8 @@
 {
 	"events": [
 		{
-			"animation": "slide_in_right.gd",
-			"animation_length": 0.5,
+			"animation": "[Default]",
+			"animation_length": 2,
 			"change_mirror_portrait": false,
 			"change_z_index": false,
 			"character": "character-1668949905.json",
@@ -30,7 +30,7 @@
 			"character": "character-1667570583.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "...\njá ouvi falar de você.\nUm garoto me disse de você.\neh... Eu conheço você.\nMeu nome é david. "
+			"text": "...\njá ouvi falar de você.\nUm garoto me disse de você.\neh... Eu conheço você.\nMeu nome é [color=#b6cf8e]Yenore[/color].\nMe chama de Yen, ninguém me chama de Yenore. "
 		},
 		{
 			"definition": "1667643432-648",
@@ -42,7 +42,7 @@
 		},
 		{
 			"event_id": "dialogic_022",
-			"transition_duration": 1
+			"transition_duration": 0
 		},
 		{
 			"event_id": "dialogic_013"

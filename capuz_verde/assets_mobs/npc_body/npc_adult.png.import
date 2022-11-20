@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/npc_warrior1.png-05db43977d1458008ab289531cde4b43.stex"
+path="res://.import/npc_adult.png-458248792ce891d05a69e61df41c737b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets_mobs/npc_warrior1.png"
-dest_files=[ "res://.import/npc_warrior1.png-05db43977d1458008ab289531cde4b43.stex" ]
+source_file="res://assets_mobs/npc_body/npc_adult.png"
+dest_files=[ "res://.import/npc_adult.png-458248792ce891d05a69e61df41c737b.stex" ]
 
 [params]
 

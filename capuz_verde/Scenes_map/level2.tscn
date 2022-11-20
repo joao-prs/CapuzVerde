@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets_map/level1.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/player/wip_player.tscn" type="PackedScene" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://Scenes/ChangeMap.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Scenes_npc/npc_knight.tscn" type="PackedScene" id=13]
 [ext_resource path="res://addons/dialogic/Example Assets/Fonts/NameFont.tres" type="DynamicFont" id=14]
+[ext_resource path="res://assets_mobs/npc_body/npc_chill2.png" type="Texture" id=15]
 
 [node name="level2" type="Node2D"]
 
@@ -127,3 +128,8 @@ text = "terceiro mapa em desenvolvimento..."
 [node name="npc_chill" parent="." instance=ExtResource( 10 )]
 position = Vector2( 1048, 32 )
 Dialog_timeline = "chill2"
+
+[node name="Sprite" parent="npc_chill" index="0"]
+texture = ExtResource( 15 )
+
+[editable path="npc_chill"]

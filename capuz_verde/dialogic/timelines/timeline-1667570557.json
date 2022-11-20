@@ -1,7 +1,7 @@
 {
 	"events": [
 		{
-			"animation": "slide_in_left.gd",
+			"animation": "[Default]",
 			"animation_length": 0.5,
 			"animation_wait": false,
 			"change_mirror_portrait": false,
@@ -246,7 +246,7 @@
 			"character": "character-1667570583.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Olá de novo.\nbom... a gente vai ser em breve.\nAté algum dia."
+			"text": "Olá de novo.\nbom... a gente vai se ver em breve.\nAté algum dia."
 		},
 		{
 			"event_id": "dialogic_022",

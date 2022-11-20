@@ -1,8 +1,9 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://assets_mobs/npc_warrior1.png" type="Texture" id=1]
+[ext_resource path="res://assets_mobs/npc_body/npc_warrior1.png" type="Texture" id=1]
 [ext_resource path="res://scripts/npc_knight1.gd" type="Script" id=2]
 [ext_resource path="res://addons/dialogic/Other/DialogicClass.gd" type="Script" id=3]
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 9 )

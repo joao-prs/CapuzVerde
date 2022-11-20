@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/npc_adult3.png-a4ddd4268b84b11a46a15ef587f05da6.stex"
+path="res://.import/npc_adult4.png-e2719f507c3049ed5aee954e70e16c83.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets_mobs/npc_adult3.png"
-dest_files=[ "res://.import/npc_adult3.png-a4ddd4268b84b11a46a15ef587f05da6.stex" ]
+source_file="res://assets_mobs/npc_body/npc_adult4.png"
+dest_files=[ "res://.import/npc_adult4.png-e2719f507c3049ed5aee954e70e16c83.stex" ]
 
 [params]
 

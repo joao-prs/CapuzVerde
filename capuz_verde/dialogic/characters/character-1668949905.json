@@ -1,21 +1,21 @@
 {
-	"color": "#ff3c6b64",
-	"description": "uma criança alegre",
-	"display_name": "David",
+	"color": "#ffb6cf8e",
+	"description": "uma criança não tão alegre",
+	"display_name": "Yen",
 	"display_name_bool": true,
 	"id": "character-1668949905.json",
 	"mirror_portraits": false,
 	"name": "chill2",
 	"nickname": "",
 	"nickname_bool": false,
-	"offset_x": 0,
+	"offset_x": 300,
 	"offset_y": 0,
 	"portraits": [
 		{
 			"name": "Default",
-			"path": ""
+			"path": "res://assets_mobs/npc_portrait/portrait_chill2.png"
 		}
 	],
-	"scale": 100,
-	"theme": ""
+	"scale": 101,
+	"theme": "default-theme.cfg"
 }
