@@ -8,7 +8,7 @@ onready var respawn_timer: Timer = get_node(_respawn_timer)
 func enter(_msg: ={}) -> void:
 	animation_player.play("Death")
 	yield(get_tree().create_timer(2.0), "timeout")
-	player.changer.load_transition()
+	player.transition.load_transition()
 	respawn_timer.start(1)
 
 
