@@ -16,7 +16,7 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 
 [sub_resource type="ConvexPolygonShape2D" id=48]
-points = PoolVector2Array( 0, 0, 5.08809, 11.3438, 16, 16, 0, 16 )
+points = PoolVector2Array( 0, 0, 3.10293, 12.6935, 16, 16, 0, 16 )
 
 [sub_resource type="ConvexPolygonShape2D" id=27]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 16, 16 )
@@ -40,7 +40,7 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 
 [sub_resource type="ConvexPolygonShape2D" id=31]
-points = PoolVector2Array( 0, 0, 11.9857, 3.84143, 16, 16, 0, 16 )
+points = PoolVector2Array( 0, 0, 13.3316, 3.12177, 16, 16, 0, 16 )
 
 [sub_resource type="ConvexPolygonShape2D" id=34]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
