@@ -2,37 +2,38 @@
 
 # CapuzVerde
 
-## versão: 0.0.1.13
+## versão: 0.0.1.14
 
 ### Um jogo desenvolvido para o aprendizado meu e de uma equipe.Utilizaremos nesse projeto o motor Godot 3.5.1 standart version com plugin. Os plugins ficam anexados aos projetos então talvez não precise instalar ele. O projeto atual tem apenas um jogo, mas os conhecimentos podem ser reciclados para futuros projetos.
 
 ## atualizações
 
 ### recente👆​ antigo👇​​
+- remodelando texturas.
 - adição de portraits para NPCs e smoothing de animação de morte dos skeletons.
 - adicionado sprite de tecla de interação com npc.
-- inimigo seguindo e particulas do dash reimplementadas.
+- Inimigo seguindo e particulas do dash reimplementadas.
 - ataque e dash usando a barra de energia.
-- dash atualizado, não é mais detectado pelo inimigo.
+- Aash atualizado, não é mais detectado pelo inimigo.
 - knockback do player e inimigos implementado.
-- separação de funções do player e dos inimigos em maquinas de estado.
-- captura de variaveis nos dialogos feita.
-- corrigido problema de transição de mapas ao exportar o jogo.
-- dash atualizado, zona de ataque dos inimigos atualizada, bots inimigos seguem e pulam plataforma.
-- criação e construção do mapa 3.
-- adicionado barra de energia.(que some quando está completa).
-- adicionado animação de idle.
-- arquivos de mapas estão em pastas agora, para melhor organização, além de .outras correções e organização dos códigos.
-- painel de Pause corrigido, pode dali Esc que agora funciona normal fml.
-- hub mais elegante e ordenado, agora ele tem contador de comida, que futuramente será utilizado.
-- agora tem hub e contador de vida.
-- corrigido o dialogo do npn do tutorial.
-- corrigido o comportamento da câmera durante a pausa.
-- corrigido o retorno do menu de pausa para o menu principal.
-- cena de tutorial mais apresentavel, porém apresenta bug no dialogo do personagem do tutorial.
-- atualizado o menu "about" na tela inicial.
-- alguns códigos tem descrições e notas, isso é util para conduzir os demais colaboradores.
-- adicionado modificador de vida(quantidade de vida em 3 e quando efetuado dano sobre o jogador, o mesmo faz animação de salto e pisca vermelho).
+- Separação de funções do player e dos inimigos em maquinas de estado.
+- Captura de variaveis nos dialogos feita.
+- Corrigido problema de transição de mapas ao exportar o jogo.
+- Dash atualizado, zona de ataque dos inimigos atualizada, bots inimigos seguem e pulam plataforma.
+- Criação e construção do mapa 3.
+- Adicionado barra de energia.(que some quando está completa).
+- Adicionado animação de idle.
+- Arquivos de mapas estão em pastas agora, para melhor organização, além de .outras correções e organização dos códigos.
+- Painel de Pause corrigido, pode dali Esc que agora funciona normal fml.
+- Hub mais elegante e ordenado, agora ele tem contador de comida, que futuramente será utilizado.
+- Agora tem hub e contador de vida.
+- Corrigido o dialogo do npn do tutorial.
+- Corrigido o comportamento da câmera durante a pausa.
+- Corrigido o retorno do menu de pausa para o menu principal.
+- Cena de tutorial mais apresentavel, porém apresenta bug no dialogo do personagem do tutorial.
+- Atualizado o menu "about" na tela inicial.
+- Alguns códigos tem descrições e notas, isso é util para conduzir os demais colaboradores.
+- Adicionado modificador de vida(quantidade de vida em 3 e quando efetuado dano sobre o jogador, o mesmo faz animação de salto e pisca vermelho).
 
 ## Lista de tarefas
 
