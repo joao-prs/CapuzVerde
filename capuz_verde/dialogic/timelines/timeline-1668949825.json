@@ -1,0 +1,94 @@
+{
+	"events": [
+		{
+			"animation": "[Default]",
+			"animation_length": 2,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1668949905.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Default",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
+			"condition": "",
+			"definition": "1667643432-648",
+			"event_id": "dialogic_012",
+			"value": "2"
+		},
+		{
+			"character": "character-1667570583.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "...\njá ouvi falar de você.\nUm garoto me disse de você.\neh... Eu conheço você.\nMeu nome é [color=#b6cf8e]Yenore[/color].\nMe chama de Yen, ninguém me chama de Yenore. "
+		},
+		{
+			"definition": "1667643432-648",
+			"event_id": "dialogic_014",
+			"operation": "=",
+			"random_upper_limit": 100,
+			"set_random": false,
+			"set_value": "3"
+		},
+		{
+			"event_id": "dialogic_022",
+			"transition_duration": 0
+		},
+		{
+			"event_id": "dialogic_013"
+		},
+		{
+			"condition": "<=",
+			"definition": "1667643432-648",
+			"event_id": "dialogic_012",
+			"value": "1"
+		},
+		{
+			"character": "character-1667570583.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "O que foi?"
+		},
+		{
+			"event_id": "dialogic_022",
+			"transition_duration": 1
+		},
+		{
+			"event_id": "dialogic_013"
+		},
+		{
+			"condition": ">=",
+			"definition": "1667643432-648",
+			"event_id": "dialogic_012",
+			"value": "3"
+		},
+		{
+			"character": "character-1668949905.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Agora eu não posso conversar,\ndepois nos vemos."
+		},
+		{
+			"event_id": "dialogic_022",
+			"transition_duration": 1
+		},
+		{
+			"event_id": "dialogic_013"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.5",
+		"file": "timeline-1668949825.json",
+		"name": "chill2"
+	}
+}

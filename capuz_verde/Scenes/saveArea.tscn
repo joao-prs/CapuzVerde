@@ -1,10 +1,103 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets_map/galho1.png" type="Texture" id=1]
 [ext_resource path="res://scripts/saveArea.gd" type="Script" id=2]
+[ext_resource path="res://assets_map/particula1.png" type="Texture" id=3]
+[ext_resource path="res://assets_menu/Keyboard Letters and Symbols2.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 12, 8 )
+
+[sub_resource type="Curve" id=3]
+_data = [ Vector2( 0.661111, 0 ), 0.0, 15.6989, 0, 0, Vector2( 0.994444, 0.285227 ), -1.78512, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=4]
+curve = SubResource( 3 )
+
+[sub_resource type="ParticlesMaterial" id=2]
+lifetime_randomness = 0.68
+emission_shape = 1
+emission_sphere_radius = 0.01
+flag_disable_z = true
+direction = Vector3( 0, 0, 0 )
+spread = 180.0
+gravity = Vector3( 0, -30, 0 )
+initial_velocity = 13.16
+initial_velocity_random = 1.0
+orbit_velocity = 0.09
+orbit_velocity_random = 0.0
+scale_curve = SubResource( 4 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "Idle"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "Up"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 21, 77 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [node name="saveArea" type="Area2D"]
 collision_layer = 2
@@ -13,6 +106,7 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
+_animation_keyboard = NodePath("AnimationPlayer")
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, -8 )
@@ -22,5 +116,29 @@ texture = ExtResource( 1 )
 position = Vector2( 0, -8 )
 shape = SubResource( 1 )
 
+[node name="Particles" type="Particles2D" parent="."]
+emitting = false
+amount = 10
+process_material = SubResource( 2 )
+texture = ExtResource( 3 )
+
+[node name="TimerParticles" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Keyboard")
+anims/Idle = SubResource( 5 )
+anims/RESET = SubResource( 6 )
+anims/Up = SubResource( 7 )
+
+[node name="Keyboard" type="Sprite" parent="."]
+visible = false
+position = Vector2( 0, -24 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 4 )
+hframes = 8
+vframes = 14
+
 [connection signal="body_entered" from="." to="." method="_on_saveArea_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_saveArea_body_exited"]
+[connection signal="timeout" from="TimerParticles" to="." method="_on_TimerParticles_timeout"]

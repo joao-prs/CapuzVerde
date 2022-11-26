@@ -1,19 +1,19 @@
 {
 	"color": "#ff3c6b64",
 	"description": "mora aqui.",
-	"display_name": "criança",
+	"display_name": "Criança",
 	"display_name_bool": true,
 	"id": "character-1667570583.json",
 	"mirror_portraits": false,
 	"name": "chill1",
 	"nickname": "",
 	"nickname_bool": false,
-	"offset_x": 0,
+	"offset_x": 300,
 	"offset_y": 0,
 	"portraits": [
 		{
 			"name": "Default",
-			"path": ""
+			"path": "res://assets_mobs/npc_portrait/portrait_chill1.png"
 		}
 	],
 	"scale": 100,

@@ -1,7 +1,10 @@
 extends KinematicBody2D
 
-export var speed = 16
+export var speed : int
+export var speed_subtrair : int
 export var health = 2
+var gravity = 450
+var jump_force = -400
 var velocity = Vector2.ZERO
 var move_direction = -1
 var can_die = false
@@ -10,10 +13,16 @@ var player_ref = null #detecta diracao player
 var detectou = false
 
 func _physics_process(delta: float)-> void:
+	### FISICA DO ESKELETINHO ###
+	velocity.y += gravity * delta
+	### SE ELE DETECTAR JOGADOR ###
 	if player_ref != null:
 		detectou = true
 	else:
 		detectou = false
+	### SE ELE MORRER ###
+	if health == 0:
+		can_die = true
 	
 	#checa se ta vivo
 	if can_die != true:
@@ -27,11 +36,15 @@ func _physics_process(delta: float)-> void:
 			if move_direction == 1:
 				$Sprite.flip_h = false
 				$Ray_wall.cast_to.y = -5
+				$Ray_wall2.cast_to.y = -5
 				$dano/CollisionDano.position.y = -6.5
+				$detecta/CollisionDetector.position.x = 24
 			else:
 				$Sprite.flip_h = true
 				$Ray_wall.cast_to.y = 5
+				$Ray_wall2.cast_to.y = 5
 				$dano/CollisionDano.position.y = 6.5
+				$detecta/CollisionDetector.position.x = -24
 			if velocity.x != 0:
 				$anim.play("run")
 				if $Ray_wall.is_colliding():
@@ -47,17 +60,32 @@ func _physics_process(delta: float)-> void:
 			var distance: Vector2 = position - player_ref.position
 			var direction: Vector2 = distance.normalized()
 
-			velocity.x = direction.x * (speed-50)
+			velocity.x = direction.x * (speed - speed_subtrair)
 			velocity = move_and_slide(velocity)
 			
+			$anim.play("run")
 			if direction.x < 0:
 				$Sprite.flip_h = false
 				$Ray_wall.cast_to.y = -5
+				$Ray_wall2.cast_to.y = -5
 				$dano/CollisionDano.position.y = -6.5
+				$detecta/CollisionDetector.position.x = 24
+				## se colidir com parede baixa, ele pula
+				if $Ray_wall.is_colliding() && not $Ray_wall2.is_colliding():
+					velocity.y = jump_force / 4
+				if $Ray_wall.is_colliding() && $Ray_wall2.is_colliding():
+					$anim.play("idle")
 			else:
 				$Sprite.flip_h = true
 				$Ray_wall.cast_to.y = 5
+				$Ray_wall2.cast_to.y = 5
 				$dano/CollisionDano.position.y = 6.5
+				$detecta/CollisionDetector.position.x = -24
+				## se colidir com parede baixa, ele pula
+				if $Ray_wall.is_colliding() && not $Ray_wall2.is_colliding():
+					velocity.y = jump_force / 4
+				if $Ray_wall.is_colliding() && $Ray_wall2.is_colliding():
+					$anim.play("idle")
 			if can_attack == false:
 				$anim.play("attack")
 				set_physics_process(false)
@@ -91,7 +119,11 @@ func _on_dano_body_entered(body):
 
 func _on_corpo_area_entered(area):
 	if area.is_in_group("player_ataque"):
-		can_die = true
+		health -= 1
+		#can_die = true
+		velocity.y = jump_force / 4
+		velocity.x = jump_force / 8 * move_direction
+		print("skeleton thief levou dano")
 
 #-----------------------------+
 #     PROCURANDO O PLAYER     |

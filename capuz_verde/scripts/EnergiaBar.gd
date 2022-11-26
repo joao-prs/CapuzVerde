@@ -6,12 +6,10 @@ onready var update_tween = $Tween
 var energia : int = 100
 var can_recharge = false
 
-
 func _process(_delta: float) -> void:
 
 	energy.value = energia
 	#energyTween.value = energia
-	
 	
 	#print("debug - 1")
 	#efeito
@@ -19,10 +17,8 @@ func _process(_delta: float) -> void:
 	#update_tween.start()
 	####### se houver diferença, ativa o tempo
 	if Global.energia < energia:
-		###
-		print("debug ", energia," e ", Global.energia)
+		can_recharge = false
 		ativar_daley()
-		print("debug - 2")
 		$Timer.start()
 		#efeito
 
@@ -33,11 +29,9 @@ func _process(_delta: float) -> void:
 	if can_recharge == true:
 		if energia < 100:
 			Global.energia += 1
-			print("debug - 4")
 			#energy.value = energia
 		else:
 			can_recharge = false
-			print("debug - 5")
 	####### se tiver cheio, fica invisivel
 	if energia == 100:
 		energy.visible = false
@@ -46,14 +40,11 @@ func _process(_delta: float) -> void:
 	else:
 		energy.visible = true
 		energyTween.visible = true
-		print("debug - 7")
 
 func ativar_daley():
-	print("delay")
 	update_tween.interpolate_property(energyTween, "value", energyTween.value, energia, 0.4, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
 	update_tween.start()
 
 ####### depois de contar tempo, ele recarrega
 func _on_Timer_timeout():
 	can_recharge = true
-	print("debug - 3")

@@ -54,6 +54,7 @@ func carregar_jogo():
 	map_save = linha_atual["map_save"]
 	jogo_salvo.close()
 
+
 func death_respaw():
 	var jogo_salvo = File.new()
 	if not jogo_salvo.file_exists("user://jogosalvo.save"):

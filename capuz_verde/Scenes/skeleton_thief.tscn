@@ -140,12 +140,14 @@ extents = Vector2( 18.75, 7.5 )
 extents = Vector2( 3.00001, 2.5 )
 
 [sub_resource type="CircleShape2D" id=9]
-radius = 64.0
+radius = 40.0
 
 [node name="skeleton_thief" type="KinematicBody2D"]
 collision_layer = 16
 collision_mask = 32
 script = ExtResource( 2 )
+speed = 16
+speed_subtrair = 50
 
 [node name="anim" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 2 )
@@ -154,12 +156,25 @@ anims/dead = SubResource( 4 )
 anims/idle = SubResource( 5 )
 anims/run = SubResource( 6 )
 
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -8 )
+texture = ExtResource( 1 )
+hframes = 4
+vframes = 3
+
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -5.5 )
 shape = SubResource( 8 )
 
 [node name="Ray_wall" type="RayCast2D" parent="."]
 position = Vector2( 0, -4 )
+rotation = 1.5708
+enabled = true
+cast_to = Vector2( 0, 5 )
+collision_mask = 32
+
+[node name="Ray_wall2" type="RayCast2D" parent="."]
+position = Vector2( 0, -20 )
 rotation = 1.5708
 enabled = true
 cast_to = Vector2( 0, 5 )
@@ -184,17 +199,12 @@ collision_mask = 4
 position = Vector2( 0, -6.5 )
 shape = SubResource( 7 )
 
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0, -8 )
-texture = ExtResource( 1 )
-hframes = 4
-vframes = 3
-
 [node name="detecta" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionDetector" type="CollisionShape2D" parent="detecta"]
+position = Vector2( 24, -8 )
 shape = SubResource( 9 )
 
 [connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]

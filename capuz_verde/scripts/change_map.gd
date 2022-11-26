@@ -12,9 +12,13 @@ export var player_loc_y : float
 #	pass	
 
 func _on_Return_map_body_entered(body):
-	if body.name == "player":
-		print("[change_map.gd][corpo do jogador colidiu com a troca de mapa]")
-		changer.change_scene(path)
+	if body.name == "player" or "WIPPlayer":
+		print("[change_map.gd] [corpo do jogador colidiu com a troca de mapa]")
+		#changer.change_scene(path)
+		changer.load_transition()
+		$Timer.start()
+		#get_tree().change_scene(path) ## melhor opção 
+		#changer.get_tree().change_scene(path)
 		Global.player_position_x = player_loc_x
 		Global.player_position_y = player_loc_y
 
@@ -23,3 +27,8 @@ func _on_Return_map_body_entered(body):
 # VERIFIQUE SE OS NODES "TRANSITION_IN" E O NODE "TRANSITION_OUT" ESTAO  |
 # NESSE MAPA/SCENES, ELES SAO NECESSARIOS PARA QUE ESTE CODIGO FUNCIONE. |
 #------------------------------------------------------------------------+
+
+
+func _on_Timer_timeout():
+	# troca de mapa
+	get_tree().change_scene(path)

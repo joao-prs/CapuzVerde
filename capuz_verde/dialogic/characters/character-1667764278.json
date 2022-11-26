@@ -8,12 +8,12 @@
 	"name": "knight1",
 	"nickname": "",
 	"nickname_bool": false,
-	"offset_x": 0,
+	"offset_x": 300,
 	"offset_y": 0,
 	"portraits": [
 		{
 			"name": "Default",
-			"path": ""
+			"path": "res://assets_mobs/npc_portrait/portrait_warrior1.png"
 		}
 	],
 	"scale": 100,

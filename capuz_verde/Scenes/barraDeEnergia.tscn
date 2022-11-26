@@ -3,7 +3,7 @@
 [ext_resource path="res://assets_player/bar_energy1.png" type="Texture" id=1]
 [ext_resource path="res://assets_player/bar_energy3.png" type="Texture" id=2]
 [ext_resource path="res://assets_player/bar_energy2.png" type="Texture" id=3]
-[ext_resource path="res://scripts/EnergiaBar.gd" type="Script" id=4]
+[ext_resource path="res://scripts/player/energy_bar.gd" type="Script" id=4]
 
 [node name="barraDeEnergia" type="Control"]
 anchor_right = 1.0

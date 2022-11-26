@@ -1,17 +1,18 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets_map/level1.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/transition_out.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scenes/Camera2DPrincipal.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/enemy/wip_enemy.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/enemy/thief_skeleton.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/transition_in.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets_frases/frase_manual1.png" type="Texture" id=6]
+[ext_resource path="res://Scenes/enemy/assassin_skeleton.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets_map/parallax3.png" type="Texture" id=7]
 [ext_resource path="res://assets_map/parallax2.png" type="Texture" id=8]
 [ext_resource path="res://Scenes/ChangeMap.tscn" type="PackedScene" id=9]
 [ext_resource path="res://addons/dialogic/Example Assets/Fonts/NameFont.tres" type="DynamicFont" id=10]
 [ext_resource path="res://Scenes_npc/npc_chill.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scripts/npc_dialog.gd" type="Script" id=12]
+[ext_resource path="res://Scenes/player/wip_player.tscn" type="PackedScene" id=14]
 
 [node name="tutorial" type="Node2D"]
 
@@ -51,17 +52,6 @@ custom_fonts/font = ExtResource( 10 )
 text = "  \"cima\" para 
     interagir"
 
-[node name="player" parent="." instance=ExtResource( 4 )]
-position = Vector2( 256, 56 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Camera2D" parent="player" instance=ExtResource( 3 )]
-limit_right = 600
-limit_bottom = 112
-smoothing_enabled = false
-
 [node name="Parallax fundo" type="ParallaxBackground" parent="."]
 
 [node name="1" type="ParallaxLayer" parent="Parallax fundo"]
@@ -82,17 +72,6 @@ position = Vector2( 0, -100 )
 texture = ExtResource( 8 )
 centered = false
 
-[node name="Parallax frente" type="ParallaxBackground" parent="."]
-layer = 50
-visible = false
-
-[node name="textos" type="ParallaxLayer" parent="Parallax frente"]
-motion_scale = Vector2( 1.05, 1 )
-
-[node name="frase1" type="Sprite" parent="Parallax frente/textos"]
-position = Vector2( 256, 10 )
-texture = ExtResource( 6 )
-
 [node name="transition_in" parent="." instance=ExtResource( 5 )]
 follow_viewport_scale = 0.0
 
@@ -107,3 +86,15 @@ position = Vector2( 336, 64 )
 scale = Vector2( -1, 1 )
 script = ExtResource( 12 )
 Dialog_timeline = "TutorialChat"
+
+[node name="AssassinSkeleton" parent="." instance=ExtResource( 6 )]
+position = Vector2( 34, 14 )
+
+[node name="WIPSkeleton" parent="." instance=ExtResource( 3 )]
+position = Vector2( 301, 51 )
+
+[node name="WIPPlayer" parent="." groups=["player"] instance=ExtResource( 14 )]
+position = Vector2( 256, 48 )
+
+[node name="ThiefSkeleton" parent="." instance=ExtResource( 4 )]
+position = Vector2( 377, 41 )

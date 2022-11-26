@@ -12,6 +12,7 @@ var jump_force = -400
 var acceleration = 5
 var move_direction : int
 var direction:int = 1
+var can_move = true
 # variaveis estados do personagem
 var anim
 var dead
@@ -38,6 +39,7 @@ func ghost_spawn():
 func _ready():
 	dead = false
 	anim = "idle"
+	$dash.visible = false
 	position.x = Global.player_position_x
 	position.y = Global.player_position_y
 
@@ -45,23 +47,35 @@ func _physics_process(delta):
 	can_attack = true
 	
 	
+<<<<<<< HEAD
 	velocity.y += gravity * delta
 	if not inDash:
 		move_direction = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
+=======
+
+	move_direction = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
+>>>>>>> 7efe69f74d61b7cb4818011a77d8384bed3372db
 	if !animacao_dano:
 		if move_direction == 0:
 			if velocity.x > 0:
 				velocity.x -= acceleration
+				if velocity.x < 5:
+					velocity.x = 0
 			elif velocity.x < 0:
 				velocity.x += acceleration
+				if velocity.x > -5:
+					velocity.x = 0
 		else:
 			velocity.x = move_speed * move_direction
-	
+
+
 	if velocity.x > 0 && !animacao_dano:
 		$Sprite.flip_h = false
+		$dash.flip_h = false
 		collision.position = Vector2(6, -8)
 	elif velocity.x < 0 && !animacao_dano:
 		$Sprite.flip_h = true
+		$dash.flip_h = true
 		collision.position = Vector2(-6, -8)
 	
 	if health > Global.health:
@@ -83,6 +97,7 @@ func _physics_process(delta):
 	velocity = move_and_slide(velocity, Vector2.UP)
 	_escada()
 	_set_animation()
+<<<<<<< HEAD
 	
 func _get_input():
 	velocity.x = 0
@@ -98,6 +113,9 @@ func _get_input():
 			$Sprite.flip_h = true
 			collision.position = Vector2(-6, -8)
 		
+=======
+
+>>>>>>> 7efe69f74d61b7cb4818011a77d8384bed3372db
 
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_select") && is_on_floor():
@@ -108,6 +126,7 @@ func _unhandled_input(event):
 		Global.energia -= 50
 		_set_animation()
 		return
+
 	elif event.is_action_pressed("dash"):
 		Dash()
 
@@ -131,11 +150,11 @@ func _set_animation():
 			anim = "idle"
 		elif velocity.x != 0:
 			anim = "run"
-
 	if can_attack == false:
 		anim = "attack"
 		set_physics_process(false)
-
+	if $dash.visible == true:
+		anim = "dash"
 	elif health < 1:
 		anim = "dead"
 		dead = true
@@ -151,27 +170,28 @@ func _on_anim_animation_finished(animation):
 		set_physics_process(true)
 		
 	if animation == "dead":
-		Global.death_respaw()
-		changer.change_scene(Global.map_save)
-		Global.death_respaw()
+		changer.load_transition()
+		$revive_timer.start()
+		#changer.change_scene(Global.map_save)
 
 func _on_Collision_tree_entered():
 	if $Collision.is_in_group("ataque_inimigo"):
 		dead = true
 
-func _on_Timer_ready():
-	# Essa funcao deveria deslocar o jogador
-	# para o lado oposto ao dano.
-	velocity.x = (move_speed) * (direction)
-
-func _on_Timer_timeout():
+func _on_Timer_timeout(): ## QUANDO PLAYER LEVAR DANO
 	$Sprite.modulate = "ffffff"
 	animacao_dano = false
+
+func _on_revive_timer_timeout(): ## QUANDO PLAYER MORRER
+	Global.death_respaw()
+	get_tree().change_scene(Global.map_save)
+
 #--------------------+
 #  TESTE DO GUSTAVO  |
 #--------------------+
 func Dash():
 	# só aplicar o dash quando tiver andando
+<<<<<<< HEAD
 	if is_on_floor():
 		if velocity.x and velocity.x != 0:
 			var prod = dashGhostPreload.instance()
@@ -196,8 +216,29 @@ func Dash():
 func _on_Dash_timer_timeout():
 	$Dash_particle.emitting = false
 	inDash = false
+=======
+	if velocity.x:
+		move_speed = 180
+		# verificar em qual direcao vai ser o dash
+		if $Sprite.flip_h:
+			$Dash_particle.position.x = 2
+		else:
+			$Dash_particle.position.x = -2
+
+		print("Dash?")
+		$Dash_timer.start()
+		$dash.visible = true
+		$Sprite.visible = false
+		$Dash_particle.emitting = true
+
+func _on_Dash_timer_timeout():
+	$Dash_particle.emitting = false
+	$dash.visible = false
+	$Sprite.visible = true
+>>>>>>> 7efe69f74d61b7cb4818011a77d8384bed3372db
 	print("CABO")
 	move_speed = 60
+
 
 #-----------------------------------------+
 #  MECANICA DE SUBIR E DESCER EM ESCADAS  |
@@ -212,6 +253,8 @@ func _escada():
 		if int(Input.is_action_pressed("ui_down")):
 			print("descendo escada")
 			velocity.y = move_speed * 1
-		gravity = 0
+		gravity = 200
 	else:
 		gravity = 450
+
+
