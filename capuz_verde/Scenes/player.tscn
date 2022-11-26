@@ -136,25 +136,22 @@ curve = SubResource( 8 )
 [sub_resource type="ParticlesMaterial" id=10]
 lifetime_randomness = 0.49
 emission_shape = 1
-emission_sphere_radius = 0.01
+emission_sphere_radius = 7.84
 flag_disable_z = true
 direction = Vector3( 0, 0, 0 )
 spread = 180.0
 gravity = Vector3( 0, 40, 0 )
 initial_velocity = 37.67
 angular_velocity = 235.1
-orbit_velocity = 0.08
+orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale_curve = SubResource( 9 )
 
 [node name="player" type="KinematicBody2D" groups=["player"]]
-position = Vector2( 7, 0 )
+position = Vector2( 101, 18 )
 collision_layer = 4
 collision_mask = 41
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, -8 )
@@ -196,13 +193,17 @@ margin_left = -8.0
 margin_top = -30.0
 
 [node name="Dash_particle" type="Particles2D" parent="."]
-position = Vector2( -10, 0 )
+modulate = Color( 0.596078, 1, 0.839216, 1 )
+position = Vector2( 10, -8 )
 scale = Vector2( 1, 0.96 )
 emitting = false
 amount = 90
 local_coords = false
 process_material = SubResource( 10 )
 texture = ExtResource( 5 )
+
+[node name="dashSpawn" type="Node2D" parent="."]
+position = Vector2( -6, -1 )
 
 [connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]
 [connection signal="ready" from="Timer" to="." method="_on_Timer_ready"]

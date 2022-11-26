@@ -1,20 +1,20 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://DashGhostScript.gd" type="Script" id=1]
+[ext_resource path="res://assets_player/player.png" type="Texture" id=2]
 
-[sub_resource type="StreamTexture" id=11]
-load_path = "res://.import/player.png-8b963ff676fdcbd69fd95a46335f9d82.stex"
+[node name="Node2D" type="Node2D"]
+position = Vector2( 100, 43 )
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="Sprite" type="Sprite"]
-modulate = Color( 0.356863, 0.352941, 0.364706, 1 )
-self_modulate = Color( 1, 0.486275, 1, 1 )
-position = Vector2( 111, 51 )
-scale = Vector2( 0.9375, 1 )
-texture = SubResource( 11 )
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
 hframes = 4
-vframes = 3
+vframes = 4
 script = ExtResource( 1 )
 
-[node name="Tween" type="Tween" parent="."]
+[node name="Tween" type="Tween" parent="Sprite"]
 
-[connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]
+[connection signal="tween_all_completed" from="Sprite/Tween" to="Sprite" method="_on_Tween_tween_all_completed"]

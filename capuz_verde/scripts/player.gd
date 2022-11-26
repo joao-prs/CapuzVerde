@@ -1,5 +1,8 @@
 extends KinematicBody2D
 
+var dashGhostPreload = preload("res://DashGhost.tscn")
+var inDash = false
+
 onready var changer = get_parent().get_node("transition_in")
 # variaveis fisica e movimentos
 var velocity = Vector2.ZERO
@@ -41,9 +44,10 @@ func _ready():
 func _physics_process(delta):
 	can_attack = true
 	
-	velocity.y += gravity * delta
 	
-	move_direction = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
+	velocity.y += gravity * delta
+	if not inDash:
+		move_direction = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
 	if !animacao_dano:
 		if move_direction == 0:
 			if velocity.x > 0:
@@ -82,15 +86,17 @@ func _physics_process(delta):
 	
 func _get_input():
 	velocity.x = 0
-	move_direction = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
-	velocity.x = move_speed * move_direction
+	if not inDash:
+		move_direction = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
+		velocity.x = move_speed * move_direction
 	
-	if velocity.x > 0:
-		$Sprite.flip_h = false
-		collision.position = Vector2(6, -8)
-	elif velocity.x < 0:
-		$Sprite.flip_h = true
-		collision.position = Vector2(-6, -8)
+	if not inDash:
+		if velocity.x > 0:
+			$Sprite.flip_h = false
+			collision.position = Vector2(6, -8)
+		elif velocity.x < 0:
+			$Sprite.flip_h = true
+			collision.position = Vector2(-6, -8)
 		
 
 func _unhandled_input(event):
@@ -110,8 +116,9 @@ func _unhandled_input(event):
 #---------------+
 func _input(event: InputEvent) -> void:
 	#"ui_select = tecla espaço"
-	if event.is_action_pressed("ui_select") && is_on_floor():
-		velocity.y = jump_force / 2
+	if not inDash:
+		if event.is_action_pressed("ui_select") && is_on_floor():
+			velocity.y = jump_force / 2
 
 
 func _set_animation():
@@ -165,20 +172,30 @@ func _on_Timer_timeout():
 #--------------------+
 func Dash():
 	# só aplicar o dash quando tiver andando
-	if velocity.x:
-		move_speed = 180
-		# verificar em qual direcao vai ser o dash
-		if $Sprite.flip_h:
-			$Dash_particle.position.x = 10
-		else:
-			$Dash_particle.position.x = -10
-			
-		print("Dash?")
-		$Dash_timer.start()
-		$Dash_particle.emitting = true
+	if is_on_floor():
+		if velocity.x and velocity.x != 0:
+			var prod = dashGhostPreload.instance()
+			inDash = true
+			move_speed = 180
+			# verificar em qual direcao vai ser o dash
+			if $Sprite.flip_h:
+				$Dash_particle.position.x = -10
+				prod.get_node("Sprite").flip_h = true
+				prod.position.x = $"dashSpawn".position.x  * -1
+			else:
+				$Dash_particle.position.x = 10
+				prod.position.x = $"dashSpawn".position.x 
+				prod.get_node("Sprite").flip_h = false
+				
+			prod.position.y = $"Sprite".position.y
+			get_node(".").add_child(prod)
+			print("Dash?")
+			$Dash_timer.start()
+			$Dash_particle.emitting = true
 	
 func _on_Dash_timer_timeout():
 	$Dash_particle.emitting = false
+	inDash = false
 	print("CABO")
 	move_speed = 60
 
