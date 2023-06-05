@@ -1,10 +1,12 @@
-![capa](capuzVerde1.png)
+![capa](readme/capuzVerde1.png)
 
 # CapuzVerde
 
 ## versão: 0.0.1.14
 
 ### Um jogo desenvolvido para o aprendizado meu e de uma equipe.Utilizaremos nesse projeto o motor Godot 3.5.1 standart version com plugin. Os plugins ficam anexados aos projetos então talvez não precise instalar ele. O projeto atual tem apenas um jogo, mas os conhecimentos podem ser reciclados para futuros projetos.
+
+![gif](readme/capuzverde01.gif)
 
 ## atualizações
 
