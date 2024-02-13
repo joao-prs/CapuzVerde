@@ -1,7 +1,7 @@
 class_name Player
 extends KinematicBody2D
 
-export var health = 3
+export var health = 4
 
 # Variáveis de movimentação do player
 const UP_DIRECTION := Vector2.UP

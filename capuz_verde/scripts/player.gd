@@ -47,14 +47,13 @@ func _physics_process(delta):
 	can_attack = true
 	
 	
-<<<<<<< HEAD
+#<<<<<<< HEAD
 	velocity.y += gravity * delta
 	if not inDash:
 		move_direction = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
-=======
-
-	move_direction = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
->>>>>>> 7efe69f74d61b7cb4818011a77d8384bed3372db
+#=======
+#	move_direction = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
+#>>>>>>> 7efe69f74d61b7cb4818011a77d8384bed3372db
 	if !animacao_dano:
 		if move_direction == 0:
 			if velocity.x > 0:
@@ -97,7 +96,7 @@ func _physics_process(delta):
 	velocity = move_and_slide(velocity, Vector2.UP)
 	_escada()
 	_set_animation()
-<<<<<<< HEAD
+#<<<<<<< HEAD
 	
 func _get_input():
 	velocity.x = 0
@@ -113,9 +112,9 @@ func _get_input():
 			$Sprite.flip_h = true
 			collision.position = Vector2(-6, -8)
 		
-=======
+#=======
 
->>>>>>> 7efe69f74d61b7cb4818011a77d8384bed3372db
+#>>>>>>> 7efe69f74d61b7cb4818011a77d8384bed3372db
 
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_select") && is_on_floor():
@@ -191,7 +190,7 @@ func _on_revive_timer_timeout(): ## QUANDO PLAYER MORRER
 #--------------------+
 func Dash():
 	# só aplicar o dash quando tiver andando
-<<<<<<< HEAD
+#<<<<<<< HEAD
 	if is_on_floor():
 		if velocity.x and velocity.x != 0:
 			var prod = dashGhostPreload.instance()
@@ -216,7 +215,7 @@ func Dash():
 func _on_Dash_timer_timeout():
 	$Dash_particle.emitting = false
 	inDash = false
-=======
+#=======
 	if velocity.x:
 		move_speed = 180
 		# verificar em qual direcao vai ser o dash
@@ -231,13 +230,13 @@ func _on_Dash_timer_timeout():
 		$Sprite.visible = false
 		$Dash_particle.emitting = true
 
-func _on_Dash_timer_timeout():
-	$Dash_particle.emitting = false
-	$dash.visible = false
-	$Sprite.visible = true
->>>>>>> 7efe69f74d61b7cb4818011a77d8384bed3372db
-	print("CABO")
-	move_speed = 60
+#func _on_Dash_timer_timeout():
+#	$Dash_particle.emitting = false
+#	$dash.visible = false
+#	$Sprite.visible = true
+#>>>>>>> 7efe69f74d61b7cb4818011a77d8384bed3372db
+#	print("CABO")
+#	move_speed = 60
 
 
 #-----------------------------------------+
